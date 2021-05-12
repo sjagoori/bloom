@@ -6,8 +6,7 @@ The app is intended to help people get back to their daily lives.
 
 **Core functionalities**
 * As a user, I want information about relevant themes, so that I would know what to expect after the treatment process.
-* As a user, I want to have personal contact with similar people, so that I can reflect on my experiences develop my coping strategies.
-
+* As a user, I want to have 1 on 1 contact with similar people, so that I can reflect on my experiences, and further develop my coping strategies.
 
 # Technicalities
 
@@ -37,6 +36,18 @@ Function over variables. We don't want to save functions in variables as that ca
 | `~` |Commit when something is broken or changed, such as logic or formatting.|
 |`[WIP]`|Commit when something is unfinished. <span style="color: red">Refrain from committing unfinished work.</span> |
 
+## Tooling and more
+
+**[Next.js](https://nextjs.org/), The React Framework for Production**
+Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.
+
+**[MongoDB](https://www.mongodb.com/)**
+The database for modern napplications. MongoDB is a general purpose, **document-based**, distributed database built for modern application developers and for the cloud era. 
+
+### Other dependencies
+|Name|Purpose|
+|:--|:--|
+|[dotenv]()|Storing sensitive credentials in a safe environment.|
 
 # Sources
 
