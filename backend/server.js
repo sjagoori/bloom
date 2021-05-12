@@ -7,11 +7,15 @@ const port = process.env.PORT || 3001,
   http = require("http").createServer(app),
   io = require("socket.io")(http);
 
-app.use(express.json()).use(express.urlencoded({ extended: false })).use(cors);
+app.use(express.json()).use(express.urlencoded({ extended: true })).use(cors());
 
-app.get('/hello', (req, res) => res.json({status: 200, body: 'Hello World!'}))
-app.post('/test', (req, res) => {
-  console.log("test");
-  return res.status(200).json({ some: "response" });
-})
+app.get("/hello", (req, res) =>
+  res.json({ status: 200, body: "Hello World!" })
+);
+
+app.post("/test", (req, res) => {
+  console.log(req.body);
+
+  return res.json({ foo: "bar " });
+});
 app.listen(port, () => console.log(`listening to port ${port}`));
