@@ -38,16 +38,21 @@ Function over variables. We don't want to save functions in variables as that ca
 
 ## Tooling and more
 
-**[Next.js](https://nextjs.org/), The React Framework for Production**
+**[Next.js](https://nextjs.org/), The React Framework for Production**  
 Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.
 
-**[MongoDB](https://www.mongodb.com/)**
+**[MongoDB](https://www.mongodb.com/)**  
 The database for modern napplications. MongoDB is a general purpose, **document-based**, distributed database built for modern application developers and for the cloud era. 
+
+**[Socket.io](https://socket.io/)**  
+Socket.IO enables real-time, bidirectional and event-based communication.
+It works on every platform, browser or device, focusing equally on reliability and speed. 
 
 ### Other dependencies
 |Name|Purpose|
 |:--|:--|
 |[dotenv]()|Storing sensitive credentials in a safe environment.|
+|[Socket.io](https://www.npmjs.com/package/socket.io|Two way real time communication|
 
 # Sources
 
