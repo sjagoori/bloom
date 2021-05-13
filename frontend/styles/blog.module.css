@@ -1,0 +1,15 @@
+.tileContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5em;
+}
+
+.tile {
+  width: 200px;
+  height: 150px;
+  background-color: #ffcc00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+}
