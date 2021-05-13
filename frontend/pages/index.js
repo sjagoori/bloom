@@ -11,7 +11,7 @@ export default function Home() {
       password: e.target[1].value,
     };
 
-    await fetch("http://localhost:3001/test", {
+    await fetch("http://localhost:3001/login", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
