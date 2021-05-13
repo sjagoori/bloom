@@ -1,5 +1,7 @@
+import { useCookies } from "react-cookie";
 
 export default function Home() {
+  const [cookie, setCookie] = useCookies(["user"]);
 
   async function handleForm(e) {
     e.preventDefault();
@@ -15,8 +17,17 @@ export default function Home() {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(res => res.json()).then(data => console.log(data));
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCookie("user", JSON.stringify(data), {
+          path: "/",
+          maxAge: 3600, // Expires after 1hr
+          sameSite: true,
+        });
+      });
   }
+  console.log(cookie);
 
   return (
     <>
@@ -25,6 +36,7 @@ export default function Home() {
         <input type="password" id="password" name="password" />
         <button type="submit">Submit</button>
       </form>
+
     </>
   );
 }
