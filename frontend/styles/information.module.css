@@ -1,0 +1,9 @@
+
+.accordion {
+  padding: 1em 0.5em;
+}
+.icon {
+  cursor: pointer;
+  stroke: orange;
+  width: 32px;
+}
