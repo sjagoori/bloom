@@ -32,12 +32,13 @@ export default function Login() {
 
   return (
     <>
+      <Link href="/">Terug</Link>
+      <h1>Login</h1>
       <form onSubmit={handleForm}>
         <input type="text" id="email" name="email" />
         <input type="password" id="password" name="password" />
         <button type="submit">Submit</button>
       </form>
-      <Link href="register">Register</Link>
     </>
   );
 }
