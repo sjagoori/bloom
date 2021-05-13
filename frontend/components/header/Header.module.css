@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  padding: 0 2em;
+  box-shadow: 0 0 5px 5px hsla(0, 0%, 0%, 0.2);
+}
+
+
+.container > h1 {
+  flex-grow: 1;
+ color: orange; 
+}
+
+.icon {
+  cursor: pointer;
+  fill: orange;
+  width: 32px;
+}
