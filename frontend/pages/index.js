@@ -27,24 +27,33 @@ export default function Home() {
         return (
           <>
             <p onClick={() => setProgress(progress - 1)}>terug</p>
-            Naam
-            <p onClick={() => setProgress(progress + 1)}>volgende</p>
+            <input type="text" name="name" id="name" placeholder="Naam" />
+            <p onClick={() => {
+              setProgress(progress + 1)
+              regData.name = document.getElementById('name').value
+            }}>volgende</p>
           </>
         )
       case 2:
         return (
           <>
             <p onClick={() => setProgress(progress - 1)}>terug</p>
-            Geboortedatum
-            <p onClick={() => setProgress(progress + 1)}>volgende</p>
+            <input type="date" name="birthDate" id="birthDate" />
+            <p onClick={() => {
+              setProgress(progress + 1)
+              regData.birthDate = document.getElementById('birthDate').value
+            }}>volgende</p>
           </>
         )
       case 3:
         return (
           <>
             <p onClick={() => setProgress(progress - 1)}>terug</p>
-            Woonplaats
-            <p onClick={() => setProgress(progress + 1)}>volgende</p>
+            <input type="text" name="residence" id="residence" placeholder="Woonplaats" />
+            <p onClick={() => {
+              setProgress(progress + 1)
+              regData.residence = document.getElementById('residence').value
+            }}>volgende</p>
           </>
         )
       case 4:
@@ -52,15 +61,28 @@ export default function Home() {
           <>
             <p onClick={() => setProgress(progress - 1)}>terug</p>
             Gender
-            <p onClick={() => setProgress(progress + 1)}>volgende</p>
+            <input type="radio" name="genders" id="male" />
+            <input type="radio" name="genders" id="female" />
+            <input type="radio" name="genders" id="fluid" />
+            <p onClick={() => {
+              setProgress(progress + 1)
+              regData.gender = document.querySelector('input[name="genders"]:checked').value;
+            }}>volgende</p>
           </>
         )
       case 5:
         return (
           <>
             <p onClick={() => setProgress(progress - 1)}>terug</p>
-            Type kanker
-            <p onClick={() => setProgress(progress + 1)}>volgende</p>
+            <label htmlFor="type1">Type1</label>
+            <input type="checkbox" name="kanker" id="type1" />
+            <label htmlFor="type2">Type2</label>
+            <input type="checkbox" name="kanker" id="type2" />
+            <p onClick={() => {
+              setProgress(progress + 1)
+              let types = document.querySelector('input[name="kanker"]:checked')
+              regData.types = Object.values(types).find(key => key.checked)
+            }}>volgende</p>
           </>
         )
       case 6:
@@ -68,7 +90,9 @@ export default function Home() {
           <>
             <p onClick={() => setProgress(progress - 1)}>terug</p>
             Pictogram
-            <p onClick={() => setProgress(progress + 1)}>volgende</p>
+            <p onClick={() => {
+              setProgress(progress + 1)
+            }}>volgende</p>
           </>
         )
       case 7:
@@ -80,6 +104,8 @@ export default function Home() {
         )
     }
   }
+
+  console.log(regData);
 
   async function handleForm(e) {
     e.preventDefault();
