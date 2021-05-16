@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
+import Link from 'next/link';
 
 export default function Home() {
   const [progress, setProgress] = useState(0);
@@ -24,110 +25,126 @@ export default function Home() {
     )
   }
 
-  let accoutCreds = accoutCredsData.map((item, index) => (
-    <>
-      <label key={index} htmlFor={item.id}>{item.label}
-        <Text
-          type={item.type}
-          name={item.name}
-          id={item.id}
-          onChange={formik.handleChange}
-          placebolder={item.placebolder}
-        />
-      </label>
-    </>
-  ))
-
-  let personalInfo = personalInfoData.map((item, index) => (
-    <label key={index} htmlFor={item.id}>{item.label}
-      <Text
-        type="text"
-        name={item.name}
-        id={item.id}
-        onChange={formik.handleChange}
-        placebolder={item.placebolder}
-      />
-    </label>
-  ))
-
-  let birthDate = birthDateData.map((item, index) => (
-    <label key={index} htmlFor={item.id}>{item.label}
-      <DatePicker
-        name={item.name}
-        id={item.id}
-        onChange={formik.handleChange}
-      />
-    </label>
-  ))
-
-  let residence = residenceData.map((item, index) => (
-    <label key={index} htmlFor={item.id}>{item.label}
-      <Text
-        type="text"
-        name={item.name}
-        id={item.id}
-        onChange={formik.handleChange}
-        placeholder={item.placeholder}
-      />
-    </label>
-  ))
-
-  let gender = genderData.map((item, index) => (
-    <label key={index} htmlFor={item.id}>{item.label}
-      <Radio
-        name={item.name}
-        id={item.id}
-        onChange={formik.handleChange}
-        value={item.value}
-      />
-    </label>
-  ))
-
-  let kankerTypes = kankerTypesData.map((item, index) => (
-    <label key={index} htmlFor={item.id}>{item.label}
-      <Checkbox
-        name={item.name}
-        id={item.id}
-        onChange={formik.handleChange}
-        value={item.value}
-      />
-    </label>
-  ))
-
-  let pictogram = pictogramData.map((item, index) => (
-    <label key={index} htmlFor={item.id}>{item.label}
-      <Radio
-        name={item.name}
-        id={item.id}
-        onChange={formik.handleChange}
-        value={item.value}
-      />
-    </label>
-  ))
-
-  let about = aboutData.map((item, index) => (
-    <label key={index} htmlFor={item.id}>{item.label}
-      <TextArea
-        name={item.name}
-        id={item.id}
-        onChange={formik.handleChange}
-        value={item.value}
-        rows="10"
-        cols="50"
-      />
-    </label>
-  ))
-
-  let form = formElement(accoutCreds)
+  switch (progress) {
+    case 0:
+      return formElement(accoutCredsData.map((item, index) => (
+        <>
+          <label key={index} htmlFor={item.id}>{item.label}
+            <Text
+              type={item.type}
+              name={item.name}
+              id={item.id}
+              onChange={formik.handleChange}
+              placebolder={item.placebolder}
+            />
+          </label>
+        </>
+      )))
+    case 1:
+      return formElement(personalInfoData.map((item, index) => (
+        <label key={index} htmlFor={item.id}>{item.label}
+          <Text
+            type="text"
+            name={item.name}
+            id={item.id}
+            onChange={formik.handleChange}
+            placebolder={item.placebolder}
+          />
+        </label>
+      )))
+    case 2:
+      return formElement(birthDateData.map((item, index) => (
+        <label key={index} htmlFor={item.id}>{item.label}
+          <DatePicker
+            name={item.name}
+            id={item.id}
+            onChange={formik.handleChange}
+          />
+        </label>
+      )))
+    case 3:
+      return formElement(residenceData.map((item, index) => (
+        <label key={index} htmlFor={item.id}>{item.label}
+          <Text
+            type="text"
+            name={item.name}
+            id={item.id}
+            onChange={formik.handleChange}
+            placeholder={item.placeholder}
+          />
+        </label>
+      )))
+    case 4:
+      return formElement(genderData.map((item, index) => (
+        <label key={index} htmlFor={item.id}>{item.label}
+          <Radio
+            name={item.name}
+            id={item.id}
+            onChange={formik.handleChange}
+            value={item.value}
+          />
+        </label>
+      )))
+    case 5:
+      return formElement(kankerTypesData.map((item, index) => (
+        <label key={index} htmlFor={item.id}>{item.label}
+          <Checkbox
+            name={item.name}
+            id={item.id}
+            onChange={formik.handleChange}
+            value={item.value}
+          />
+        </label>
+      ))
+      )
+    case 6:
+      return formElement(pictogramData.map((item, index) => (
+        <label key={index} htmlFor={item.id}>{item.label}
+          <Radio
+            name={item.name}
+            id={item.id}
+            onChange={formik.handleChange}
+            value={item.value}
+          />
+        </label>
+      )))
+    case 7:
+      return formElement(aboutData.map((item, index) => (
+        <label key={index} htmlFor={item.id}>{item.label}
+          <TextArea
+            name={item.name}
+            id={item.id}
+            onChange={formik.handleChange}
+            value={item.value}
+            rows="10"
+            cols="50"
+          />
+        </label>
+      )))
+    case 8:
+      fetch("http://localhost:3001/register", {
+        method: "POST",
+        body: JSON.stringify(regData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setCookie("user", JSON.stringify(data), {
+            path: "/",
+            maxAge: 3600, // Expires after 1hr
+            sameSite: true,
+          });
+        });
+      return <>
+        <h1>Let's start</h1>
+        <Link href='/login'>Start</Link>
+      </>
+  }
 
   console.log(regData);
   console.log(progress);
-
-  return (
-    <>
-      {form}
-    </>
-  )
 }
 
 const Checkbox = ({ type = "checkbox", name, onChange, id, value }) => (
