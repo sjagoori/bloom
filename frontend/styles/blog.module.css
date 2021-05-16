@@ -1,15 +1,38 @@
+.container {
+  width: 85vw;
+  margin: 0 auto;
+}
+
 .tileContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.5em;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75em;
 }
 
 .tile {
-  width: 200px;
-  height: 150px;
-  background-color: #ffcc00;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1em;
+  height: 135px;
+  width: 155px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: start;
+  justify-items: center;
+  background: #F9F0C6;
+  color: #f07a06;
+  border-radius: 10%;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 6px 6px rgba(0,0,0,0.16);
+  transition: box-shadow 200ms ease-in;
+}
+
+.tile:hover {
+  box-shadow: 0 0 0 rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.tile > h3 {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 1.2rem;
 }

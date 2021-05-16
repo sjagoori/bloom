@@ -1,10 +1,11 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Header from "../components/header/Header";
 import styles from '../styles/blog.module.css';
 
 const result = [
-  {name: 'Vermoeid', url: '/blog/[slug]'},
+  {name: 'Vermoeidheid', url: '/blog/[slug]'},
   {name: 'angst', url: '/blog/[slug]'},
   {name: 'somberheid', url: '/blog/[slug]'},
   {name: 'Mijn relatie', url: '/blog/[slug]'},
@@ -34,9 +35,14 @@ export default function Blog() {
 
   return (
     <>
+    <Head>
+      <title>Thema's</title>
+    </Head>
     <Header name="Thema's"/>
+    <div className={styles.container}>
     <p>HOE GA IK OM MET...</p>
       {content?successState:loadingState}
+    </div>
     </>
   );
 }
