@@ -129,14 +129,6 @@ export default function Home() {
           "Content-Type": "application/json",
         },
       })
-        .then((res) => res.json())
-        .then((data) => {
-          setCookie("user", JSON.stringify(data), {
-            path: "/",
-            maxAge: 3600, // Expires after 1hr
-            sameSite: true,
-          });
-        });
       return <>
         <h1>Let's start</h1>
         <Link href='/login'>Start</Link>
