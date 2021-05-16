@@ -1,128 +1,267 @@
-import Link from "next/link";
-import { useState, useRef, useEffect, useContext, createContext } from "react";
+import { useState } from 'react';
+import { useFormik } from 'formik';
 
 export default function Home() {
-  const [error, setError] = useState(null);
-  const [regData, setRegData] = useState(null);
   const [progress, setProgress] = useState(0);
-  let mounted = useRef(false)
+  const [regData, setRegData] = useState();
 
-  function steps(step) {
-    switch (step) {
-      case 0:
-        return (
-          <form onSubmit={handleForm} action='/register'>
-            <legend>Welkom</legend>
-            <fieldset>
-              <input type="text" name="email" id="email" />
-              <input type="text" name="password" id="password" />
-              <span>{error ? error : ""}</span>
-              <button type="submit">Starten</button>
-            </fieldset>
-            <Link href="/login">Ik ben een hulpaanbieder</Link>
-            <Link href="/login">Ik heb al een account</Link>
-          </form>
-        )
-      case 1:
-        return (
-          <>
-            <p onClick={() => setProgress(progress - 1)}>terug</p>
-            <input type="text" name="name" id="name" placeholder="Naam" />
-            <p onClick={() => {
-              setProgress(progress + 1)
-              regData.name = document.getElementById('name').value
-            }}>volgende</p>
-          </>
-        )
-      case 2:
-        return (
-          <>
-            <p onClick={() => setProgress(progress - 1)}>terug</p>
-            <input type="date" name="birthDate" id="birthDate" />
-            <p onClick={() => {
-              setProgress(progress + 1)
-              regData.birthDate = document.getElementById('birthDate').value
-            }}>volgende</p>
-          </>
-        )
-      case 3:
-        return (
-          <>
-            <p onClick={() => setProgress(progress - 1)}>terug</p>
-            <input type="text" name="residence" id="residence" placeholder="Woonplaats" />
-            <p onClick={() => {
-              setProgress(progress + 1)
-              regData.residence = document.getElementById('residence').value
-            }}>volgende</p>
-          </>
-        )
-      case 4:
-        return (
-          <>
-            <p onClick={() => setProgress(progress - 1)}>terug</p>
-            Gender
-            <input type="radio" name="genders" id="male" />
-            <input type="radio" name="genders" id="female" />
-            <input type="radio" name="genders" id="fluid" />
-            <p onClick={() => {
-              setProgress(progress + 1)
-              regData.gender = document.querySelector('input[name="genders"]:checked').value;
-            }}>volgende</p>
-          </>
-        )
-      case 5:
-        return (
-          <>
-            <p onClick={() => setProgress(progress - 1)}>terug</p>
-            <label htmlFor="type1">Type1</label>
-            <input type="checkbox" name="kanker" id="type1" />
-            <label htmlFor="type2">Type2</label>
-            <input type="checkbox" name="kanker" id="type2" />
-            <p onClick={() => {
-              setProgress(progress + 1)
-              let types = document.querySelector('input[name="kanker"]:checked')
-              regData.types = Object.values(types).find(key => key.checked)
-            }}>volgende</p>
-          </>
-        )
-      case 6:
-        return (
-          <>
-            <p onClick={() => setProgress(progress - 1)}>terug</p>
-            Pictogram
-            <p onClick={() => {
-              setProgress(progress + 1)
-            }}>volgende</p>
-          </>
-        )
-      case 7:
-        return (
-          <>
-            <p onClick={() => setProgress(progress - 1)}>terug</p>
-            Over jezelf
-          </>
-        )
-    }
+  const formik = useFormik({
+    initialValues: {},
+    onSubmit: values => {
+      setRegData(regData => {
+        return { ...regData, ...values }
+      })
+      setProgress(progress => progress + 1)
+    },
+  });
+
+  const formElement = (props) => {
+    return (
+      <form onSubmit={formik.handleSubmit}>
+        {props}
+        <button type="submit">Submit</button>
+      </form>
+    )
   }
+
+  let accoutCreds = accoutCredsData.map((item, index) => (
+    <>
+      <label key={index} htmlFor={item.id}>{item.label}
+        <Text
+          type={item.type}
+          name={item.name}
+          id={item.id}
+          onChange={formik.handleChange}
+          placebolder={item.placebolder}
+        />
+      </label>
+    </>
+  ))
+
+  let personalInfo = personalInfoData.map((item, index) => (
+    <label key={index} htmlFor={item.id}>{item.label}
+      <Text
+        type="text"
+        name={item.name}
+        id={item.id}
+        onChange={formik.handleChange}
+        placebolder={item.placebolder}
+      />
+    </label>
+  ))
+
+  let birthDate = birthDateData.map((item, index) => (
+    <label key={index} htmlFor={item.id}>{item.label}
+      <DatePicker
+        name={item.name}
+        id={item.id}
+        onChange={formik.handleChange}
+      />
+    </label>
+  ))
+
+  let residence = residenceData.map((item, index) => (
+    <label key={index} htmlFor={item.id}>{item.label}
+      <Text
+        type="text"
+        name={item.name}
+        id={item.id}
+        onChange={formik.handleChange}
+        placeholder={item.placeholder}
+      />
+    </label>
+  ))
+
+  let gender = genderData.map((item, index) => (
+    <label key={index} htmlFor={item.id}>{item.label}
+      <Radio
+        name={item.name}
+        id={item.id}
+        onChange={formik.handleChange}
+        value={item.value}
+      />
+    </label>
+  ))
+
+  let kankerTypes = kankerTypesData.map((item, index) => (
+    <label key={index} htmlFor={item.id}>{item.label}
+      <Checkbox
+        name={item.name}
+        id={item.id}
+        onChange={formik.handleChange}
+        value={item.value}
+      />
+    </label>
+  ))
+
+  let pictogram = pictogramData.map((item, index) => (
+    <label key={index} htmlFor={item.id}>{item.label}
+      <Radio
+        name={item.name}
+        id={item.id}
+        onChange={formik.handleChange}
+        value={item.value}
+      />
+    </label>
+  ))
+
+  let about = aboutData.map((item, index) => (
+    <label key={index} htmlFor={item.id}>{item.label}
+      <TextArea
+        name={item.name}
+        id={item.id}
+        onChange={formik.handleChange}
+        value={item.value}
+        rows="10"
+        cols="50"
+      />
+    </label>
+  ))
+
+  let form = formElement(accoutCreds)
 
   console.log(regData);
-
-  async function handleForm(e) {
-    e.preventDefault();
-    const email = e.target[1].value;
-    const password = e.target[2].value;
-
-    email == "" && password == ""
-      ? setError("Je hebt nog niets ingevuld")
-      : (setRegData({
-        email: email,
-        password: password
-      }), setProgress(1));
-  }
+  console.log(progress);
 
   return (
     <>
-      {steps(progress)}
+      {form}
     </>
-  );
+  )
 }
+
+const Checkbox = ({ type = "checkbox", name, onChange, id, value }) => (
+  <input type={type} name={name} onChange={onChange} id={id} value={value} />
+);
+
+const Text = ({ type, name, placeholder, onChange, id }) => (
+  <input type={type} name={name} placeholder={placeholder} id={id} onChange={onChange} />
+)
+
+const TextArea = ({ name, placeholder, onChange, id, rows, cols }) => (
+  <textarea name={name} placeholder={placeholder} id={id} onChange={onChange} rows={rows} cols={cols} />
+)
+
+const DatePicker = ({ type = 'date', name, onChange, id }) => (
+  <input type={type} name={name} id={id} onChange={onChange} />
+)
+
+const Radio = ({ type = "radio", name, onChange, id, value }) => (
+  <input type={type} name={name} onChange={onChange} id={id} value={value} />
+);
+
+const accoutCredsData = [
+  {
+    type: 'email',
+    name: 'email',
+    label: 'Wat is je email adres?',
+    placeholder: 'voorbeeld@domein.nl',
+    id: 'email'
+  },
+  {
+    type: 'password',
+    name: 'password',
+    label: 'Wat is je password',
+    id: 'password'
+  }
+]
+
+const personalInfoData = [
+  {
+    name: 'name',
+    label: 'Hoe heet je?',
+    placeholder: 'voornaamachternaam',
+    id: 'name'
+  }
+]
+
+const birthDateData = [
+  {
+    name: "birthDate",
+    label: "Geboortedatum",
+    id: 'birthDate',
+  }
+]
+
+const kankerTypesData = [
+  {
+    name: "kankerType",
+    label: "KankerType1",
+    value: 'kanker1',
+    id: 'kanker1',
+  },
+  {
+    name: "kankerType",
+    key: "checkBox2",
+    label: "KankerType2",
+    value: "kanker2",
+    id: 'kanker2',
+  }
+];
+
+const residenceData = [
+  {
+    name: "residence",
+    label: "Waar woon je?",
+    id: 'residence',
+    placeholder: 'Voer hier je woonplaats in.'
+  }
+]
+
+const genderData = [
+  {
+    name: "gender",
+    label: "Man",
+    value: 'man',
+    id: 'gender-man',
+  },
+  {
+    name: "gender",
+    label: "Vrouw",
+    value: 'Vrouw',
+    id: 'gender-vrouw',
+  },
+  {
+    name: "gender",
+    label: "Neutraal",
+    value: 'Neutraal',
+    id: 'gender-neurtraal',
+  },
+]
+
+let pictogramData = [
+  {
+    name: "pictogram",
+    value: 'pictogram-1',
+    id: 'pictogram-1',
+  },
+  {
+    name: "pictogram",
+    value: 'pictogram-2',
+    id: 'pictogram-2',
+  },
+  {
+    name: "pictogram",
+    value: 'pictogram-3',
+    id: 'pictogram-3',
+  },
+  {
+    name: "pictogram",
+    value: 'pictogram-4',
+    id: 'pictogram-4',
+  },
+  {
+    name: "pictogram",
+    value: 'pictogram-5',
+    id: 'pictogram-5',
+  },
+]
+
+let aboutData = [
+  {
+    name: 'about',
+    label: 'Vertel meer over jezelf',
+    placeholder: 'Vertel meer over jezelf',
+    id: 'about'
+  }
+]
