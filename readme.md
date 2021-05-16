@@ -51,8 +51,8 @@ It works on every platform, browser or device, focusing equally on reliability a
 ### Other dependencies
 |Name|Purpose|
 |:--|:--|
-|[dotenv]()|Storing sensitive credentials in a safe environment.|
-|[Socket.io](https://www.npmjs.com/package/socket.io|Two way real time communication|
+|[dotenv](https://www.npmjs.com/package/dotenv)|Storing sensitive credentials in a safe environment.|
+|[Socket.io](https://www.npmjs.com/package/socket.io)|Two way real time communication.|
 
 # Sources
 
