@@ -3,23 +3,29 @@ import { useFormik } from 'formik';
 import Link from 'next/link';
 
 export default function Home() {
+  const [error, setError] = useState(null);
   const [progress, setProgress] = useState(0);
   const [regData, setRegData] = useState();
 
   const formik = useFormik({
     initialValues: {},
     onSubmit: values => {
-      setRegData(regData => {
-        return { ...regData, ...values }
-      })
-      setProgress(progress => progress + 1)
+      if (Object.keys(values).length == 0) {
+        setError("Je hebt nog niets ingevuld")
+      } else {
+        setRegData(regData => ({ ...regData, ...values }))
+        setProgress(progress => progress + 1)
+        setError(error => (error = null))
+      }
     },
   });
 
   const formElement = (props) => {
     return (
       <form onSubmit={formik.handleSubmit}>
+        {progress > 0 ? <a onClick={() => setProgress(progress - 1)}>Back</a> : null}
         {props}
+        <span>{error ? error : ""}</span>
         <button type="submit">Submit</button>
       </form>
     )
@@ -27,7 +33,7 @@ export default function Home() {
 
   switch (progress) {
     case 0:
-      return formElement(accoutCredsData.map((item, index) => (
+      return formElement(accountCredsData.map((item, index) => (
         <>
           <label key={index} htmlFor={item.id}>{item.label}
             <Text
@@ -38,6 +44,8 @@ export default function Home() {
               placebolder={item.placebolder}
             />
           </label>
+          <Link href="/login">Ik heb al een account</Link>
+          <Link href="/login">Ik ben een hulpverlener</Link>
         </>
       )))
     case 1:
@@ -134,9 +142,6 @@ export default function Home() {
         <Link href='/login'>Start</Link>
       </>
   }
-
-  console.log(regData);
-  console.log(progress);
 }
 
 const Checkbox = ({ type = "checkbox", name, onChange, id, value }) => (
@@ -159,7 +164,7 @@ const Radio = ({ type = "radio", name, onChange, id, value }) => (
   <input type={type} name={name} onChange={onChange} id={id} value={value} />
 );
 
-const accoutCredsData = [
+const accountCredsData = [
   {
     type: 'email',
     name: 'email',
@@ -274,3 +279,27 @@ let aboutData = [
     id: 'about'
   }
 ]
+
+
+const validate = values => {
+  const errors = {};
+  if (!values.firstName) {
+    errors.firstName = 'Required';
+  } else if (values.firstName.length > 15) {
+    errors.firstName = 'Must be 15 characters or less';
+  }
+
+  if (!values.lastName) {
+    errors.lastName = 'Required';
+  } else if (values.lastName.length > 20) {
+    errors.lastName = 'Must be 20 characters or less';
+  }
+
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+
+  return errors;
+};
