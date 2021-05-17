@@ -5,12 +5,12 @@ import Header from "../components/header/Header";
 import styles from '../styles/blog.module.css';
 
 const result = [
-  {name: 'Vermoeidheid', url: '/blog/[slug]'},
-  {name: 'angst', url: '/blog/[slug]'},
-  {name: 'somberheid', url: '/blog/[slug]'},
-  {name: 'Mijn relatie', url: '/blog/[slug]'},
-  {name: 'Geldzaken & werk', url: '/blog/[slug]'},
-  {name: 'Lichaam & uiterlijk', url: '/blog/[slug]'}
+  {name: 'Vermoeidheid'},
+  {name: 'angst'},
+  {name: 'somberheid'},
+  {name: 'Mijn relatie'},
+  {name: 'Geldzaken & werk'},
+  {name: 'Lichaam & uiterlijk'}
 ];
 
 const successState = <container>

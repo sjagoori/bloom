@@ -6,15 +6,15 @@
 .tileContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.75em;
+  gap: 0.8em;
 }
 
 .tile {
   height: 135px;
   width: 155px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
   align-items: start;
   justify-items: center;
   background: #F9F0C6;
@@ -27,12 +27,14 @@
   transition: box-shadow 200ms ease-in;
 }
 
-.tile:hover {
+.tile:hover, .tile:active, .tile:focus, .tile:focus-within{
   box-shadow: 0 0 0 rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  filter: brightness(95%);
 }
 
 .tile > h3 {
   grid-column: 2;
   grid-row: 2;
   font-size: 1.2rem;
+  user-select: none;
 }
