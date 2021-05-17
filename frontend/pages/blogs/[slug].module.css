@@ -45,3 +45,46 @@
 .icon {
   width: 24px;
 }
+
+.contentTab > * {
+  margin: 0;
+  padding: 0;
+}
+
+.tabBar {
+  background-color: hsl(47, 95%, 88%);
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+
+}
+
+.tab {
+  padding: 1em 2em;
+  text-align: center;
+}
+
+.activeTab {
+  background-color: #ffcc00;
+  border-radius: 15px;
+}
+
+.tabBar > input[type="radio"] {
+  display: none;
+}
+
+.tabContent {
+  max-width: 90vw;
+  padding: 1em;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.tabContent > ul {
+  padding-left: 20px;
+}
+
+.active {
+  display: block;
+}
+
