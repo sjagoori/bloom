@@ -33,21 +33,23 @@ export default function Home() {
 
   switch (progress) {
     case 0:
-      return formElement(accountCredsData.map((item, index) => (
+      return formElement(
         <>
-          <label key={index} htmlFor={item.id}>{item.label}
-            <Text
-              type={item.type}
-              name={item.name}
-              id={item.id}
-              onChange={formik.handleChange}
-              placebolder={item.placebolder}
-            />
-          </label>
+          {accountCredsData.map((item, index) => (
+            <label key={index} htmlFor={item.id}>{item.label}
+              <Text
+                type={item.type}
+                name={item.name}
+                id={item.id}
+                onChange={formik.handleChange}
+                placebolder={item.placebolder}
+              />
+            </label>
+          ))}
           <Link href="/login">Ik heb al een account</Link>
           <Link href="/login">Ik ben een hulpverlener</Link>
         </>
-      )))
+      )
     case 1:
       return formElement(personalInfoData.map((item, index) => (
         <label key={index} htmlFor={item.id}>{item.label}
@@ -136,7 +138,8 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-      })
+      }).then(res => res.json())
+        .then(data => console.log(data));
       return <>
         <h1>Let's start</h1>
         <Link href='/login'>Start</Link>
