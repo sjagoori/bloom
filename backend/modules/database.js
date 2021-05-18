@@ -46,7 +46,7 @@ exports.insertOne = async (db, collect, data) => {
     .insertOne(document)
     .then(
       console.log(
-        `Inserted ${document.username} with the password ${document.password}`
+        `Inserted ${document.email} with the data ${document.toString()}`
       )
     );
 };
