@@ -1,17 +1,28 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/router'
 import Link from 'next/link';
 
 export default function Home() {
   const [error, setError] = useState(null);
   const [progress, setProgress] = useState(0);
   const [regData, setRegData] = useState();
+  const router = useRouter()
 
   const formik = useFormik({
     initialValues: {},
     onSubmit: values => {
       if (Object.keys(values).length == 0) {
         setError("Je hebt nog niets ingevuld")
+      } else if (progress == 7) {
+        fetch("http://localhost:3001/register", {
+          method: "POST",
+          body: JSON.stringify(regData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then(res => res.json())
+          .then(data => console.log(data));
       } else {
         setRegData(regData => ({ ...regData, ...values }))
         setProgress(progress => progress + 1)
@@ -132,14 +143,6 @@ export default function Home() {
         </label>
       )))
     case 8:
-      fetch("http://localhost:3001/register", {
-        method: "POST",
-        body: JSON.stringify(regData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then(res => res.json())
-        .then(data => console.log(data));
       return <>
         <h1>Let's start</h1>
         <Link href='/login'>Start</Link>
