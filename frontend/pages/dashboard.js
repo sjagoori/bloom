@@ -3,20 +3,16 @@ import { useState } from "react";
 export default function Dashboard() {
   const [view, setView] = useState(Blog);
 
-  function handleView(desiredView) {
-    setView(desiredView);
-  }
-
   return (
     <>
       {view}
       <nav>
         <h2>This will be the navbar at the bottom</h2>
         <ul>
-          <li onClick={() => handleView(Blog)}>Blog</li>
-          <li onClick={() => handleView(Buddies)}>buddies</li>
-          <li onClick={() => handleView(Chat)}>Chat</li>
-          <li onClick={() => handleView(Profile)}>Profile</li>
+          <li onClick={() => setView(Blog)}>Blog</li>
+          <li onClick={() => setView(Buddies)}>buddies</li>
+          <li onClick={() => setView(Chat)}>Chat</li>
+          <li onClick={() => setView(Profile)}>Profile</li>
         </ul>
       </nav>
     </>
