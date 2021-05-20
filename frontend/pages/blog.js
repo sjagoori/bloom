@@ -5,18 +5,18 @@ import Header from "../components/header/Header";
 import styles from '../styles/blog.module.css';
 
 const result = [
-  {name: 'Vermoeidheid'},
-  {name: 'angst'},
-  {name: 'somberheid'},
-  {name: 'Mijn relatie'},
-  {name: 'Geldzaken & werk'},
-  {name: 'Lichaam & uiterlijk'}
+  {name: 'Vermoeidheid', url:'tired'},
+  {name: 'Angst', url:'fear'},
+  {name: 'Somberheid', url:'gloom'},
+  {name: 'Mijn relatie', url:'relationship'},
+  {name: 'Geldzaken & werk', url:'money'},
+  {name: 'Lichaam& uiterlijk', url:'physical'}
 ];
 
 const successState = <container>
 <div className={styles.tileContainer}>
 {Object.keys(result).map((index, key) => {
-    return <Link key={key} href={{pathname: '/blogs/[slug]', query: {slug: result[index].name} }}>
+    return <Link key={key} href={{pathname: '/blogs/[slug]', query: {slug: result[index].url, title: result[index].name} }}>
         <div className={styles.tile}>
           <h3>{result[index].name}</h3>
         </div>
