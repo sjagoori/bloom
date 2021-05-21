@@ -33,7 +33,7 @@ exports.findOne = async (db, collect, query) => {
  * @source https://docs.mongodb.com/drivers/node/usage-examples/insertOne/
  * @source https://shabier.medium.com/web-development-crud-web-application-76f3b7ce127b
  */
-exports.method = async function insertOne(db, collect, data) {
+exports.insertOne = async (db, collect, data) => {
   // We want to connect to the "userdb" database
   const database = client.db(db);
   // We want to connect to the "users" collection in the "userdb" database
@@ -46,7 +46,39 @@ exports.method = async function insertOne(db, collect, data) {
     .insertOne(document)
     .then(
       console.log(
-        `Inserted ${document.username} with the password ${document.password}`
+        `Inserted ${document.email} with the data ${document.toString()}`
       )
     );
 };
+
+/**
+ * Function update a document with given document
+ * @param {String} db target database
+ * @param {String} collect target collection
+ * @param {Object} data object to update document with
+ * @source https://docs.mongodb.com/drivers/node/usage-examples/updateOne/
+ * @source https://shabier.medium.com/web-development-crud-web-application-76f3b7ce127b
+ */
+exports.updateOne = async (db, collect, data) => {
+  // We want to connect to the "userdb" database
+  const database = client.db(db);
+  // We want to connect to the "users" collection in the "userdb" database
+  const collection = database.collection(collect);
+
+  const filter = { email: data.email }
+  const options = { upsert: true }
+
+  const updateDoc = {
+    $set: {
+      data
+    }
+  }
+
+  const result = await collection.updateOne(filter, updateDoc, options).then(
+    console.log(
+      `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+    )
+  );
+
+}
+

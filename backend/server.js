@@ -22,23 +22,38 @@ app.post("/login", async (req, res) => {
   let response = await db.findOne("bloom", "userdata", { email: email });
   return bcrypt.compareSync(password, response.password, salt)
     ? res.json({
-        status: "passed",
-        data: {
-          email: response.email,
-        },
-      })
+      status: "passed",
+      data: {
+        email: response.email,
+      },
+    })
     : res.json({ status: "failed" });
-    // ? handle data in frontend
+  // ? handle data in frontend
 });
 
 app.post("/register", async (req, res) => {
-  let a = await db.insertOne("bloom", "userdata", {
-    email: email,
-    password: bcrypt.hashSync(password, salt),
-  });
+  let userData = {
+    email: req.body.email,
+    password: bcrypt.hashSync(req.body.password, salt),
+    name: req.body.name,
+    birthDate: req.body.birthDate,
+    residence: req.body.residence,
+    gender: req.body.gender,
+    kankerType: req.body.kankerType,
+    pictogram: req.body.pictogram,
+    about: req.body.about
+  }
 
-  return res.json({ data: a });
-  // ? handle what happens after register in frontend
+  if (await db.findOne('bloom', 'userdata', { email: userData.email }) == null) {
+    console.log('req.body');
+    await db.insertOne("bloom", "userdata", userData);
+
+    // ? Improve this; use find to remove the password entry
+    delete userData.password
+
+    // ? handle what happens after register in frontend
+    return res.json({ status: 200, data: userData });
+  }
 });
 
-app.listen(port, () => console.log(`listening to port ${port}`));
+app.listen(port, () => console.log(`listening to port ${port}`))
