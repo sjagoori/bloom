@@ -1,0 +1,70 @@
+{
+  "angst": {
+    "hero": {
+      "image": {
+        "element": "img",
+        "link": "https://images.unsplash.com/photo-1574243091999-8840e2931fe8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
+      }
+    },
+    "header": {
+      "title": {
+        "element": "h2",
+        "class": "header",
+        "content": "KANKEEEER"
+      },
+      "lead": {
+        "element": "p",
+        "class": "lead",
+        "content": "De behandeling van kanker kost veel energie. Dat is logisch. Je lichaam heeft tijd nodig om te herstellen. Daarnaast moet je alle emoties en gebeurtenissen verwerken. Ook dat kost energie"
+      }
+    },
+    "klachten": {
+      "description": {
+        "element": "p",
+        "class": "description",
+        "content": "description"
+      },
+      "subtitle": {
+        "element":"h2",
+        "class": "subtitle",
+        "content": "Herken jij deze klachten?"
+      },
+      "list": {
+        "element": "ul",
+        "content": ["element", "wkakakaka"]
+      }
+    },
+    "tips": {
+      "description": {
+        "element": "h2",
+        "class": "tipSubtitle",
+        "content": "Tips om ej minder angstig te voelen"
+      },
+      "list": {
+        "element": "ul",
+        "content": ["element", "wkakakaka"]
+      },
+      "subtitle": {
+        "element":"h2",
+        "class": "subtitle",
+        "content": "Angst hoort bij kanker"
+      },
+      "information":{
+        "element":"p",
+        "class": "",
+        "content": "Het is normaal dat je je soms angstig voelt als je kanker hebt. Dat wil niet zeggen dat je overdreven reageert. Of dat je niet goed met de ziekte omgaat. Ook na de behandeling kun je nog lang angstig zijn. Je bent bijvoorbeeld erg bang dat de kanker terugkomt. Dat is begrijpelijk en normaal. Die angst wordt na een tijdje meestal minder. Maar sommige mensen blijven erg angstig. Ook jaren na de behandeling."
+      }
+    },
+    "hulp": {
+      "description": {
+        "element": "p",
+        "class": "description",
+        "content": "description"
+      },
+      "list": {
+        "element": "ul",
+        "content": ["element", "wkakakaka"]
+      }
+    }
+  }
+}
