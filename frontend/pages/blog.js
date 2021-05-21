@@ -5,12 +5,12 @@ import Header from "../components/header/Header";
 import styles from '../styles/blog.module.css';
 
 const result = [
-  {name: 'Vermoeidheid', url:'tired'},
-  {name: 'Angst', url:'fear'},
-  {name: 'Somberheid', url:'gloom'},
-  {name: 'Mijn relatie', url:'relationship'},
-  {name: 'Geldzaken & werk', url:'money'},
-  {name: 'Lichaam& uiterlijk', url:'physical'}
+  {name: 'Vermoeidheid', slug:'vermoeidheid'},
+  {name: 'Angst', slug:'angst'},
+  {name: 'Somberheid', slug:'somber'},
+  {name: 'Mijn relatie', slug:'relatie'},
+  {name: 'Geldzaken & werk', slug:'geld'},
+  {name: 'Lichaam& uiterlijk', slug:'lichaam'}
 ];
 
 const successState = <container>
@@ -25,7 +25,7 @@ const successState = <container>
 </div> */}
 <div className={styles.tileContainer}>
 {Object.keys(result).map((index, key) => {
-    return <Link key={key} href={{pathname: `/blogs/${result[index].url}`, query: {slug: result[index].url, title: result[index].name} }}>
+    return <Link key={key} href={{pathname: `/blogs/${result[index].slug}`, query: {slug: `/blogs/${result[index].slug}`, title: result[index].name} }}>
         <div className={styles.tile}>
           <h3>{result[index].name}</h3>
         </div>
