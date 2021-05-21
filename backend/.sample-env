@@ -1,0 +1,3 @@
+MONGO_USER="<username>"
+MONGO_PASS="<pass>"
+MONGO_CLUSTER="<cluster>"
