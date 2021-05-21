@@ -1,0 +1,84 @@
+.container {
+  padding: 3em 2em;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.backButton {
+  cursor: pointer;
+  padding: 0.5em;
+}
+
+.formContainer {
+  margin: 1em 0;
+}
+
+.formContainer > label {
+  display: block;
+  font-family: 'Silka';
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.formContainer input {
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+  border-radius: 1.5em;
+  border: 1px solid hsl(109, 0%, 78%);
+  color: hsl(0, 0%, 44%);
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.75em;
+  height: 2em;
+  background-color: hsl(47, 96%, 88%);
+  color: hsl(28, 100%, 47%);
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.button::after {
+  content: url('/icons/chevron-icoon.svg');
+  padding: 4px 0;
+  display: inline-block;
+  height: 100%;
+  width: 20px;
+  margin-left: 2em;
+  fill: hsl(28, 100%, 47%);
+  background-color: hsl(47, 95%, 80%);
+}
+
+.formContainer label[for^='gender-'] {
+  width: 110px;
+  height: 110px;
+  background-color: hsl(47, 95%, 80%);
+  border-radius: 0.75em;
+  margin: 0.5em
+}
+
+.formContainer  input[id^='gender-']:checked + label[for^='gender-'] {
+  border: 5px solid hsl(30, 97%, 48%);
+}
+/* 
+.formContainer label[for^='gender-']:focus-within {
+  border: 5px solid hsl(30, 97%, 48%);
+} */
+
+.formContainer label[for="about"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer label[for="about"] > textarea[id="about"]{
+  border-radius: 1.5em;
+  border: 1px solid hsl(109, 0%, 78%);
+  resize: none;
+  padding: 1em 1.5em;
+  color: hsl(38, 6%, 55%);
+}

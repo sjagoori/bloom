@@ -1,7 +1,8 @@
-import { useState } from 'react';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router'
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import styles from "../styles/Registration.module.css";
 
 export default function Home() {
   const [error, setError] = useState(null);
@@ -33,12 +34,16 @@ export default function Home() {
 
   const formElement = (props) => {
     return (
-      <form onSubmit={formik.handleSubmit}>
-        {progress > 0 ? <a onClick={() => setProgress(progress - 1)}>Back</a> : null}
-        {props}
-        <span>{error ? error : ""}</span>
-        <button type="submit">Submit</button>
-      </form>
+      <div className={styles.container}>
+        <form onSubmit={formik.handleSubmit}>
+          {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img className={`${styles.rotate} ${styles.backButton}`} src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
+          <div className={styles.formContainer}>
+            {props}
+          <span>{error ? error : ""}</span>
+          </div>
+          <button className={styles.button} type="submit">Submit</button>
+        </form>
+      </div>
     )
   }
 
@@ -53,7 +58,7 @@ export default function Home() {
                 name={item.name}
                 id={item.id}
                 onChange={formik.handleChange}
-                placebolder={item.placebolder}
+                placeholder={item.placeholder}
               />
             </label>
           ))}
@@ -69,7 +74,7 @@ export default function Home() {
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
-            placebolder={item.placebolder}
+            placeholder={item.placeholder}
           />
         </label>
       )))

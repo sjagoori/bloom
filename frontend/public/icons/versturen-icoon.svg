@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Arrow_-_Right_Circle" data-name="Arrow - Right Circle" transform="translate(0 20) rotate(-90)">
+    <path id="Fill_1" data-name="Fill 1" d="M20,10A10,10,0,1,1,10,0,10.011,10.011,0,0,1,20,10" transform="translate(0 0)" fill="#f07904" opacity="0.4"/>
+    <path id="Fill_4" data-name="Fill 4" d="M8.443.749a.747.747,0,0,1-.219.529L4.754,4.765a.752.752,0,0,1-1.063,0L.219,1.278A.75.75,0,0,1,1.282.22l2.94,2.953L7.162.22A.75.75,0,0,1,8.443.749" transform="translate(5.778 7.808)" fill="#f07904"/>
+  </g>
+</svg>
