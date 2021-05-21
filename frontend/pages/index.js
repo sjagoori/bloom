@@ -34,14 +34,16 @@ export default function Home() {
 
   const formElement = (props) => {
     return (
-      <form onSubmit={formik.handleSubmit}>
-        {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img className={styles.rotate} src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
-        <div className="formContainer">
-          {props}
-        </div>
-        <span>{error ? error : ""}</span>
-        <button className={styles.button} type="submit">Submit</button>
-      </form>
+      <div className={styles.container}>
+        <form onSubmit={formik.handleSubmit}>
+          {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img className={styles.rotate} src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
+          <div className={styles.formContainer}>
+            {props}
+          <span>{error ? error : ""}</span>
+          </div>
+          <button className={styles.button} type="submit">Submit</button>
+        </form>
+      </div>
     )
   }
 
