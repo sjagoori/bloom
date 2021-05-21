@@ -27,9 +27,7 @@ const Blogs = () => {
       <div className={styles.container}>
         <div className={styles.titleBar}>
         <button type="button" onClick={() => router.back()}>
-          <svg xmlns="http://www.w3.org/2000/svg" className={styles.icon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
-          </svg>
+        <img src="/icons/chevron-icoon.svg" alt="Back" className={`${styles.svgIcon} ${styles.rotate}`}/>
         </button>
         <h1>Bloom</h1>
         </div>
