@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router'
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function Home() {
   const [error, setError] = useState(null);
@@ -34,7 +34,7 @@ export default function Home() {
   const formElement = (props) => {
     return (
       <form onSubmit={formik.handleSubmit}>
-        {progress > 0 ? <a onClick={() => setProgress(progress - 1)}>Back</a> : null}
+        {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
         {props}
         <span>{error ? error : ""}</span>
         <button type="submit">Submit</button>
