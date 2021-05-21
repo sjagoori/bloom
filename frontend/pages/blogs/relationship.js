@@ -30,7 +30,7 @@ const Blogs = () => {
         <img src="/icons/chevron-icoon.svg" alt="Back" className={`${styles.svgIcon} ${styles.rotate}`}/>
 
         </button>
-        <h1>Bloom Relationship</h1>
+        <h1>Bloom</h1>
         </div>
         {/* Dynamic */}
         <img className={styles.headerImage} src="/images/thema-relatie.jpg" alt="relatie"/>
