@@ -1,0 +1,17 @@
+.rotate {
+  transform: rotate(180deg);
+}
+
+.formContainer label {
+  font-size: 1.5em;
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.75em;
+  padding: 0.5em 1em;
+  background-color: hsl(47, 96%, 88%);
+  color: hsl(28, 100%, 47%);
+  font-weight: 700;
+}
