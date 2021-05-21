@@ -38,8 +38,8 @@ export default function Login() {
         <div className={`${styles.formContainer}`}>
         <h1>Welkom Terug</h1>
         <form onSubmit={handleForm}>
-          <input type="text" id="email" name="email" />
-          <input type="password" id="password" name="password" />
+          <input type="text" id="email" name="email" placeholder="Emailadres"/>
+          <input type="password" id="password" name="password" placeholder="Wachtwoord"/>
           <button type="submit" className={`${styles.button}`}>Submit</button>
         </form>
         </div>
