@@ -1,0 +1,41 @@
+.svgIcon{
+  width: 18px;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  padding: 3em 2em;
+  background-image: url('/icons/signup-achtergrond.svg');
+}
+
+.formContainer {
+  margin-top: 4em;
+}
+
+.formContainer >h1 {
+  font-size: 1.2em;
+}
+
+.formContainer input {
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+  border-radius: 25px;
+  border: 1px solid hsl(109, 0%, 78%);
+  color: hsl(0, 0%, 44%);
+}
+
+.button {
+  border: none;
+  border-radius: 0.75em;
+  padding: 0.5em 1em;
+  background-color: hsl(47, 96%, 88%);
+  color: hsl(28, 100%, 47%);
+  font-weight: 700;
+}
