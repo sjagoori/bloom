@@ -56,3 +56,12 @@
   border-radius: 0.75em;
   margin: 0.5em
 }
+/* 
+.formContainer  input[id^='gender-'] ~ label[for^='gender-'] {
+  border: 5px solid hsl(30, 97%, 48%);
+} */
+
+.formContainer label[for^='gender-']:focus-within {
+  border: 5px solid hsl(30, 97%, 48%);
+
+}
