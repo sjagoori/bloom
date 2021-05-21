@@ -36,7 +36,7 @@ export default function Home() {
     return (
       <div className={styles.container}>
         <form onSubmit={formik.handleSubmit}>
-          {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img className={styles.rotate} src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
+          {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img className={`${styles.rotate} ${styles.backButton}`} src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
           <div className={styles.formContainer}>
             {props}
           <span>{error ? error : ""}</span>

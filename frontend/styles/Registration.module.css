@@ -6,6 +6,11 @@
   transform: rotate(180deg);
 }
 
+.backButton {
+  cursor: pointer;
+  padding: 0.5em;
+}
+
 .formContainer {
   margin: 1em 0;
 }
@@ -52,19 +57,18 @@
 .formContainer label[for^='gender-'] {
   width: 110px;
   height: 110px;
-  background-color: #ffcc00;
+  background-color: hsl(47, 95%, 80%);
   border-radius: 0.75em;
   margin: 0.5em
 }
-/* 
-.formContainer  input[id^='gender-'] ~ label[for^='gender-'] {
-  border: 5px solid hsl(30, 97%, 48%);
-} */
 
+.formContainer  input[id^='gender-']:checked + label[for^='gender-'] {
+  border: 5px solid hsl(30, 97%, 48%);
+}
+/* 
 .formContainer label[for^='gender-']:focus-within {
   border: 5px solid hsl(30, 97%, 48%);
-
-}
+} */
 
 .formContainer label[for="about"] {
   display: flex;
