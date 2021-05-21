@@ -22,7 +22,7 @@
   padding: 1em;
   margin-bottom: 1em;
   width: 100%;
-  border-radius: 25px;
+  border-radius: 1.5em;
   border: 1px solid hsl(109, 0%, 78%);
   color: hsl(0, 0%, 44%);
 }
@@ -64,4 +64,17 @@
 .formContainer label[for^='gender-']:focus-within {
   border: 5px solid hsl(30, 97%, 48%);
 
+}
+
+.formContainer label[for="about"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer label[for="about"] > textarea[id="about"]{
+  border-radius: 1.5em;
+  border: 1px solid hsl(109, 0%, 78%);
+  resize: none;
+  padding: 1em 1.5em;
+  color: hsl(38, 6%, 55%);
 }
