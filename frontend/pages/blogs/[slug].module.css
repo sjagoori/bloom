@@ -29,10 +29,12 @@
   stroke-width: 5px;
 }
 
-.headerImage{
+.coverImage{
   width: 100%;
   height: 220px;
-  object-fit: cover;
+  object-fit: fill;
+  background-position: bottom;
+  aspect-ratio: 3 / 2;
   border-radius: 2em 2em 0 0;
   border: 1px solid hsla(0, 0%, 0%, 0.1);
   margin-bottom: 1em;
