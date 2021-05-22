@@ -13,13 +13,13 @@
 }
 
 .container main li {
-  padding-left: 1em;
+  padding-left: 7px;
 }
+
 .container main li::marker {
-  content: url('/icons/bullet-gevuld.svg');
+  content: url('/icons/bullet-leeg.svg');
   fill: hsl(30, 97%, 48%);
   fill: black;
-  /* padding: 0; */
 }
 
 .container header h2 {
@@ -32,7 +32,7 @@
   margin: 0 0 1em;
 }
 
-.coverImage{
+.coverImage {
   width: 100%;
   /* max-width: 440px; */
   height: 150px;
@@ -45,59 +45,15 @@
   color: hsl(26, 100%, 47%);
   font-family: 'Nunito-Bold';
   font-style: italic;
-  font-size: 1.5em;
-  line-height: 1.6em;
-  text-align:left;
-  padding: 1.5em;
-  border-radius: 26px;
-}
-
-.titleBar {
-  height: 4em;
-  display: flex;
-  align-items: center;
-}
-
-.titleBar>h1 {
-  margin: 0 auto;
-}
-
-.titleBar>button {
-  border: transparent;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.titleBar>button svg {
-  stroke: hsl(30, 97%, 48%);
-  stroke-width: 5px;
-}
-
-.headerContainer {
-  display: flex;
-}
-
-.headerContainer>h1 {
-  flex-grow: 1;
+  font-size: 1.2rem;
   margin: 0;
-}
-
-.svgIcon {
-  width: 15px;
-}
-
-.rotate {
-  transform: rotate(180deg);
-}
-
-.contentTab>* {
-  margin: 0;
-  padding: 0;
+  padding: 18px 25px;
+  max-width: 335px;
+  border-radius: 20px;
 }
 
 .tabBar {
-  width: 300px;
-  margin: 0 auto;
+  margin: 20px 0 30px 0;
 }
 
 .tabBar ul {
@@ -117,8 +73,7 @@
 }
 
 .tabBar ul li {
-  width: 100px;
-  padding: 10px;
+  padding: 6px 28px;
   text-align: center;
   border-radius: 20%;
   color: #D6771E;
@@ -126,6 +81,6 @@
 }
 
 .tabBar ul li.active {
-  font-weight: bold;
+  font-weight: 600;
   background: #F7E7A0;
 }
