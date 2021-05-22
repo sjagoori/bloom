@@ -8,7 +8,7 @@
       },
       "lead": {
         "element": "p",
-        "class": "lead",
+        "class": "introduction",
         "content": "Een ernstige ziekte kan je angstig maken. Dat is begrijpelijk. Je leven en toekomstplannen zijn ingrijpend veranderd. Veel mensen met kanker zijn angstig. Dat is een normale reactie. Ben je vaak angstig en gaat dat gevoel niet over? Dan is het belangrijk dat je hulp zoekt."
       }
     },
@@ -127,7 +127,7 @@
       },
       "lead": {
         "element": "p",
-        "class": "lead",
+        "class": "introduction",
         "content": "De behandeling van kanker kost veel energie. Dat is logisch. Je lichaam heeft tijd nodig om te herstellen. Daarnaast moet je alle emoties en gebeurtenissen verwerken. Ook dat kost energie."
       }
     },
@@ -232,7 +232,7 @@
       },
       "lead": {
         "element": "p",
-        "class": "lead",
+        "class": "introduction",
         "content": "Een ernstige ziekte kan je somber maken. Dat is heel begrijpelijk. Je dagelijks leven en je toekomstplannen zijn ingrijpend veranderd. Ben je vaak somber en gaat dat gevoel niet over? Dan is het belangrijk dat je hulp zoekt."
       }
     },
@@ -348,7 +348,7 @@
       },
       "lead": {
         "element": "p",
-        "class": "lead",
+        "class": "introduction",
         "content": "Kanker zet je leven op z’n kop. Niet alleen je eigen leven. Ook het leven van je partner. Jullie moeten allebei wennen aan de nieuwe situatie. En jullie moeten allebei de gebeurtenissen en emoties verwerken. Hierdoor kunnen relatieproblemen ontstaan. Praat er samen over. En zoek hulp als jullie er samen niet uitkomen."
       }
     },
