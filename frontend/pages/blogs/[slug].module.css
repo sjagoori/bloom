@@ -5,7 +5,7 @@
 }
 
 .container p {
-  color: hsl(42, 8%, 41%);
+  color: #716c60;
 }
 
 .container ul {
@@ -41,8 +41,8 @@
 }
 
 .container main blockquote {
-  background-color: hsl(47, 94%, 92%);
-  color: hsl(26, 100%, 47%);
+  background-color: #fef5d7;
+  color: #f06800;
   font-family: 'Nunito-Bold';
   font-style: italic;
   font-size: 1.2rem;
