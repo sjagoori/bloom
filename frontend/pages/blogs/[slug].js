@@ -42,6 +42,7 @@ const hulp = <main>
 
   return (
     <>
+    <div className={styles.container}>
       {header}
       <nav>
         hieruit kiezen
@@ -52,6 +53,7 @@ const hulp = <main>
         </ul>
       </nav>
       {state}
+    </div>
     </>
 
   )
