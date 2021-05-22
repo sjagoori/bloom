@@ -5,7 +5,7 @@
 }
 
 .container p {
-  color: hsl(42, 8%, 41%);
+  color: #716c60;
 }
 
 .container ul {
@@ -17,7 +17,7 @@
 }
 .container main li::marker {
   content: url('/icons/bullet-gevuld.svg');
-  fill: hsl(30, 97%, 48%);
+  fill: #f17a04;
   fill: black;
   /* padding: 0; */
 }
@@ -41,8 +41,8 @@
 }
 
 .container main blockquote {
-  background-color: hsl(47, 94%, 92%);
-  color: hsl(26, 100%, 47%);
+  background-color: #fef5d7;
+  color: #f06800;
   font-family: 'Nunito-Bold';
   font-style: italic;
   font-size: 1.5em;
@@ -69,7 +69,7 @@
 }
 
 .titleBar>button svg {
-  stroke: hsl(30, 97%, 48%);
+  stroke: #f17a04;
   stroke-width: 5px;
 }
 
