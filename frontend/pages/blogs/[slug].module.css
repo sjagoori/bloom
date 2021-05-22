@@ -1,4 +1,3 @@
-
 .container li::marker {
   content: url('/icons/bullet-gevuld.svg');
 }
@@ -14,22 +13,22 @@
   align-items: center;
 }
 
-.titleBar > h1 {
+.titleBar>h1 {
   margin: 0 auto;
 }
 
-.titleBar > button {
+.titleBar>button {
   border: transparent;
   background-color: transparent;
   cursor: pointer;
 }
 
-.titleBar > button svg {
+.titleBar>button svg {
   stroke: hsl(30, 97%, 48%);
   stroke-width: 5px;
 }
 
-.coverImage{
+.coverImage {
   width: 100%;
   height: 220px;
   object-fit: fill;
@@ -44,7 +43,7 @@
   display: flex;
 }
 
-.headerContainer > h1 {
+.headerContainer>h1 {
   flex-grow: 1;
   margin: 0;
 }
@@ -57,63 +56,42 @@
   transform: rotate(180deg);
 }
 
-.contentTab > * {
+.contentTab>* {
   margin: 0;
   padding: 0;
 }
 
 .tabBar {
-  background-color: hsl(47, 96%, 88%);
+  width: 300px;
+  margin: 0 auto;
+}
+
+.tabBar ul {
   display: flex;
-  justify-content: center;
-  border-radius: 15px;
+  list-style: none;
+  justify-content: space-between;
 
-}
-
-.tab {
-  padding: 1em 2em;
-  text-align: center;
-  color: hsl(30, 97%, 48%);
-}
-
-.activeTab {
-  font-weight: bold;
-  background-color: hsl(46, 98%, 81%);
-  border-radius: 15px;
-}
-
-.tabBar > input[type="radio"] {
-  display: none;
-}
-
-.tabContent {
-  max-width: 90vw;
-  padding: 1em;
-  margin-bottom: 15px;
-  display: none;
-}
-
-.tabContent > ul {
-  padding-left: 20px;
-}
-
-.tabContent h2 {
-  color:hsl(30, 97%, 48%);
-}
-
-.tabContent blockquote {
   margin: 0;
-  padding: 1em;
-  background-color: hsl(46, 100%, 92%);
-  border-radius: 20px;
-  text-align:left;
-  line-height: 1.2em;
-  color: hsl(30, 100%, 47%);
-  font-size: 1.5em;
-  font-style: italic;
+  padding: 0;
+
+  width: 100%;
+  background: #F9F0C6;
+
+  border-radius: 10px;
+  overflow: hidden;
+  transition: .1s;
 }
 
-.active {
-  display: block;
+.tabBar ul li {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 20%;
+  color: #D6771E;
+  text-decoration: none;
 }
 
+.tabBar ul li.active {
+  font-weight: bold;
+  background: #F7E7A0;
+}
