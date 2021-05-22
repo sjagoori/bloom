@@ -7,7 +7,7 @@ import styles from '../styles/blog.module.css';
 const result = [
   {name: 'Vermoeidheid', slug:'vermoeidheid'},
   {name: 'Angst', slug:'angst'},
-  {name: 'Somberheid', slug:'somber'},
+  {name: 'Somberheid', slug:'somberheid'},
   {name: 'Mijn relatie', slug:'relatie'},
   {name: 'Geldzaken & werk', slug:'geld'},
   {name: 'Lichaam& uiterlijk', slug:'lichaam'}
