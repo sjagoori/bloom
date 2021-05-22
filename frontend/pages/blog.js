@@ -14,20 +14,12 @@ const result = [
 ];
 
 const successState = <container>
-{/* <div className={styles.tileContainer}>
-{Object.keys(result).map((index, key) => {
-    return <Link key={key} href={{pathname: '/blogs/[slug]', query: {slug: result[index].url, title: result[index].name} }}>
-        <div className={styles.tile}>
-          <h3>{result[index].name}</h3>
-        </div>
-      </Link>
-    })}
-</div> */}
 <div className={styles.tileContainer}>
 {Object.keys(result).map((index, key) => {
     return <Link key={key} href={{pathname: `/blogs/${result[index].slug}`, query: {slug: `/blogs/${result[index].slug}`, title: result[index].name} }}>
         <div className={styles.tile}>
-          <h3>{result[index].name}</h3>
+          <span className={styles.themeName}>{result[index].name}</span>
+          <span className={styles.pointer}><img src="/icons/chevron-icoon.svg" alt="" /></span>
         </div>
       </Link>
     })}

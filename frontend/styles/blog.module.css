@@ -10,11 +10,11 @@
 }
 
 .tile {
-  height: 135px;
-  width: 155px;
+  height: 128px;
+  width: 158px;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   align-items: start;
   justify-items: center;
   background: #F9F0C6;
@@ -32,9 +32,28 @@
   filter: brightness(95%);
 }
 
-.tile > h3 {
+.themeName {
   grid-column: 2;
   grid-row: 2;
   font-size: 1.2rem;
   user-select: none;
+}
+
+.tile > .pointer {
+  align-self: end;
+  justify-self: end;
+  width:100%;
+  height:70%;
+  
+  grid-column: 3;
+  grid-row: 3;
+  
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  
+  border-radius: 10px 0 0 0;
+  background: #F5E7A0;
+  
+  font-size: 1.6rem
 }
