@@ -3,6 +3,12 @@
   margin: 0 auto;
 }
 
+.container > p {
+  font-family: 'silka-bold';
+  font-size: 12px;
+  margin: 22px 0;
+}
+
 .tileContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -18,21 +24,22 @@
   align-items: start;
   justify-items: center;
   background: #F9F0C6;
+  /* background-image: url('/icons/tegel-achtergrond.svg'); */
   color: #f07a06;
   border-radius: 10%;
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 6px 6px rgba(0,0,0,0.16);
+  box-shadow: 0 3px 6px 0px rgba(0,0,0, 0.16);
   transition: box-shadow 200ms ease-in;
 }
 
 .tile:hover, .tile:active, .tile:focus, .tile:focus-within{
-  box-shadow: 0 0 0 rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   filter: brightness(95%);
 }
 
 .themeName {
+  padding-top: 5px;
   font-family: 'nunito-bold';
   font-size: 18px;
   grid-column: 2;
@@ -40,10 +47,15 @@
   user-select: none;
 }
 
+.backgroundImage {
+  background-image: url('/icons/tegel-achtergrond.svg');
+}
+
 .tile > .pointer {
   align-self: end;
   justify-self: end;
-  width:100%;
+  /* width:100%; */
+  width:29px;
   height:70%;
   
   grid-column: 3;
