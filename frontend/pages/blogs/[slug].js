@@ -1,7 +1,8 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
-import SwipeableViews from 'react-swipeable-views';
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import SwipeableViews from "react-swipeable-views";
 import styles from "./[slug].module.css";
 
 export default function Blog({ data }) {
@@ -11,6 +12,7 @@ export default function Blog({ data }) {
   const header = <header>
     <img className={styles.coverImage} src={`/images/thema-${slug}.jpg`} />
     {Object.values(data.header).map((key, index) => {
+      console.log(styles);
       return typeof key.element != 'img' ? React.createElement(`${key.element}`, { key: index, className: `${styles[`${key.class}`]}` }, `${key.content}`) : <Image src={key.link}></Image>
     })}
   </header>
@@ -29,7 +31,18 @@ export default function Blog({ data }) {
 
   const hulp = <main>
     {Object.values(data.hulp).map((key, index) => {
-      return key.element != 'ul' ? React.createElement(`${key.element}`, { key: index, className: `${styles[`${key.class}`]}` }, `${key.content}`) : <ul>{key.content.map((element, i) => <li key={i}>{element}</li>)}</ul>
+      return key.element != 'a' 
+      ? React.createElement(`${key.element}`, { key: index, className: `${styles[`${key.class}`]}` }, `${key.content}`) 
+      : key.content.map((element, i) => {
+        console.log(element)
+        return (
+          <a key={i} className={styles[`${key.class}`]} href={element.url}>
+            <div>{element.label}</div>
+            <span><img src="/icons/chevron-icoon.svg" alt=">" /></span>
+            </a>
+          
+        )
+      })
     })}
   </main>
 
@@ -52,6 +65,12 @@ export default function Blog({ data }) {
   return (
     <>
     <div className={styles.container}>
+      <div className={styles.topBar}>
+        <Link href="/blog">
+          <img src="/icons/chevron-icoon.svg" alt=">" />
+        </Link>
+        <h1>bloom</h1>
+      </div>
       {header}
       <nav className={styles.tabBar}>
         <ul>
@@ -60,7 +79,7 @@ export default function Blog({ data }) {
           <li class={state.pos == 2 ? `${styles.active}` : null} onClick={() => setState({ view: hulp, pos: 2 })}>hulp</li>
         </ul>
       </nav>
-      <SwipeableViews index={state.pos} onChangeIndex={handleSwipe}>
+      <SwipeableViews index={state.pos} onChangeIndex={handleSwipe} className={styles.swipeContainer}>
         {klachten}
         {tips}
         {hulp}

@@ -20,6 +20,7 @@
       },
       "list": {
         "element": "ul",
+        "class": "listItems",
         "content": ["Je kunt door de angst niet meer functioneren in het dagelijks leven.", "Je durft geen plannen te maken voor de toekomst.", "Je controleert je lichaam vaker dan nodig is.", "Je durft niet naar het ziekenhuis te gaan voor de controles. Of je gaat juist heel vaak naar de dokter.", "Je piekert veel en je slaap slecht.", "Je kunt je niet goed concentreren", "Je hebt last van hartkloppingen, je trilt en bent vaak duizelig."]
       },
       "quote": {
@@ -35,6 +36,7 @@
       },
       "list": {
         "element": "ul",
+        "class": "listItems",
         "content": ["Praat met iemand over je angst en je gevoelens.", "Doe dingen die je leuk vindt en waar je van ontspant.", "Zoek afleiding. Plan bijvoorbeeld een uitje. Dan heb je iets om naar uit te kijken.","Doe oefeningen om te ontspannen en rustig te ademen. Bijvoorbeeld door yoga of mindfulness te doen."]
       },
       "subtitle": {
@@ -85,9 +87,34 @@
         "content": "Je kunt bij onderstaande hulpaanbieders terecht met langdurige angstklachten."
       },
       "list": {
-        "element": "ul",
+        "element": "a",
         "class": "listButtons",
-        "content": ["Haaglanden Medisch Centrum", "Module Angst en Aanpak", "Stichting Kanker in Beeld", "Zelfhulptraining Minder angst na kanker", "Psychologenpraktijk M. Kalogridi", "Eerstelijnspsychologiepraktijk Vosmeer"]
+        "content": [
+          {
+            "label": "Haaglanden Medisch Centrum",
+            "url": "#"
+          },
+          {
+            "label": "Module Angst en Aanpak",
+            "url": "#"
+          },
+          {
+            "label": "Stichting Kanker in Beeld",
+            "url": "#"
+          },
+          {
+            "label": "Zelfhulptraining Minder angst na kanker",
+            "url": "#"
+          },
+          {
+            "label": "Psychologenpraktijk M. Kalogridi",
+            "url": "#"
+          },
+          {
+            "label": "Eerstelijnspsychologiepraktijk Vosmeer",
+            "url": "#"
+          }
+        ]
       }
     }
   },
@@ -117,6 +144,7 @@
       },
       "list": {
         "element": "ul",
+        "class": "listItems",
         "content": ["Je bent moe op momenten dat je dat vroeger niet was.",
           "Je bent plotseling moe, maar je weet niet waarom.",
           "De vermoeidheid voelt alsof je uitgeput bent.",
@@ -142,6 +170,7 @@
       },
       "list": {
         "element": "ul",
+        "class": "listItems",
         "content": ["Eet gezond en op vaste tijden. Sla geen maaltijden over.",
           "Zorg dat je voldoende beweegt, ook al ben je moe. Bijvoorbeeld door een stukje te wandelen of fietsen. Regelmatig bewegen is goed voor je conditie, ook voor je herstel en je humeur.",
           "Plan niet teveel dingen op een dag. Neem tussendoor regelmatig even rust.",
@@ -171,9 +200,26 @@
         "content": "Je kunt bij onderstaande hulpaanbieders terecht met langdurige angstklachten."
       },
       "list": {
-        "element": "ul",
+        "element": "a",
         "class": "listButtons",
-        "content": ["Haaglanden Medisch Centrum","Kenniscentrum Chronische Vermoeidheid", "Psychologenpraktijk M. Kalogridi", "Eerstelijnspsychologiepraktijk Vosmeer"]
+        "content": [
+          {
+            "label": "Haaglanden Medisch Centrum",
+            "url": "#"
+          },
+          {
+            "label": "Kenniscentrum Chronische Vermoeidheid",
+            "url": "#"
+          },
+          {
+            "label": "Psychologenpraktijk M. Kalogridi",
+            "url": "#"
+          },
+          {
+            "label": "Eerstelijnspsychologiepraktijk Vosmeer",
+            "url": "#"
+          }
+        ]
       }
     }
   },
@@ -198,6 +244,7 @@
       },
       "list": {
         "element": "ul",
+        "class": "listItems",
         "content": ["Je hebt nergens zin in. Veel dingen interesseren je niet meer.",
           "Je hebt geen zin om met vrienden af te spreken.",
           "Je hebt ook geen zin om te sporten of te werken.",
@@ -218,6 +265,7 @@
       },
       "list": {
         "element": "ul",
+        "class": "listItems",
         "content": ["Praat met iemand over je sombere gevoelens. ",
           "Denk niet steeds aan de toekomst. Probeer vooral in het hier en nu te leven.",
           "Zeg hardop ‘stop’ tegen jezelf als je merkt dat je piekert.",
@@ -260,9 +308,34 @@
         "content": "Je kunt bij onderstaande hulpaanbieders terecht met langdurige somberheidsklachten."
       },
       "list": {
-        "element": "ul",
+        "element": "a",
         "class": "listButtons",
-        "content": ["Haaglanden Medisch Centrum","Cursus In de put uit de put", "Module Depressie", "Stichting Kanker in Beeld", "Psychologenpraktijk M. Kalogridi", "Eerstelijnspsychologiepraktijk Vosmeer"]
+        "content": [
+          {
+            "label": "Haaglanden Medisch Centrum",
+            "url": "#"
+          },
+          {
+            "label": "Cursus in de put uit de put",
+            "url": "#"
+          },
+          {
+            "label": "Module Depressie",
+            "url": "#"
+          },
+          {
+            "label": "Stichting Kanker in Beeld",
+            "url": "#"
+          },
+          {
+            "label": "Psychologenpraktijk M. Kalogridi",
+            "url": "#"
+          },
+          {
+            "label": "Eerstelijnspsychologiepraktijk Vosmeer",
+            "url": "#"
+          }
+        ]
       }
     }
   },
@@ -287,6 +360,7 @@
       },
       "list": {
         "element": "ul",
+        "class": "listItems",
         "content": ["Je hebt nergens zin in. Veel dingen interesseren je niet meer.",
           "Je hebt geen zin om met vrienden af te spreken.",
           "Je hebt ook geen zin om te sporten of te werken.",
@@ -307,6 +381,7 @@
       },
       "list": {
         "element": "ul",
+        "class": "listItems",
         "content": ["Praat met iemand over je sombere gevoelens. ",
           "Denk niet steeds aan de toekomst. Probeer vooral in het hier en nu te leven.",
           "Zeg hardop ‘stop’ tegen jezelf als je merkt dat je piekert.",
@@ -349,9 +424,30 @@
         "content": "Je kunt bij onderstaande hulpaanbieders terecht met langdurige somberheidsklachten."
       },
       "list": {
-        "element": "ul",
+        "element": "a",
         "class": "listButtons",
-        "content": ["Haaglanden Medisch Centrum","Cursus In de put uit de put", "Module Depressie", "Stichting Kanker in Beeld", "Psychologenpraktijk M. Kalogridi", "Eerstelijnspsychologiepraktijk Vosmeer"]
+        "content": [
+          {
+            "label": "Haaglanden Medisch Centrum",
+            "url": "#"
+          },
+          {
+            "label": "Nederlandse Vereniging voor Relatietherapie",
+            "url": "#"
+          },
+          {
+            "label": "Module Relatieproblemen",
+            "url": "#"
+          },
+          {
+            "label": "Seksuologiepraktijk Den Haag",
+            "url": "#"
+          },
+          {
+            "label": "CenSeRe",
+            "url": "#"
+          }
+        ]
       }
     }
   }

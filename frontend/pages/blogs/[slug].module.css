@@ -1,11 +1,8 @@
 .container {
   margin: 0 1em;
+  margin-top: 10px;
   padding: 0 0.5em;
   font-size: 14px;
-}
-
-.container p {
-  color: #716c60;
 }
 
 .container ul {
@@ -14,12 +11,35 @@
 
 .container main li {
   padding-left: 7px;
+  padding-bottom: 5px;
+  color: #726d61;
 }
 
 .container main li::marker {
   content: url('/icons/bullet-leeg.svg');
-  fill: hsl(30, 97%, 48%);
-  fill: black;
+}
+
+.topBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.topBar img {
+  margin-left: 15px;
+  transform: scaleX(-1);
+}
+
+.topBar h1 {
+  margin: 0;
+  font-family: 'Nunito-bold';
+  justify-self: center;
+  color: #f07904;
+}
+
+.swipeContainer div {
+  /* background-color: red; */
+  height: max-content;
 }
 
 .container header h2 {
@@ -27,14 +47,58 @@
   margin-bottom: 0.5em;
 }
 
-.container header p {
+.header {
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+}
+
+.lead {
   font-family: 'Nunito-bold';
-  margin: 0 0 1em;
+  margin: 20px 0 0 0;
+  color: #716c60;
+}
+
+.subtitle{
+  color: #f17a04;
+  margin: 30px 0 10px 0;
+}
+.subParagraph{
+  margin-bottom: 20px;
+}
+
+.listButtons{
+  cursor: pointer;
+  background: #F9F0C6;
+  color: #f07a06;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  overflow: hidden;  
+  display: grid;
+  grid-template-columns: 2fr .3fr;
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 6px #00000015;
+}
+
+.listButtons div {
+  grid-column: 1;
+  padding: 10px 20px;
+}
+
+.listButtons span {
+  grid-column: 2;
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  background: #F7E7A0;
+  border-radius: 10px 0 0 0;
+  height: 100%;
 }
 
 .coverImage {
   width: 100%;
-  /* max-width: 440px; */
+  margin-top: 10px;
   height: 150px;
   object-fit: cover;
   border-radius: 2em 2em 0 0;
@@ -47,13 +111,14 @@
   font-style: italic;
   font-size: 1.2rem;
   margin: 0;
+  margin-top: 30px;
   padding: 18px 25px;
   max-width: 335px;
   border-radius: 20px;
 }
 
 .tabBar {
-  margin: 20px 0 30px 0;
+  margin: 20px 0 0 0;
 }
 
 .tabBar ul {
@@ -71,13 +136,18 @@
   overflow: hidden;
   transition: .1s;
 }
-
+/* hsl(30, 97%, 48%) hsl(30, 97%, 48%)*/
+.test {
+  color: #f17a04;
+}
 .tabBar ul li {
-  padding: 6px 28px;
+  font-family: 'nunito-bold';
+  padding: 6px 30px;
   text-align: center;
   border-radius: 20%;
-  color: #D6771E;
+  color: #f07904;
   text-decoration: none;
+  width: 33%;
 }
 
 .tabBar ul li.active {

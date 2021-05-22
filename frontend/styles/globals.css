@@ -54,7 +54,8 @@ a {
   box-sizing: border-box;
 }
 
-a,p,button {
+a,p,button, li {
+  color: #726d61;
   font-family: 'Nunito', sans-serif;
 }
 
