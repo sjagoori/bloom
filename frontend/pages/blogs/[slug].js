@@ -79,7 +79,7 @@ export default function Blog({ data }) {
           <li class={state.pos == 2 ? `${styles.active}` : null} onClick={() => setState({ view: hulp, pos: 2 })}>hulp</li>
         </ul>
       </nav>
-      <SwipeableViews index={state.pos} onChangeIndex={handleSwipe} className={styles.swipeContainer}>
+      <SwipeableViews index={state.pos} onChangeIndex={handleSwipe} className={styles.swipeContainer} >
         {klachten}
         {tips}
         {hulp}

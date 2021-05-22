@@ -37,23 +37,24 @@
   color: #f07904;
 }
 
-.swipeContainer div {
+.swipeContainer {
   /* background-color: red; */
-  height: max-content;
-}
-
-.container header h2 {
-  margin-top: 0.8em;
-  margin-bottom: 0.5em;
+  /* height: 335px; */
+  /* margin-bottom: 2em; */
 }
 
 .header {
+  font-family: 'silka-bold';
   margin-top: 0.8em;
   margin-bottom: 0.5em;
 }
 
-.lead {
+.introduction { 
   font-family: 'Nunito-bold';
+}
+
+.lead {
+  font-family: 'Nunito-light';
   margin: 20px 0 0 0;
   color: #716c60;
 }
