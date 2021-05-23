@@ -1,6 +1,6 @@
 {
   "functions": {
-    "pages/api/content.js": {
+    "pages/api/blog.js": {
       "includeFiles": "_files/**"
     }
   }
