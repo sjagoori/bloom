@@ -24,7 +24,7 @@ body {
 
 @font-face {
   font-family: "Nunito";
-  src: url("/fonts/nunito/nunito-Regular.ttf");
+  src: url("/fonts/nunito/Nunito-Regular.ttf");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -32,7 +32,7 @@ body {
 
 @font-face {
   font-family: "Nunito-bold";
-  src: url("/fonts/nunito/nunito-Bold.ttf");
+  src: url("/fonts/nunito/Nunito-Bold.ttf");
   font-style: bold;
   font-weight: 700;
   font-display: swap;
