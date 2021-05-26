@@ -51,8 +51,8 @@ export default function Home() {
     case 0:
       return formElement(
         <>
-          {accountCredsData.map((item, index) => (
-            <label key={index} htmlFor={item.id}>{item.label}
+          {onboardingData.accountCredsData.map((item, index) => (
+            <>
               <Text
                 type={item.type}
                 name={item.name}
@@ -60,15 +60,16 @@ export default function Home() {
                 onChange={formik.handleChange}
                 placeholder={item.placeholder}
               />
-            </label>
+              <label key={index} htmlFor={item.id}>{item.label}</label>
+            </>
           ))}
           <Link href="/login">Ik heb al een account</Link>
           <Link href="/login">Ik ben een hulpverlener</Link>
         </>
       )
     case 1:
-      return formElement(personalInfoData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+      return formElement(onboardingData.personalInfoData.map((item, index) => (
+        <>
           <Text
             type="text"
             name={item.name}
@@ -76,21 +77,23 @@ export default function Home() {
             onChange={formik.handleChange}
             placeholder={item.placeholder}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 2:
-      return formElement(birthDateData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+      return formElement(onboardingData.birthDateData.map((item, index) => (
+        <>
           <DatePicker
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 3:
-      return formElement(residenceData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+      return formElement(onboardingData.residenceData.map((item, index) => (
+        <>
           <Text
             type="text"
             name={item.name}
@@ -98,45 +101,49 @@ export default function Home() {
             onChange={formik.handleChange}
             placeholder={item.placeholder}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 4:
-      return formElement(genderData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+      return formElement(onboardingData.genderData.map((item, index) => (
+        <>
           <Radio
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
             value={item.value}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 5:
-      return formElement(kankerTypesData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+      return formElement(onboardingData.kankerTypesData.map((item, index) => (
+        <>
           <Checkbox
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
             value={item.value}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       ))
       )
     case 6:
-      return formElement(pictogramData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+      return formElement(onboardingData.pictogramData.map((item, index) => (
+        <>
           <Radio
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
             value={item.value}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 7:
-      return formElement(aboutData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+      return formElement(onboardingData.aboutData.map((item, index) => (
+        <>
           <TextArea
             name={item.name}
             id={item.id}
@@ -145,7 +152,8 @@ export default function Home() {
             rows="10"
             cols="50"
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 8:
       return <>
@@ -175,122 +183,116 @@ const Radio = ({ type = "radio", name, onChange, id, value }) => (
   <input type={type} name={name} onChange={onChange} id={id} value={value} />
 );
 
-const accountCredsData = [
-  {
-    type: 'email',
-    name: 'email',
-    label: 'Wat is je email adres?',
-    placeholder: 'voorbeeld@domein.nl',
-    id: 'email'
-  },
-  {
-    type: 'password',
-    name: 'password',
-    label: 'Wat is je password',
-    id: 'password'
-  }
-]
-
-const personalInfoData = [
-  {
-    name: 'name',
-    label: 'Hoe heet je?',
-    placeholder: 'voornaamachternaam',
-    id: 'name'
-  }
-]
-
-const birthDateData = [
-  {
-    name: "birthDate",
-    label: "Geboortedatum",
-    id: 'birthDate',
-  }
-]
-
-const kankerTypesData = [
-  {
-    name: "kankerType",
-    label: "KankerType1",
-    value: 'kanker1',
-    id: 'kanker1',
-  },
-  {
-    name: "kankerType",
-    key: "checkBox2",
-    label: "KankerType2",
-    value: "kanker2",
-    id: 'kanker2',
-  }
-];
-
-const residenceData = [
-  {
-    name: "residence",
-    label: "Waar woon je?",
-    id: 'residence',
-    placeholder: 'Voer hier je woonplaats in.'
-  }
-]
-
-const genderData = [
-  {
-    name: "gender",
-    label: "Man",
-    value: 'man',
-    id: 'gender-man',
-  },
-  {
-    name: "gender",
-    label: "Vrouw",
-    value: 'Vrouw',
-    id: 'gender-vrouw',
-  },
-  {
-    name: "gender",
-    label: "Neutraal",
-    value: 'Neutraal',
-    id: 'gender-neurtraal',
-  },
-]
-
-let pictogramData = [
-  {
-    name: "pictogram",
-    value: 'pictogram-1',
-    id: 'pictogram-1',
-  },
-  {
-    name: "pictogram",
-    value: 'pictogram-2',
-    id: 'pictogram-2',
-  },
-  {
-    name: "pictogram",
-    value: 'pictogram-3',
-    id: 'pictogram-3',
-  },
-  {
-    name: "pictogram",
-    value: 'pictogram-4',
-    id: 'pictogram-4',
-  },
-  {
-    name: "pictogram",
-    value: 'pictogram-5',
-    id: 'pictogram-5',
-  },
-]
-
-let aboutData = [
-  {
-    name: 'about',
-    label: 'Vertel meer over jezelf',
-    placeholder: 'Vertel meer over jezelf',
-    id: 'about'
-  }
-]
-
+const onboardingData = {
+  "accountCredsData": [
+    {
+      type: 'email',
+      name: 'email',
+      label: 'Wat is je email adres?',
+      placeholder: 'voorbeeld@domein.nl',
+      id: 'email'
+    },
+    {
+      type: 'password',
+      name: 'password',
+      label: 'Wat is je password',
+      id: 'password'
+    }
+  ],
+  "personalInfoData": [
+    {
+      name: 'name',
+      label: 'Hoe heet je?',
+      placeholder: 'voornaamachternaam',
+      id: 'name'
+    }
+  ],
+  "birthDateData": [
+    {
+      name: "birthDate",
+      label: "Geboortedatum",
+      id: 'birthDate',
+    }
+  ],
+  "kankerTypesData": [
+    {
+      name: "kankerType",
+      label: "KankerType1",
+      value: 'kanker1',
+      id: 'kanker1',
+    },
+    {
+      name: "kankerType",
+      key: "checkBox2",
+      label: "KankerType2",
+      value: "kanker2",
+      id: 'kanker2',
+    }
+  ],
+  "residenceData": [
+    {
+      name: "residence",
+      label: "Waar woon je?",
+      id: 'residence',
+      placeholder: 'Voer hier je woonplaats in.'
+    }
+  ],
+  "genderData": [
+    {
+      name: "gender",
+      label: "Man",
+      value: 'man',
+      id: 'gender-man',
+    },
+    {
+      name: "gender",
+      label: "Vrouw",
+      value: 'Vrouw',
+      id: 'gender-vrouw',
+    },
+    {
+      name: "gender",
+      label: "Neutraal",
+      value: 'Neutraal',
+      id: 'gender-neurtraal',
+    },
+  ],
+  "pictogramData": [
+    {
+      name: "pictogram",
+      value: 'pictogram-1',
+      id: 'pictogram-1',
+    },
+    {
+      name: "pictogram",
+      value: 'pictogram-2',
+      id: 'pictogram-2',
+    },
+    {
+      name: "pictogram",
+      value: 'pictogram-3',
+      id: 'pictogram-3',
+    },
+    {
+      name: "pictogram",
+      value: 'pictogram-4',
+      id: 'pictogram-4',
+    },
+    {
+      name: "pictogram",
+      value: 'pictogram-5',
+      id: 'pictogram-5',
+    },
+  ],
+  "aboutData": [
+    {
+      name: 'about',
+      label: 'Vertel meer over jezelf',
+      placeholder: 'Vertel meer over jezelf',
+      id: 'about'
+    }
+  ]
+}
 
 const validate = values => {
   const errors = {};
