@@ -47,7 +47,7 @@ export default function Home() {
       return formElement(
         <>
           {onboardingData.accountCredsData.map((item, index) => (
-            <label key={index} htmlFor={item.id}>{item.label}
+            <>
               <Text
                 type={item.type}
                 name={item.name}
@@ -55,7 +55,8 @@ export default function Home() {
                 onChange={formik.handleChange}
                 placebolder={item.placebolder}
               />
-            </label>
+              <label key={index} htmlFor={item.id}>{item.label}</label>
+            </>
           ))}
           <Link href="/login">Ik heb al een account</Link>
           <Link href="/login">Ik ben een hulpverlener</Link>
@@ -63,7 +64,7 @@ export default function Home() {
       )
     case 1:
       return formElement(onboardingData.personalInfoData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+        <>
           <Text
             type="text"
             name={item.name}
@@ -71,21 +72,23 @@ export default function Home() {
             onChange={formik.handleChange}
             placebolder={item.placebolder}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 2:
       return formElement(onboardingData.birthDateData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+        <>
           <DatePicker
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 3:
       return formElement(onboardingData.residenceData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+        <>
           <Text
             type="text"
             name={item.name}
@@ -93,45 +96,49 @@ export default function Home() {
             onChange={formik.handleChange}
             placeholder={item.placeholder}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 4:
       return formElement(onboardingData.genderData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+        <>
           <Radio
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
             value={item.value}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 5:
       return formElement(onboardingData.kankerTypesData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+        <>
           <Checkbox
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
             value={item.value}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       ))
       )
     case 6:
       return formElement(onboardingData.pictogramData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+        <>
           <Radio
             name={item.name}
             id={item.id}
             onChange={formik.handleChange}
             value={item.value}
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 7:
       return formElement(onboardingData.aboutData.map((item, index) => (
-        <label key={index} htmlFor={item.id}>{item.label}
+        <>
           <TextArea
             name={item.name}
             id={item.id}
@@ -140,7 +147,8 @@ export default function Home() {
             rows="10"
             cols="50"
           />
-        </label>
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
       )))
     case 8:
       return <>
