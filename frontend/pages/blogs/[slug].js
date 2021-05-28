@@ -1,8 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+import Link from 'next/link';
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import SwipeableViews from "react-swipeable-views";
+import SwipeableViews from 'react-swipeable-views';
 import styles from "./[slug].module.css";
 
 export default function Blog({ data }) {
@@ -84,7 +83,7 @@ export default function Blog({ data }) {
         {tips}
         {hulp}
       </SwipeableViews>
-      </div>
+      </div> 
     </>
 
   )
@@ -92,8 +91,8 @@ export default function Blog({ data }) {
 
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(`http://localhost:3001/blog/${params.slug}`)
+  const res = await fetch(`http://localhost:3000/api/${params.slug}`)
   const data = await res.json()
 
-  return { props: {data}}
+  return { props: { data }}
 }
