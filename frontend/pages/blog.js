@@ -10,7 +10,7 @@ const result = [
   {name: 'Somberheid', slug:'somberheid'},
   {name: 'Mijn relatie', slug:'relatie'},
   {name: 'Geldzaken & werk', slug:'geld'},
-  {name: 'Lichaam& uiterlijk', slug:'lichaam'}
+  {name: 'Lichaam & uiterlijk', slug:'lichaam'}
 ];
 
 
@@ -18,7 +18,7 @@ const result = [
 const successState = <container>
 <div className={styles.tileContainer}>
 {Object.keys(result).map((index, key) => {
-    return <Link key={key} href={{pathname: `/blogs/${result[index].slug}`, query: {slug: `/blogs/${result[index].slug}`, title: result[index].name} }}>
+    return <Link key={key} href={{pathname: `/blogs/${result[index].slug}` }}>
         <div className={(key == 1 || key == 2 || key == 5) ? `${styles.tile} ${styles.backgroundImage}` : `${styles.tile}`}>
           <span className={styles.themeName}>{result[index].name}</span>
           <span className={styles.pointer}><img src="/icons/chevron-icoon.svg" alt="" /></span>
