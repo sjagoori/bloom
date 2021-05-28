@@ -32,16 +32,6 @@ const frequentlyAsked = [
   }
 ]
 
-// const details = (data) => {
-//   return <details>
-//     <summary>hehehe</summary>
-//     {data.map((element, key) => {
-//       console.log(element);
-//       <p key={key}>{element.question}</p>
-//     })}
-//   </details>
-// }
-
 export default function Information() {
   const router = useRouter()
 
