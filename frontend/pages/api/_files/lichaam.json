@@ -1,1 +1,84 @@
-{"lichaam":{"header":{"title":{"element":"h2","class":"header","content":"Lichaam"},"lead":{"element":"p","class":"introduction","content":"This is some introduction"}},"klachten":{"subtitle":{"element":"h2","class":"subtitle","content":"Herken jij deze klachten?"},"list":{"element":"ul","class":"listItems","content":["geen content","over het lichaam"]},"quote":{"element":"blockquote","content":"\"Voor het lichaam is het belangrijk om rust te krijgen\""}},"tips":{"description":{"element":"h2","class":"subtitle","content":"Tips om je beter te voelen"},"list":{"element":"ul","class":"listItems","content":["Neem rust","blijf bewegen"]}},"hulp":{"description":{"element":"h2","class":"subtitle","content":"Hulp bij lichamelijke inspanning"},"information":{"element":"p","class":"","content":"voor meer hulp bekijk de volgende aanbieders"},"subtitle":{"element":"h2","class":"subtitle","content":"Hulpaanbieders bij jou in de buurt"},"subParagraph":{"element":"p","class":"subParagraph","content":""},"list":{"element":"a","class":"listButtons","content":[{"label":"Haaglanden Medisch Centrum","url":"#"},{"label":"Nederlandse Vereniging voor revalidatie","url":"#"},{"label":"Module Relatieproblemen","url":"#"},{"label":"Seksuologiepraktijk Den Haag","url":"#"},{"label":"Medisch Training Centrum","url":"#"}]}}}}
+{
+    "header": {
+      "title": {
+        "element": "h2",
+        "class": "header",
+        "content": "Lichaam"
+      },
+      "lead": {
+        "element": "p",
+        "class": "introduction",
+        "content": "This is some introduction"
+      }
+    },
+    "klachten": {
+      "subtitle": {
+        "element": "h2",
+        "class": "subtitle",
+        "content": "Herken jij deze klachten?"
+      },
+      "list": {
+        "element": "ul",
+        "class": "listItems",
+        "content": ["geen content", "over het lichaam"]
+      },
+      "quote": {
+        "element": "blockquote",
+        "content": "\"Voor het lichaam is het belangrijk om rust te krijgen\""
+      }
+    },
+    "tips": {
+      "description": {
+        "element": "h2",
+        "class": "subtitle",
+        "content": "Tips om je beter te voelen"
+      },
+      "list": {
+        "element": "ul",
+        "class": "listItems",
+        "content": ["Neem rust", "blijf bewegen"]
+      }
+    },
+    "hulp": {
+      "description": {
+        "element": "h2",
+        "class": "subtitle",
+        "content": "Hulp bij lichamelijke inspanning"
+      },
+      "information": {
+        "element": "p",
+        "class": "",
+        "content": "voor meer hulp bekijk de volgende aanbieders"
+      },
+      "subtitle": {
+        "element": "h2",
+        "class": "subtitle",
+        "content": "Hulpaanbieders bij jou in de buurt"
+      },
+      "subParagraph": {
+        "element": "p",
+        "class": "subParagraph",
+        "content": ""
+      },
+      "list": {
+        "element": "a",
+        "class": "listButtons",
+        "content": [{
+          "label": "Haaglanden Medisch Centrum",
+          "url": "#"
+        }, {
+          "label": "Nederlandse Vereniging voor revalidatie",
+          "url": "#"
+        }, {
+          "label": "Module Relatieproblemen",
+          "url": "#"
+        }, {
+          "label": "Seksuologiepraktijk Den Haag",
+          "url": "#"
+        }, {
+          "label": "Medisch Training Centrum",
+          "url": "#"
+        }]
+      }
+    }
+  }

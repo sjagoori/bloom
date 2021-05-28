@@ -1,1 +1,112 @@
-{"angst":{"header":{"title":{"element":"h2","class":"header","content":"Angst"},"lead":{"element":"p","class":"introduction","content":"Een ernstige ziekte kan je angstig maken. Dat is begrijpelijk. Je leven en toekomstplannen zijn ingrijpend veranderd. Veel mensen met kanker zijn angstig. Dat is een normale reactie. Ben je vaak angstig en gaat dat gevoel niet over? Dan is het belangrijk dat je hulp zoekt."}},"klachten":{"subtitle":{"element":"h2","class":"subtitle","content":"Herken jij deze klachten?"},"list":{"element":"ul","class":"listItems","content":["Je kunt door de angst niet meer functioneren in het dagelijks leven.","Je durft geen plannen te maken voor de toekomst.","Je controleert je lichaam vaker dan nodig is.","Je durft niet naar het ziekenhuis te gaan voor de controles. Of je gaat juist heel vaak naar de dokter.","Je piekert veel en je slaap slecht.","Je kunt je niet goed concentreren","Je hebt last van hartkloppingen, je trilt en bent vaak duizelig."]},"quote":{"element":"blockquote","content":"\"Tijdens het behandelingstraject zit je heel erg vast in je angsten. Nu komt dat er langzaam uit.\""}},"tips":{"description":{"element":"h2","class":"subtitle","content":"Tips om je minder angstig te voelen"},"list":{"element":"ul","class":"listItems","content":["Praat met iemand over je angst en je gevoelens.","Doe dingen die je leuk vindt en waar je van ontspant.","Zoek afleiding. Plan bijvoorbeeld een uitje. Dan heb je iets om naar uit te kijken.","Doe oefeningen om te ontspannen en rustig te ademen. Bijvoorbeeld door yoga of mindfulness te doen."]},"subtitle":{"element":"h2","class":"subtitle","content":"Angst hoort bij kanker"},"information":{"element":"p","class":"","content":"Het is normaal dat je je soms angstig voelt als je kanker hebt. Dat wil niet zeggen dat je overdreven reageert. Of dat je niet goed met de ziekte omgaat. Ook na de behandeling kun je nog lang angstig zijn. Je bent bijvoorbeeld erg bang dat de kanker terugkomt. Dat is begrijpelijk en normaal. Die angst wordt na een tijdje meestal minder. Maar sommige mensen blijven erg angstig. Ook jaren na de behandeling."}},"hulp":{"description":{"element":"h2","class":"subtitle","content":"Hulp bij angst"},"information":{"element":"p","class":"","content":"Voel je je vaak angstig? Bespreek dat dan met je huisarts. Of in het ziekenhuis met de verpleegkundige of arts. Vaak lucht het op om over je angst te praten. En je kan tips krijgen om je angst te verminderen."},"information1":{"element":"p","class":"","content":"Je huisarts of arts kan je doorverwijzen naar een therapeut. Zo’n zorgverlener kan je helpen om beter met je angst om te gaan. Bijvoorbeeld door met je te praten. Of met een therapie."},"information2":{"element":"p","class":"","content":"Je kunt ook over je angst praten met lotgenoten. Die ontmoet je in een inloophuis of bij een patiëntenorganisatie."},"information3":{"element":"p","class":"","content":"Uit je je gevoelens liever op een andere manier, bijvoorbeeld in schilderen, dans of muziek? Dan kun je terecht bij een vaktherapeut."},"subtitle":{"element":"h2","class":"subtitle","content":"Hulpaanbieders bij jou in de buurt"},"subParagraph":{"element":"p","class":"subParagraph","content":"Je kunt bij onderstaande hulpaanbieders terecht met langdurige angstklachten."},"list":{"element":"a","class":"listButtons","content":[{"label":"Haaglanden Medisch Centrum","url":"#"},{"label":"Module Angst en Aanpak","url":"#"},{"label":"Stichting Kanker in Beeld","url":"#"},{"label":"Zelfhulptraining Minder angst na kanker","url":"#"},{"label":"Psychologenpraktijk M. Kalogridi","url":"#"},{"label":"Eerstelijnspsychologiepraktijk Vosmeer","url":"#"}]}}}}
+{
+  "header": {
+    "title": {
+      "element": "h2",
+      "class": "header",
+      "content": "Angst"
+    },
+    "lead": {
+      "element": "p",
+      "class": "introduction",
+      "content": "Een ernstige ziekte kan je angstig maken. Dat is begrijpelijk. Je leven en toekomstplannen zijn ingrijpend veranderd. Veel mensen met kanker zijn angstig. Dat is een normale reactie. Ben je vaak angstig en gaat dat gevoel niet over? Dan is het belangrijk dat je hulp zoekt."
+    }
+  },
+  "klachten": {
+    "subtitle": {
+      "element": "h2",
+      "class": "subtitle",
+      "content": "Herken jij deze klachten?"
+    },
+    "list": {
+      "element": "ul",
+      "class": "listItems",
+      "content": ["Je kunt door de angst niet meer functioneren in het dagelijks leven.", "Je durft geen plannen te maken voor de toekomst.", "Je controleert je lichaam vaker dan nodig is.", "Je durft niet naar het ziekenhuis te gaan voor de controles. Of je gaat juist heel vaak naar de dokter.", "Je piekert veel en je slaap slecht.", "Je kunt je niet goed concentreren", "Je hebt last van hartkloppingen, je trilt en bent vaak duizelig."]
+    },
+    "quote": {
+      "element": "blockquote",
+      "content": "\"Tijdens het behandelingstraject zit je heel erg vast in je angsten. Nu komt dat er langzaam uit.\""
+    }
+  },
+  "tips": {
+    "description": {
+      "element": "h2",
+      "class": "subtitle",
+      "content": "Tips om je minder angstig te voelen"
+    },
+    "list": {
+      "element": "ul",
+      "class": "listItems",
+      "content": ["Praat met iemand over je angst en je gevoelens.", "Doe dingen die je leuk vindt en waar je van ontspant.", "Zoek afleiding. Plan bijvoorbeeld een uitje. Dan heb je iets om naar uit te kijken.", "Doe oefeningen om te ontspannen en rustig te ademen. Bijvoorbeeld door yoga of mindfulness te doen."]
+    },
+    "subtitle": {
+      "element": "h2",
+      "class": "subtitle",
+      "content": "Angst hoort bij kanker"
+    },
+    "information": {
+      "element": "p",
+      "class": "",
+      "content": "Het is normaal dat je je soms angstig voelt als je kanker hebt. Dat wil niet zeggen dat je overdreven reageert. Of dat je niet goed met de ziekte omgaat. Ook na de behandeling kun je nog lang angstig zijn. Je bent bijvoorbeeld erg bang dat de kanker terugkomt. Dat is begrijpelijk en normaal. Die angst wordt na een tijdje meestal minder. Maar sommige mensen blijven erg angstig. Ook jaren na de behandeling."
+    }
+  },
+  "hulp": {
+    "description": {
+      "element": "h2",
+      "class": "subtitle",
+      "content": "Hulp bij angst"
+    },
+    "information": {
+      "element": "p",
+      "class": "",
+      "content": "Voel je je vaak angstig? Bespreek dat dan met je huisarts. Of in het ziekenhuis met de verpleegkundige of arts. Vaak lucht het op om over je angst te praten. En je kan tips krijgen om je angst te verminderen."
+    },
+    "information1": {
+      "element": "p",
+      "class": "",
+      "content": "Je huisarts of arts kan je doorverwijzen naar een therapeut. Zo’n zorgverlener kan je helpen om beter met je angst om te gaan. Bijvoorbeeld door met je te praten. Of met een therapie."
+    },
+    "information2": {
+      "element": "p",
+      "class": "",
+      "content": "Je kunt ook over je angst praten met lotgenoten. Die ontmoet je in een inloophuis of bij een patiëntenorganisatie."
+    },
+    "information3": {
+      "element": "p",
+      "class": "",
+      "content": "Uit je je gevoelens liever op een andere manier, bijvoorbeeld in schilderen, dans of muziek? Dan kun je terecht bij een vaktherapeut."
+    },
+    "subtitle": {
+      "element": "h2",
+      "class": "subtitle",
+      "content": "Hulpaanbieders bij jou in de buurt"
+    },
+    "subParagraph": {
+      "element": "p",
+      "class": "subParagraph",
+      "content": "Je kunt bij onderstaande hulpaanbieders terecht met langdurige angstklachten."
+    },
+    "list": {
+      "element": "a",
+      "class": "listButtons",
+      "content": [{
+        "label": "Haaglanden Medisch Centrum",
+        "url": "#"
+      }, {
+        "label": "Module Angst en Aanpak",
+        "url": "#"
+      }, {
+        "label": "Stichting Kanker in Beeld",
+        "url": "#"
+      }, {
+        "label": "Zelfhulptraining Minder angst na kanker",
+        "url": "#"
+      }, {
+        "label": "Psychologenpraktijk M. Kalogridi",
+        "url": "#"
+      }, {
+        "label": "Eerstelijnspsychologiepraktijk Vosmeer",
+        "url": "#"
+      }]
+    }
+  }
+}
