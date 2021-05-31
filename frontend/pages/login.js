@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { parseCookie } from "../helpers/parseCookie";
 
-export default function Login() {
+export default function Login({ loginState }) {
   const router = useRouter();
   const [cookie, setCookie] = useCookies(["user"]);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (JSON.parse(parseCookie(loginState).user))
+      router.push({ pathname: "dashboard" });
+  });
 
   async function handleForm(e) {
     e.preventDefault();
@@ -37,7 +43,6 @@ export default function Login() {
           : setError("Email or password incorrect");
       });
   }
-  // console.log(cookie);
 
   return (
     <>
@@ -52,3 +57,7 @@ export default function Login() {
     </>
   );
 }
+
+Login.getInitialProps = async (ctx) => ({
+  loginState: ctx.req ? ctx.req.headers.cookie : null,
+});
