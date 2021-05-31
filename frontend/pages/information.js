@@ -1,54 +1,38 @@
 import { useRouter } from 'next/router';
 import styles from '../styles/information.module.css';
 
-const frequentlyAsked = [
-  {
-    question: 'Hoe werkt Bloom?',
-    answer: 'Bloom werkt op een mobiele apparaat met internet.'
-  },
-  {
-    question: 'Hoe is Bloom ontstaan?',
-    answer: 'Bloom werkt op een mobiele apparaat met internet.'
-  },
-  {
-    question: 'Hulpaanbieders',
-    answer: 'Bloom werkt op een mobiele apparaat met internet.'
-  },
-  {
-    question: 'Veelgestelde vragen',
-    answer: 'Bloom werkt op een mobiele apparaat met internet.'
-  },
-  {
-    question: 'Gegevensbeleid',
-    answer: 'Bloom werkt op een mobiele apparaat met internet.'
-  },
-  {
-    question: 'Gebruikersvoorwaarden',
-    answer: 'Je mag het gebruiken als je geen mensen pest.'
-  },
-  {
-    question: 'Een probleem rapporteren',
-    answer: 'but Why'
-  }
-]
-
-export default function Information() {
+export default function Information({data}) {
   const router = useRouter()
+
+const detail = <article>
+  {data.faq.map((key, index) => {
+    return(
+      <details key={index} className={styles.information}>
+        <summary>{key.question}</summary>
+        <p>{key.answer}</p>
+      </details>
+    )
+  })}
+</article>
 
   return (
     <>
-      <div className={styles.topBar}>
+      <article className={styles.accordion}>
+      <nav className={styles.topBar}>        
         <button type="button" onClick={() => router.back()}>
           <img src="/icons/chevron-icoon.svg" alt=">" />
         </button>
-        <h1>bloom</h1>
-      </div>
-    {Object.keys(frequentlyAsked).map((element, key) => {
-      return <details className={styles.information} key={key}>
-        <summary>{frequentlyAsked[element].question}</summary>
-        <p>{frequentlyAsked[element].answer}</p>
-      </details>
-    })}
+        <h1>informatie</h1>
+      </nav>
+    {detail}
+      </article>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch(`http://localhost:3000/api/faq`)
+  const data = await res.json()
+
+  return { props: {data}}
 }
