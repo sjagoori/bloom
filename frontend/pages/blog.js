@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Header from "../components/header/Header";
-import Navigation from "../components/navigation/Navigation";
 import styles from '../styles/blog.module.css';
 
 const result = [
@@ -49,7 +48,6 @@ export default function Blog() {
     </header>
       {content?successState:loadingState}
     </article>
-    <Navigation />
     </>
   );
 }
