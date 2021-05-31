@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login() {
+  const router = useRouter();
   const [cookie, setCookie] = useCookies(["user"]);
+  const [error, setError] = useState(null);
 
   async function handleForm(e) {
     e.preventDefault();
@@ -21,14 +25,20 @@ export default function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setCookie("user", JSON.stringify(data), {
-          path: "/",
-          maxAge: 3600, // Expires after 1hr
-          sameSite: true,
-        });
+        console.log(data);
+        data.status === 200
+          ? (setCookie("user", JSON.stringify(data), {
+              path: "/",
+              maxAge: 3600, // Expires after 1hr
+              sameSite: true,
+            }),
+            router.push({
+              pathname: "dashboard",
+            }))
+          : setError("Email or password incorrect");
       });
   }
-  console.log(cookie);
+  // console.log(cookie);
 
   return (
     <>
@@ -37,6 +47,7 @@ export default function Login() {
       <form onSubmit={handleForm}>
         <input type="text" id="email" name="email" />
         <input type="password" id="password" name="password" />
+        <span>{error}</span>
         <button type="submit">Submit</button>
       </form>
     </>
