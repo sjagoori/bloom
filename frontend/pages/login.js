@@ -25,7 +25,6 @@ export default function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         data.status === 200
           ? (setCookie("user", JSON.stringify(data), {
               path: "/",
