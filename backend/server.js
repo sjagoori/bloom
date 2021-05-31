@@ -22,18 +22,18 @@ app.post("/login", async (req, res) => {
   let response = await db.findOne("bloom", "userdata", { email: email });
   return bcrypt.compareSync(password, response.password, salt)
     ? res.json({
-      status: "passed",
+      status: 200,
       data: {
-        email: response.email,
+        user_id: response.user_id,
       },
     })
-    : res.json({ status: "failed" });
-  // ? handle data in frontend
+    : res.json({status: 400});
 });
 
 app.post("/register", async (req, res) => {
   let userData = {
     email: req.body.email,
+    user_id: bcrypt.hashSync(req.body.email, salt),
     password: bcrypt.hashSync(req.body.password, salt),
     name: req.body.name,
     birthDate: req.body.birthDate,
@@ -41,18 +41,16 @@ app.post("/register", async (req, res) => {
     gender: req.body.gender,
     kankerType: req.body.kankerType,
     pictogram: req.body.pictogram,
-    about: req.body.about
-  }
+    about: req.body.about,
+  };
 
   if (await db.findOne('bloom', 'userdata', { email: userData.email }) == null) {
     console.log('req.body');
     await db.insertOne("bloom", "userdata", userData);
 
-    // ? Improve this; use find to remove the password entry
-    delete userData.password
-
-    // ? handle what happens after register in frontend
-    return res.json({ status: 200, data: userData });
+    return res.json({ status: 200, data: userData.user_id });
+  }else{
+    return res.json({ status: 400, msg: "gebruiker bestaat al"});
   }
 });
 
