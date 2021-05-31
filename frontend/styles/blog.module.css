@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-.container > p {
+.container > header p {
   font-family: 'silka-bold';
   font-size: 12px;
   margin: 22px 0;

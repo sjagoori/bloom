@@ -42,10 +42,12 @@ export default function Blog() {
       <title>Thema's</title>
     </Head>
     <Header name="Thema's"/>
-    <div className={styles.container}>
+    <article className={styles.container}>
+    <header>
     <p>HOE GA IK OM MET...</p>
+    </header>
       {content?successState:loadingState}
-    </div>
+    </article>
     </>
   );
 }

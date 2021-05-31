@@ -63,13 +63,13 @@ export default function Blog({ data }) {
 
   return (
     <>
-    <div className={styles.container}>
-      <div className={styles.topBar}>
+    <main className={styles.container}>
+      <nav className={styles.topBar}>
         <Link href="/blog">
           <img src="/icons/chevron-icoon.svg" alt=">" />
         </Link>
         <h1>bloom</h1>
-      </div>
+      </nav>
       {header}
       <nav className={styles.tabBar}>
         <ul>
@@ -83,7 +83,7 @@ export default function Blog({ data }) {
         {tips}
         {hulp}
       </SwipeableViews>
-      </div> 
+      </main> 
     </>
 
   )
