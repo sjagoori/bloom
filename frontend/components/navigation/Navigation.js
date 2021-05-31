@@ -11,10 +11,10 @@ export default function Navigation() {
     <>
       <nav className={styles.navigation}>
         <ul>
-          <li className={(path == '/blog') ? `${styles.navItem} ${styles.active}` : `${styles.navItem}`}><img src={(path == '/blog') ? '/icons/thema-navigatie-selected.svg' : '/icons/thema-navigatie.svg'} alt=""/><Link href="/blog"><span>Thema's</span></Link></li>
-          <li className={(path == '/buddy') ? `${styles.navItem} ${styles.active}` : `${styles.navItem}`}><img src={(path == '/buddy') ? '/icons/buddy-navigatie-selected.svg' : '/icons/buddy-navigatie.svg'} alt=""/><Link href="/buddy"><span>Buddy</span></Link></li>
-          <li className={(path == '/berichten') ? `${styles.navItem} ${styles.active}` : `${styles.navItem}`}><img src={(path == '/berichten') ? '/icons/berichten-navigatie-selected.svg' : '/icons/berichten-navigatie.svg'} alt=""/><Link href="/berichten"><span>Berichten</span></Link></li>
-          <li className={(path == '/profiel') ? `${styles.navItem} ${styles.active}` : `${styles.navItem}`}><img src={(path == '/profiel') ? '/icons/profiel-navigatie-selected.svg' : '/icons/profiel-navigatie.svg'} alt=""/><Link href="/profiel"><span>Profiel</span></Link></li>
+          <li className={(path == '/blog') ? `${styles.navItem} ${styles.active}` : `${styles.navItem}`}><Link href="/blog"><div><img src={(path == '/blog') ? '/icons/thema-navigatie-selected.svg' : '/icons/thema-navigatie.svg'} alt=""/><span>Thema's</span></div></Link></li>
+          <li className={(path == '/buddy') ? `${styles.navItem} ${styles.active}` : `${styles.navItem}`}><Link href="/buddy"><div><img src={(path == '/buddy') ? '/icons/buddy-navigatie-selected.svg' : '/icons/buddy-navigatie.svg'} alt=""/><span>Buddy</span></div></Link></li>
+          <li className={(path == '/berichten') ? `${styles.navItem} ${styles.active}` : `${styles.navItem}`}><Link href="/berichten"><div><img src={(path == '/berichten') ? '/icons/berichten-navigatie-selected.svg' : '/icons/berichten-navigatie.svg'} alt=""/><span>Berichten's</span></div></Link></li>
+          <li className={(path == '/profiel') ? `${styles.navItem} ${styles.active}` : `${styles.navItem}`}><Link href="/profiel"><div><img src={(path == '/profiel') ? '/icons/profiel-navigatie-selected.svg' : '/icons/profiel-navigatie.svg'} alt=""/><span>Profiel</span></div></Link></li>
         </ul>
       </nav>
     </>

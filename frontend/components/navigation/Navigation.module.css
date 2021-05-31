@@ -21,14 +21,15 @@
   list-style: none;
 }
 
-.navItem {
+.navItem > div{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  cursor: pointer;
 }
 
-.navItem img {
+.navItem div > img {
   align-self: center;
   max-width: 24px;
   /* max-height: 22px; */
