@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { parseCookie } from "../helpers/parseCookie";
 
 export default function Home({ loginState }, ctx) {
   const [error, setError] = useState(null);
@@ -9,11 +10,10 @@ export default function Home({ loginState }, ctx) {
   const [regData, setRegData] = useState();
   const router = useRouter();
 
-  useEffect(() =>{
-    // TODO use parseCookie function to specifically find "user" inb4 we confuse 'm w/ new cookies later on 
-    // if (loginState) router.push({ pathname: "dashboard" });
-    console.log(loginState);
-  })
+  useEffect(() => {
+    if (JSON.parse(parseCookie(loginState).user))
+      router.push({ pathname: "dashboard" });
+  });
 
   const formik = useFormik({
     initialValues: {},
@@ -209,6 +209,10 @@ export default function Home({ loginState }, ctx) {
   }
 }
 
+Home.getInitialProps = async (ctx) => ({
+  loginState: ctx.req ? ctx.req.headers.cookie : null,
+});
+
 const Checkbox = ({ type = "checkbox", name, onChange, id, value }) => (
   <input type={type} name={name} onChange={onChange} id={id} value={value} />
 );
@@ -376,4 +380,3 @@ const validate = (values) => {
   return errors;
 };
 
-Home.getInitialProps = async (ctx) =>  ({ loginState:  ctx.req ? ctx.req.headers.cookie : null });
