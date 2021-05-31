@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export default function Home() {
+export default function Home({ loginState }, ctx) {
   const [error, setError] = useState(null);
   const [progress, setProgress] = useState(0);
   const [regData, setRegData] = useState();
   const router = useRouter();
+
+  useEffect(() =>{
+    // TODO use parseCookie function to specifically find "user" inb4 we confuse 'm w/ new cookies later on 
+    // if (loginState) router.push({ pathname: "dashboard" });
+    console.log(loginState);
+  })
 
   const formik = useFormik({
     initialValues: {},
@@ -369,3 +375,5 @@ const validate = (values) => {
 
   return errors;
 };
+
+Home.getInitialProps = async (ctx) =>  ({ loginState:  ctx.req ? ctx.req.headers.cookie : null });
