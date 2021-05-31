@@ -19,12 +19,11 @@
   height: 128px;
   width: 158px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   align-items: start;
   justify-items: center;
   background: #F9F0C6;
-  /* background-image: url('/icons/tegel-achtergrond.svg'); */
   color: #f07a06;
   border-radius: 10%;
   overflow: hidden;
