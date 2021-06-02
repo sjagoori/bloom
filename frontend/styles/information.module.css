@@ -10,6 +10,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
+  margin: 0 0 15px 0;
+
 }
 
 .topBar img {
@@ -20,10 +22,11 @@
 
 .topBar h1 {
   font-family: 'Silka-bold';
+  font-size: 14px;
   text-transform: uppercase;
+  color: rgb(114, 109, 97);
   margin: 0;
   justify-self: center;
-  color: rgb(114, 109, 97);
 }
 
 .topBar button {
@@ -38,12 +41,13 @@
 }
 
 .information {
-  border-top: 1px solid rgba(114, 109, 97, 0.25);
+  border-top: 1px solid rgba(114, 109, 97, 0.05);
   padding: 1em 0;
   cursor: pointer;
 }
 .information >summary {
   font-family: 'Nunito-bold';
+  font-size: 14px;
   color: rgb(240, 121, 4);
   list-style: none;
 
@@ -61,4 +65,9 @@
 }
 .information[open] summary:after {
   transform: rotate(-90deg);
+}
+
+.information p {
+  font-family: 'Nunito-light';
+  font-size: 12px;
 }
