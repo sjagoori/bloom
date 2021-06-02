@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import styles from '../styles/information.module.css';
 
+
 export default function Information({data}) {
   const router = useRouter()
 

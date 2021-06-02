@@ -55,6 +55,14 @@
 .information summary::marker {
   display: none;
 }
+.information > summary {
+  list-style: none;
+}
+.information > summary::-webkit-details-marker {
+  display: none;
+}
+
+
 
 .information summary::after {
   display: inline-block;
