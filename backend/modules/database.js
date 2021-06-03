@@ -16,13 +16,14 @@ client.connect();
  * @source https://shabier.medium.com/web-development-crud-web-application-76f3b7ce127b
  */
 exports.findOne = async (db, collect, query) => {
-  // We want to connect to the "userdb" database
-  const database = client.db(db);
+  try {
+    const database = client.db(db);
+    const collection = database.collection(collect);
 
-  // We want to connect to the "users" collection in the "userdb" database
-  const collection = database.collection(collect);
-  // We want to execute this query on the "users" document in the "users" collection
-  return await collection.findOne(query);
+    return await collection.findOne(query);
+  } catch (error) {
+    console.log("Couldn't find document");
+  }
 };
 
 /**
@@ -34,21 +35,15 @@ exports.findOne = async (db, collect, query) => {
  * @source https://shabier.medium.com/web-development-crud-web-application-76f3b7ce127b
  */
 exports.insertOne = async (db, collect, data) => {
-  // We want to connect to the "userdb" database
-  const database = client.db(db);
-  // We want to connect to the "users" collection in the "userdb" database
-  const collection = database.collection(collect);
-  // We want to add this document to the "users" collection
-  const document = data;
+  try {
+    const database = client.db(db);
+    const collection = database.collection(collect);
+    const document = data;
 
-  // We insert the document to the "users" collection
-  collection
-    .insertOne(document)
-    .then(
-      console.log(
-        `Inserted ${document.email} with the data ${document.toString()}`
-      )
-    );
+    collection.insertOne(document);
+  } catch (error) {
+    console.log("Couldn't insert document");
+  }
 };
 
 /**
@@ -60,25 +55,21 @@ exports.insertOne = async (db, collect, data) => {
  * @source https://shabier.medium.com/web-development-crud-web-application-76f3b7ce127b
  */
 exports.updateOne = async (db, collect, data) => {
-  // We want to connect to the "userdb" database
-  const database = client.db(db);
-  // We want to connect to the "users" collection in the "userdb" database
-  const collection = database.collection(collect);
+  try {
+    const database = client.db(db);
+    const collection = database.collection(collect);
 
-  const filter = { email: data.email }
-  const options = { upsert: true }
+    const filter = { email: data.email };
+    const options = { upsert: true };
 
-  const updateDoc = {
-    $set: {
-      data
-    }
+    const updateDoc = {
+      $set: {
+        data,
+      },
+    };
+
+    await collection.updateOne(filter, updateDoc, options);
+  } catch (error) {
+    console.log("Couldn't update document");
   }
-
-  const result = await collection.updateOne(filter, updateDoc, options).then(
-    console.log(
-      `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
-    )
-  );
-
-}
-
+};
