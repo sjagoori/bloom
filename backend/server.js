@@ -19,15 +19,19 @@ app.post("/login", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  let response = await db.findOne("bloom", "userdata", { email: email });
-  return bcrypt.compareSync(password, response.password, salt)
-    ? res.json({
-      status: 200,
-      data: {
-        user_id: response.user_id,
-      },
-    })
-    : res.json({status: 400});
+  return await db
+    .findOne("bloom", "userdata", { email: email })
+    .then((response) =>
+      bcrypt.compareSync(password, response.password, salt)
+        ? res.json({
+            status: 200,
+            data: {
+              user_id: response.user_id,
+            },
+          })
+        : res.json({ status: 400 })
+    )
+    .catch((err) => console.log("err", err));
 });
 
 app.post("/register", async (req, res) => {
@@ -44,13 +48,14 @@ app.post("/register", async (req, res) => {
     about: req.body.about,
   };
 
-  if (await db.findOne('bloom', 'userdata', { email: userData.email }) == null) {
-    console.log('req.body');
-    await db.insertOne("bloom", "userdata", userData);
+  let exists = await db.findOne("bloom", "userdata", { email: userData.email })
 
-    return res.json({ status: 200, data: userData.user_id });
-  }else{
-    return res.json({ status: 400, msg: "gebruiker bestaat al"});
+  if ( exists == null) {
+    await db.insertOne("bloom", "userdata", userData).then(() =>{
+      return res.json({ status: 200, data: userData.user_id });
+    });
+  } else {
+    return res.json({ status: 400, msg: "gebruiker bestaat al" });
   }
 });
 
