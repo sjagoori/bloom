@@ -7,7 +7,7 @@ body {
 }
 
 @font-face {
-  font-family: "Silka";
+  font-family: "silka";
   src: url("/fonts/silka/Silka-Regular.otf");
   font-style: normal;
   font-weight: 400;
@@ -15,7 +15,7 @@ body {
 }
 
 @font-face {
-  font-family: "Silka";
+  font-family: "silka-bold";
   src: url("/fonts/silka/Silka-Bold.ttf");
   font-style: bold;
   font-weight: 700;
@@ -24,9 +24,24 @@ body {
 
 @font-face {
   font-family: "Nunito";
-  src: url("/fonts/nunito/nunito-Regular.ttf");
+  src: url("/fonts/nunito/Nunito-Regular.ttf");
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito-bold";
+  src: url("/fonts/nunito/Nunito-Bold.ttf");
+  font-style: bold;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito-light";
+  src: url("/fonts/nunito/nunito-Light.ttf");
+  font-weight: 200;
   font-display: swap;
 }
 
@@ -39,10 +54,11 @@ a {
   box-sizing: border-box;
 }
 
-a,p,button {
+a,p,button, li {
+  color: #726d61;
   font-family: 'Nunito', sans-serif;
 }
 
 h1, h2, h3 ,h4, h5, h6 {
-  font-family: 'Silka', sans-serif;
+  font-family: 'silka', sans-serif;
 }
