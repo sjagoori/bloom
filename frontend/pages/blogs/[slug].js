@@ -11,7 +11,6 @@ export default function Blog({ data }) {
   const header = <header>
     <img className={styles.coverImage} src={`/images/thema-${slug}.jpg`} />
     {Object.values(data.header).map((key, index) => {
-      console.log(styles);
       return typeof key.element != 'img' ? React.createElement(`${key.element}`, { key: index, className: `${styles[`${key.class}`]}` }, `${key.content}`) : <Image src={key.link}></Image>
     })}
   </header>
@@ -33,7 +32,7 @@ export default function Blog({ data }) {
       return key.element != 'a' 
       ? React.createElement(`${key.element}`, { key: index, className: `${styles[`${key.class}`]}` }, `${key.content}`) 
       : key.content.map((element, i) => {
-        console.log(element)
+        // console.log(element)
         return (
           <a key={i} className={styles[`${key.class}`]} href={element.url}>
             <div>{element.label}</div>
@@ -91,7 +90,8 @@ export default function Blog({ data }) {
 
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(`http://localhost:3000/api/${params.slug}`)
+
+  const res = await fetch(`https://bloom-content.vercel.app/api/?theme=${params.slug}`)
   const data = await res.json()
 
   return { props: { data }}
