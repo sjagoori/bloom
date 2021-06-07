@@ -88,24 +88,6 @@ export default function Home({ loginState }, ctx) {
         </>
       );
     case 1:
-<<<<<<< HEAD
-      return formElement(
-        onboardingData.personalInfoData.map((item, index) => (
-          <>
-            <Text
-              type="text"
-              name={item.name}
-              id={item.id}
-              onChange={formik.handleChange}
-              placebolder={item.placebolder}
-            />
-            <label key={index} htmlFor={item.id}>
-              {item.label}
-            </label>
-          </>
-        ))
-      );
-=======
       return formElement(onboardingData.personalInfoData.map((item, index) => (
         <>
           <Text
@@ -118,7 +100,6 @@ export default function Home({ loginState }, ctx) {
           <label key={index} htmlFor={item.id}>{item.label}</label>
         </>
       )))
->>>>>>> login-styling
     case 2:
       return formElement(
         onboardingData.birthDateData.map((item, index) => (
