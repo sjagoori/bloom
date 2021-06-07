@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useFormik } from "formik";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import { parseCookie } from "../helpers/parseCookie";
+import { useFormik } from 'formik';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import styles from "../styles/Registration.module.css";
 
 export default function Home({ loginState }, ctx) {
   const [error, setError] = useState(null);
@@ -51,16 +52,18 @@ export default function Home({ loginState }, ctx) {
 
   const formElement = (props) => {
     return (
-      <form onSubmit={formik.handleSubmit}>
-        {progress > 0 ? (
-          <a onClick={() => setProgress(progress - 1)}>Back</a>
-        ) : null}
-        {props}
-        <span>{error ? error : ""}</span>
-        <button type="submit">Submit</button>
-      </form>
-    );
-  };
+      <div className={styles.container}>
+        <form onSubmit={formik.handleSubmit}>
+          {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img className={`${styles.rotate} ${styles.backButton}`} src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
+          <div className={styles.formContainer}>
+            {props}
+            <span>{error ? error : ""}</span>
+          </div>
+          <button className={styles.button} type="submit">Submit</button>
+        </form>
+      </div>
+    )
+  }
 
   switch (progress) {
     case 0:
@@ -73,7 +76,7 @@ export default function Home({ loginState }, ctx) {
                 name={item.name}
                 id={item.id}
                 onChange={formik.handleChange}
-                placebolder={item.placebolder}
+                placeholder={item.placeholder}
               />
               <label key={index} htmlFor={item.id}>
                 {item.label}
@@ -85,6 +88,7 @@ export default function Home({ loginState }, ctx) {
         </>
       );
     case 1:
+<<<<<<< HEAD
       return formElement(
         onboardingData.personalInfoData.map((item, index) => (
           <>
@@ -101,6 +105,20 @@ export default function Home({ loginState }, ctx) {
           </>
         ))
       );
+=======
+      return formElement(onboardingData.personalInfoData.map((item, index) => (
+        <>
+          <Text
+            type="text"
+            name={item.name}
+            id={item.id}
+            onChange={formik.handleChange}
+            placeholder={item.placeholder}
+          />
+          <label key={index} htmlFor={item.id}>{item.label}</label>
+        </>
+      )))
+>>>>>>> login-styling
     case 2:
       return formElement(
         onboardingData.birthDateData.map((item, index) => (

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useCookies } from "react-cookie";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { parseCookie } from "../helpers/parseCookie";
+import Link from "next/link";
+import { useCookies } from "react-cookie";
+import styles from "../styles/Login.module.css";
 
 export default function Login({ loginState }) {
   const router = useRouter();
@@ -46,14 +47,17 @@ export default function Login({ loginState }) {
 
   return (
     <>
-      <Link href="/">Terug</Link>
-      <h1>Login</h1>
-      <form onSubmit={handleForm}>
-        <input type="text" id="email" name="email" />
-        <input type="password" id="password" name="password" />
-        <span>{error}</span>
-        <button type="submit">Submit</button>
-      </form>
+      <div className={`${styles.container}`}>
+        <Link href="/"><img src="/icons/chevron-icoon.svg" alt="Back" className={`${styles.svgIcon} ${styles.rotate}`} /></Link>
+        <div className={`${styles.formContainer}`}>
+          <h1>Welkom Terug</h1>
+          <form onSubmit={handleForm}>
+            <input type="text" id="email" name="email" placeholder="Emailadres" />
+            <input type="password" id="password" name="password" placeholder="Wachtwoord" />
+            <button type="submit" className={`${styles.button}`}>Submit</button>
+          </form>
+        </div>
+      </div>
     </>
   );
 }
