@@ -29,7 +29,7 @@ const successState = <container>
 </container>
 
 const loadingState = <container>
-  <p>you suck</p>
+  <p>Loading...</p>
 </container>
 
 export default function Blog() {
