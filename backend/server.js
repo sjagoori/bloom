@@ -18,4 +18,4 @@ app
   .use("/", router);
 
 
-app.listen(port, () => console.log(`listening to port ${port}`));
+app.listen(port, () => console.log(`listening to port ${port}`))
