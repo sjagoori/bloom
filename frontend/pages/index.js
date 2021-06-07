@@ -11,7 +11,7 @@ export default function Home({ loginState }, ctx) {
   const router = useRouter();
 
   useEffect(() => {
-    if (JSON.parse(parseCookie(loginState).user))
+    if (loginState != undefined && JSON.parse(parseCookie(loginState).user))
       router.push({ pathname: "dashboard" });
   });
 
@@ -32,10 +32,10 @@ export default function Home({ loginState }, ctx) {
           .then((data) => {
             data.status === 200
               ? (setCookie("user", JSON.stringify(data), {
-                  path: "/",
-                  maxAge: 3600, // Expires after 1hr
-                  sameSite: true,
-                }),
+                path: "/",
+                maxAge: 3600, // Expires after 1hr
+                sameSite: true,
+              }),
                 router.push({
                   pathname: "dashboard",
                 }))
