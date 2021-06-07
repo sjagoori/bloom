@@ -23,3 +23,17 @@
 .topBar button img {
   width: 20px;
 }
+
+/* filterContainer */
+.filterContainer {
+  margin: 0 25px;
+  height: 89.5vh;
+  background-color: #3CB2FF;
+
+}
+.leadingText {
+  text-transform: uppercase;
+  font-family: 'silka-bold';
+  font-size: 12px;
+  margin: 22px 0;
+}
