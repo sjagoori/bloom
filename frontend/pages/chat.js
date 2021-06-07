@@ -1,11 +1,12 @@
 import { io } from "socket.io-client";
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Chat() {
   const socket = io('http://localhost:3001');
+  const [messages, setMessages] = useState([])
 
   useEffect(() => {
-    //io even subscribe to room
+    socket.on('receive', message => { setMessages(messages => [...messages, ...[message]]) })
   }, [])
 
 
@@ -20,12 +21,20 @@ export default function Chat() {
     })
   }
 
+  console.log(messages);
+
   return (
     <aside>
       <form onSubmit={handleChat}>
         <div>
           <fieldset>Chat</fieldset>
-          <ol></ol>
+          <ol>
+            {messages.map((key, index) => {
+              return <li key={index}>
+                {key.message}
+              </li>
+            })}
+          </ol>
         </div>
         <input type="text" name="message" id="message" />
         <button type="submit">Send</button>
