@@ -1,6 +1,7 @@
 import BuddyCard from '@/components/buddyCard/BuddyCard';
 import styles from './BuddyList.module.css';
 
+// Needs to be removed, dummy data.
 const userData = [
   {name: 'Hazar Car Cybertruck the third', kankerType: ['breinkanker','pain'], birthDate: '1995-06-05'},
   {name: 'nathan Bommezijn', kankerType: ['breinkanker','pain'], birthDate: '1995-06-05'},
@@ -13,6 +14,7 @@ const userData = [
   {name: 'Allyssa', kankerType: ['testing','pain'], birthDate: '1995-06-05'}
 ]
 
+// Needs to be modified to retrieve serverSideProps.
 export default function BuddyList() {
   const users = userData.map((key, index) => {
     return <BuddyCard key={index} name={key.name} kankerType={key.kankerType} birthDate={getAge(key.birthDate)}/>
