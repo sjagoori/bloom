@@ -5,12 +5,17 @@ const port = process.env.PORT || 3001,
   express = require("express"),
   app = express(),
   router = require("./routes/router.js")
-  cors = require("cors"),
+cors = require("cors"),
   http = require("http").createServer(app),
   io = require("socket.io")(http),
   db = require("./modules/database.js"),
   bcrypt = require("bcrypt"),
-  salt = bcrypt.genSaltSync(10);
+  salt = bcrypt.genSaltSync(10)
+ioEvents = require('./modules/ioEvents');
+
+io.on('connection', (client) => {
+  ioEvents.eventHandler(client, io)
+})
 
 app
   .use(express.json())
@@ -23,4 +28,4 @@ app.get('/blog/:blog', (req, res) => {
   res.json(content[`${req.params.blog}`])
 })
 
-app.listen(port, () => console.log(`listening to port ${port}`))
+http.listen(port, () => console.log(`listening to port ${port}`))
