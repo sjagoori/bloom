@@ -6,6 +6,7 @@ import styles from './[slug].module.css';
 
 const props = {
   data: {
+    _id: '60b8e9c2aea08a5f61999c19',
     name: 'Lea Bogaarts',
     birthDate: '2000-06-05',
     kankerType: ['Borstkanker', 'Nierkanker'],
@@ -26,11 +27,7 @@ const props = {
 }
 
 export default function Buddy({ data }) {
-
-
 const router = useRouter()
-const { slug } = router.query;
-console.log(slug)
 
   return (
     <>
@@ -55,7 +52,7 @@ console.log(slug)
             <p className={styles.profileDetail}><span className={styles.icon}><img src="/icons/label-icoon.svg" alt="t" /></span><span>{props.data.kankerType[0]}</span></p>
             <p className={styles.profileDetail}><span className={styles.icon}><img src="/icons/leeftijd-icoon.svg" alt="t" /></span><span>{getAge(props.data.birthDate)} jaar</span></p>
           </div>
-          <Link href={{pathname: '/chat', query: {user_id: 'tete'}}}><button className={styles.ctaMessage}><span>bericht</span><span><img src="/icons/chevron-icoon.svg" alt=">" /></span></button></Link>
+          <Link href={{pathname: '/chat', query: {user_id: props.data._id}}}><button className={styles.ctaMessage}><span>bericht</span><span><img src="/icons/chevron-icoon.svg" alt=">" /></span></button></Link>
         </section>
         <section className={styles.userBiography}>
           <p className={styles.sectionTitle}>Biografie</p>

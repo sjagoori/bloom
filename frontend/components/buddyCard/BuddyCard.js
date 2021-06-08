@@ -5,7 +5,7 @@ import styles from "./BuddyCard.module.css";
 export default function BuddyCard(props) {
   return (
     <>
-    <Link href={{pathname: `/buddy/${props.name}` }}>
+    <Link href={{pathname: `/buddy/${props._id}` }}>
       <article className={styles.card}>
         <section className={styles.profileImage}>
         <Avatar 

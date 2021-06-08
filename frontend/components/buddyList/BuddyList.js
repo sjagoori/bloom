@@ -3,21 +3,21 @@ import styles from './BuddyList.module.css';
 
 // Needs to be removed, dummy data.
 const userData = [
-  {name: 'Hazar Car Cybertruck the third', kankerType: ['breinkanker','pain'], birthDate: '1995-06-05'},
-  {name: 'nathan Bommezijn', kankerType: ['breinkanker','pain'], birthDate: '1995-06-05'},
-  {name: 'Shabier', kankerType: ['prolife','pain'], birthDate: '1995-06-05'},
-  {name: 'Allyssa Alimoestar', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
-  {name: 'Justus sturkenboom', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
-  {name: 'Robert Spier', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
-  {name: 'Janno Kaprisitias', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
-  {name: 'Joost Faber', kankerType: ['testing','pain'], birthDate: '1995-06-05'},
-  {name: 'Allyssa', kankerType: ['testing','pain'], birthDate: '1995-06-05'}
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Hazar Car Cybertruck the third', kankerType: ['breinkanker','pain'], birthDate: '1995-06-05'},
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'nathan Bommezijn', kankerType: ['breinkanker','pain'], birthDate: '1995-06-05'},
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Shabier', kankerType: ['prolife','pain'], birthDate: '1995-06-05'},
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Allyssa Alimoestar', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Justus sturkenboom', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Robert Spier', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Janno Kaprisitias', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Joost Faber', kankerType: ['testing','pain'], birthDate: '1995-06-05'},
+  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Allyssa', kankerType: ['testing','pain'], birthDate: '1995-06-05'}
 ]
 
 // Needs to be modified to retrieve serverSideProps.
 export default function BuddyList() {
   const users = userData.map((key, index) => {
-    return <BuddyCard key={index} name={key.name} kankerType={key.kankerType} birthDate={getAge(key.birthDate)}/>
+    return <BuddyCard key={index} _id={key._id} name={key.name} kankerType={key.kankerType} birthDate={getAge(key.birthDate)}/>
   })
 
   return (
