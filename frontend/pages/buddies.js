@@ -1,8 +1,14 @@
-// import BuddyList from '@/components/buddyList/BuddyList';
+import BuddyList from '@/components/buddyList/BuddyList';
 import { useState } from 'react';
-import styles from '../styles/Buddy.module.css';
+import styles from '../styles/Buddies.module.css';
 
-export default function Buddy() {
+const filter = {
+  All: () => true,
+  
+}
+
+export default function Buddies() {
+  // Show or hide filters
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <>
@@ -12,8 +18,8 @@ export default function Buddy() {
       onClick={() => setModalVisible()}  
     ><img src="./icons/filter-icoon.svg" alt="Filter" /></button>
     </header>
-    {/* <BuddyList /> */}
-    <main className={styles.filterContainer}>
+    <BuddyList />
+    {/* <main className={styles.filterContainer}>
       <section>
         <p className={styles.leadingText}>ik wil contact met...</p>
         <form action="" method="post">
@@ -27,7 +33,7 @@ export default function Buddy() {
           
         </form>
       </section>  
-    </main> 
+    </main>  */}
     </>
   )
 }
