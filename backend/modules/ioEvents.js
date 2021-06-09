@@ -1,15 +1,32 @@
-exports.eventHandler = async (client, server) => {
+const messageCache = require('./messageCache')
 
+const tempTestVariable = {
+  "chat_id": [
+    {
+      "user_id": "user 1",
+      "message": "message",
+      "timestamp": 1623236809378,
+      "chat_id": "chat_id"
+    },
+    {
+      "user_id": "user 2",
+      "message": "message",
+      "timestamp": 1623236809378,
+      "chat_id": "chat_id"
+    }
+  ]
+}
+
+exports.eventHandler = async (client, server) => {
   client.on('message', message => {
     console.log(message);
     client.broadcast.to(pair).emit('loadChatHistory', 'loadChatHistory')
   })
 
   client.on('getPartners', partners => {
-    console.log(partners)
     // * this will be the room name
-    // ? find a better way of generating room names in case of flipping from/to
-    const pair = partners.from + partners.to
+    const pairData = Object.values(partners).sort((a, b) => a.user_id.localeCompare(b.user_id))
+    const pair = pairData[0].user_id + pairData[1].user_id
     console.log(pair)
 
     // make a room
