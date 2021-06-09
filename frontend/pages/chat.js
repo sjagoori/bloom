@@ -1,5 +1,6 @@
 import { io } from "socket.io-client";
 import { useEffect, useState } from 'react'
+import { parseCookie } from "../helpers/parseCookie";
 
 export default function Chat() {
   const socket = io('http://localhost:3001');
@@ -7,9 +8,20 @@ export default function Chat() {
   const [consent, setConsent] = useState({ from: { consent: false }, to: { consent: false } })
 
   useEffect(() => {
+    let user_id_from_cookie = window.document.cookie ? JSON.parse(parseCookie(window.document.cookie).user).data.user_id : null
+
+    console.log(user_id_from_cookie);
+
+
     socket.emit('getPartners', {
-      from: "something from the cookie",
-      to: 'someone else their userid we get form the buddies list'
+      from: {
+        user_id: user_id_from_cookie
+        // user_id: "a"
+      },
+      to: {
+        user_id: '$2b$10$SYfsPih9S/.FMC9E/FeWkuDT8.lkE..x7ewu.0t4OmGb60s25RoO.'
+        // user_id: query.userData.user_id
+      }
     })
 
     socket.on('setPartners', partner => { setConsent(partner) })
