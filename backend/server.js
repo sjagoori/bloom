@@ -8,10 +8,7 @@ const port = process.env.PORT || 3001,
   cors = require("cors"),
   http = require("http").createServer(app),
   io = require("socket.io")(http),
-  db = require("./modules/database.js"),
-  bcrypt = require("bcrypt"),
-  salt = bcrypt.genSaltSync(10)
-ioEvents = require('./modules/ioEvents');
+  ioEvents = require('./modules/ioEvents');
 
 io.on('connection', (client) => {
   ioEvents.eventHandler(client, io)

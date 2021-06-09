@@ -1,5 +1,8 @@
-const express = require("express");
-const router = express.Router();
+const express = require("express"),
+  router = express.Router(),
+  db = require("../modules/database"),
+  bcrypt = require("bcrypt"),
+  salt = bcrypt.genSaltSync(10);
 
 router.post("/login", async (req, res) => {
   const email = req.body.email;
@@ -10,11 +13,11 @@ router.post("/login", async (req, res) => {
     .then((response) =>
       bcrypt.compareSync(password, response.password, salt)
         ? res.json({
-            status: 200,
-            data: {
-              user_id: response.user_id,
-            },
-          })
+          status: 200,
+          data: {
+            user_id: response.user_id,
+          },
+        })
         : res.json({ status: 400 })
     )
     .catch((err) => console.log("err", err));
