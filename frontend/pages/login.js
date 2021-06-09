@@ -11,8 +11,10 @@ export default function Login({ loginState }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (loginState != undefined && JSON.parse(parseCookie(loginState).user))
-      router.push({ pathname: "dashboard" });
+    if (window.document.cookie)
+      JSON.parse(parseCookie(window.document.cookie).user).data.user_id != ''
+        ? router.push({ pathname: "dashboard" })
+        : router.push({ pathname: "/" })
   });
 
   async function handleForm(e) {
@@ -62,6 +64,6 @@ export default function Login({ loginState }) {
   );
 }
 
-Login.getInitialProps = async (ctx) => ({
-  loginState: ctx.req ? ctx.req.headers.cookie : null,
-});
+// Login.getInitialProps = async (ctx) => ({
+//   loginState: ctx.req ? ctx.req.headers.cookie : null,
+// });
