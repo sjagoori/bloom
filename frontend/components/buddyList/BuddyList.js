@@ -10,6 +10,8 @@ export default function BuddyList({data}) {
     return <BuddyCard key={index} _id={key._id} name={key.name} kankerType={key.kankerType} birthDate={getAge(key.birthDate)}/>
   })
 
+
+  
   return (
     <>
       <main className={styles.buddyContainer}>

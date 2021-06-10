@@ -1,5 +1,6 @@
 require("dotenv").config();
 let content = require("./data/blogContent.json")
+let users = require("./data/users.json")
 
 const port = process.env.PORT || 3001,
   express = require("express"),
@@ -21,6 +22,14 @@ app
 
 app.get('/blog/:blog', (req, res) => {
   res.json(content[`${req.params.blog}`])
+})
+
+app.get('/users', (req, res) => {
+  res.json(users)
+})
+
+app.get('/users/:user', (req, res) => {
+  res.json(users[`${req.params._id}`])
 })
 
 app.listen(port, () => console.log(`listening to port ${port}`))

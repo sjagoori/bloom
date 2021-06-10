@@ -4,23 +4,11 @@ import styles from '../styles/Buddies.module.css';
 
 const filter = {
   All: () => true,
-  
+  SameType: (users, user) => {users.filter(users => users.kankerType[0] == user.kankerType[0] )}
 }
 
-const userData = [
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Hazar Car Cybertruck the third', kankerType: ['breinkanker','pain'], birthDate: '1995-06-05'},
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'nathan Bommezijn', kankerType: ['breinkanker','pain'], birthDate: '1995-06-05'},
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Shabier', kankerType: ['prolife','pain'], birthDate: '1995-06-05'},
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Allyssa Alimoestar', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Justus sturkenboom', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Robert Spier', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Janno Kaprisitias', kankerType: ['testlife','pain'], birthDate: '1995-06-05'},
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Joost Faber', kankerType: ['testing','pain'], birthDate: '1995-06-05'},
-  {_id: '60b8e9c2aea08a5f61999c19' ,name: 'Allyssa', kankerType: ['testing','pain'], birthDate: '1995-06-05'}
-]
-
-export default function Buddies({data}) {
-  // data = userData
+export default function Buddies(props) {
+  console.log(props.singleUser)
   // Show or hide filters
   const [modalVisible, setModalVisible] = useState(false)
   return (
@@ -31,7 +19,7 @@ export default function Buddies({data}) {
       onClick={() => setModalVisible()}  
     ><img src="./icons/filter-icoon.svg" alt="Filter" /></button>
     </header>
-    <BuddyList data={data = userData}/>
+    <BuddyList data={props.data}/>
     {/* <main className={styles.filterContainer}>
       <section>
         <p className={styles.leadingText}>ik wil contact met...</p>
@@ -49,4 +37,24 @@ export default function Buddies({data}) {
     </main>  */}
     </>
   )
+}
+
+// Data filteren wanneer deze binnenkomt vanuit de serverside
+//ipv serversideprops is het een normale fetch functie die dat ophaalt enn dan in de props gooit
+
+export async function getServerSideProps({params}) { 
+  const res = await fetch(`http://localhost:3001/users`)
+  const data = await res.json()
+
+  if (!data) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      data,
+    }
+  }
 }
