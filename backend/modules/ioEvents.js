@@ -25,8 +25,7 @@ exports.eventHandler = async (client, server) => {
       }
     )
 
-    redis.setCache(message.chat_id, JSON.stringify(message))
-
+    setCache(message.chat_id, message)
     // client.broadcast.to(message.chat_id).emit('loadChatHistory', 'loadChatHistory')
   })
 
@@ -56,4 +55,20 @@ exports.eventHandler = async (client, server) => {
       chat_id: pair
     })
   })
+}
+
+/**
+ * Function handle cache
+ * {String} chat_id - chat_id
+ * {Object} content - content
+ */
+async function setCache(chat_id, content) {
+  let cache = JSON.parse(await redis.getCache(chat_id))
+  if (cache == undefined) {
+    cache = []
+  }
+
+  cache.push(content)
+
+  redis.setCache(chat_id, JSON.stringify(cache))
 }
