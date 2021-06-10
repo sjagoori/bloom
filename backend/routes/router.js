@@ -55,5 +55,12 @@ router.get('/getAllUsers', async (req, res) => {
     .catch(error => console.log('geen data gevonden:\n', error))
 })
 
+router.get('/getUser/:user', async (req, res) => {
+  console.log('getUser:', req.params.user)
+  return await db.findOne('bloom', 'userdata', { user_id: decodeURIComponent(req.params.user) })
+    .then(data => res.json({ data: data }))
+    .catch(error => console.log('geen data gevonden:'))
+})
+
 
 module.exports = router;
