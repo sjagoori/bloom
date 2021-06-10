@@ -4,28 +4,29 @@ import styles from '../styles/Buddies.module.css';
 
 const filter = {
   All: () => true,
-  SameType: (users, user) => {users.filter(users => users.kankerType[0] == user.kankerType[0] )}
+  SameType: (users, user) => { users.filter(users => users.kankerType[0] == user.kankerType[0]) }
 }
 
 export default function Buddies(props) {
-  console.log(props.singleUser)
+  console.log(props.data.data)
   // Show or hide filters
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <>
-    <header className={styles.topBar}>
-    <h1>Buddy zoeken</h1>
-    <button
-      onClick={() => setModalVisible()}  
-    ><img src="./icons/filter-icoon.svg" alt="Filter" /></button>
-    </header>
-    <BuddyList data={props.data}/>
+      <header className={styles.topBar}>
+        <h1>Buddy zoeken</h1>
+        <button
+          onClick={() => setModalVisible()}
+        ><img src="./icons/filter-icoon.svg" alt="Filter" /></button>
+      </header>
+      <BuddyList data={props.data.data} />
     </>
   )
 }
 
-export async function getServerSideProps({params}) { 
-  const res = await fetch(`http://localhost:3001/getAllUsers`)
+export async function getServerSideProps() {
+
+  const res = await fetch(`https://bloom.bloomingbooty.repl.co/getAllUsers`)
   const data = await res.json()
 
   if (!data) {
@@ -34,9 +35,5 @@ export async function getServerSideProps({params}) {
     }
   }
 
-  return {
-    props: {
-      data,
-    }
-  }
+  return { props: { data } }
 }
