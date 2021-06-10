@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './[slug].module.css';
 
-
 const props = {
   data: {
     _id: '60b8e9c2aea08a5f61999c19',
