@@ -4,12 +4,16 @@ import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from "../styles/Registration.module.css";
+import { useCookies } from "react-cookie";
+import { db_url } from '../../config.js'
 
 export default function Home({ loginState }, ctx) {
   const [error, setError] = useState(null);
   const [progress, setProgress] = useState(0);
   const [regData, setRegData] = useState();
   const router = useRouter();
+  const [cookie, setCookie] = useCookies(["user"]);
+
 
   useEffect(() => {
     if (loginState != undefined && JSON.parse(parseCookie(loginState).user))
@@ -22,13 +26,14 @@ export default function Home({ loginState }, ctx) {
       if (Object.keys(values).length == 0) {
         setError("Je hebt nog niets ingevuld");
       } else if (progress == 7) {
-        fetch("http://localhost:3001/register", {
-          method: "POST",
-          body: JSON.stringify(regData),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        fetch(`https://bloom.bloomingbooty.repl.co/register`,
+          {
+            method: "POST",
+            body: JSON.stringify(regData),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
           .then((res) => res.json())
           .then((data) => {
             data.status === 200
