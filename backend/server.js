@@ -24,12 +24,4 @@ app.get('/blog/:blog', (req, res) => {
   res.json(content[`${req.params.blog}`])
 })
 
-app.get('/users', (req, res) => {
-  res.json(users)
-})
-
-app.get('/users/:user', (req, res) => {
-  res.json(users[`${req.params._id}`])
-})
-
 app.listen(port, () => console.log(`listening to port ${port}`))
