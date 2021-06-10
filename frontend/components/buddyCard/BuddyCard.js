@@ -26,15 +26,3 @@ export default function BuddyCard(props) {
     </>
   )
 }
-
-/**
- * @title getServerSideProps
- * @description retrieve data from the backend and return is as json
- */
-// export async function getServerSideProps({ params }) {
-
-//   const res = await fetch(`http://bloom-content.vercel.app/api/?theme=${params.slug}`)
-//   const data = await res.json()
-
-//   return { props: { data }}
-// }
