@@ -1,11 +1,12 @@
 import BuddyCard from '@/components/buddyCard/BuddyCard';
 import styles from './BuddyList.module.css';
 
-export default function BuddyList({data}) {
+export default function BuddyList({ data }) {
   const users = data.map((key, index) => {
-    return <BuddyCard key={index} _id={key._id} name={key.name} kankerType={key.kankerType} birthDate={getAge(key.birthDate)}/>
+    console.log(key.user_id);
+    return <BuddyCard key={index} user_id={key.user_id} name={key.name} kankerType={key.kankerType} birthDate={getAge(key.birthDate)} />
   })
-  
+
   return (
     <>
       <main className={styles.buddyContainer}>
@@ -20,10 +21,10 @@ export default function BuddyList({data}) {
 /**
  * @title Get age in year format
  * @description Gets date object from user and transform it in a numerical value
- * @param {Date} birthday 
+ * @param {Date} birthday
  * @returns {Number} Age
  */
- function getAge(birthday) {
+function getAge(birthday) {
   const birthDate = new Date(birthday)
   const today = new Date()
   return today.getFullYear() - birthDate.getFullYear()
