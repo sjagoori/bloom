@@ -16,6 +16,7 @@
     "react-cookie": "^4.0.3",
     "react-dom": "17.0.2",
     "react-onboarding-pro-temp": "^0.5.2",
-    "react-swipeable-views": "^0.13.9"
+    "react-swipeable-views": "^0.13.9",
+    "socket.io-client": "^4.1.2"
   }
 }
