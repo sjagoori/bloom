@@ -1,6 +1,5 @@
 require("dotenv").config();
 let content = require("./data/blogContent.json")
-let users = require("./data/users.json")
 
 const port = process.env.PORT || 3001,
   express = require("express"),
