@@ -1,0 +1,10 @@
+/* main section */
+.buddyContainer {
+  margin: 0 25px;
+}
+
+.cardLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 154px));
+  gap: .8em;
+}

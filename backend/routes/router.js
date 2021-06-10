@@ -10,11 +10,11 @@ router.post("/login", async (req, res) => {
     .then((response) =>
       bcrypt.compareSync(password, response.password, salt)
         ? res.json({
-            status: 200,
-            data: {
-              user_id: response.user_id,
-            },
-          })
+          status: 200,
+          data: {
+            user_id: response.user_id,
+          },
+        })
         : res.json({ status: 400 })
     )
     .catch((err) => console.log("err", err));
@@ -44,5 +44,13 @@ router.post("/register", async (req, res) => {
     return res.json({ status: 400, msg: "gebruiker bestaat al" });
   }
 });
+
+
+router.get('/getAllUsers', async (req, res) => {
+  return await db.findMany('bloom', 'userdata')
+    .then(data => res.json({ status: 200, data: data }))
+    .catch(error => console.log('geen data gevonden:\n', error))
+})
+
 
 module.exports = router;
