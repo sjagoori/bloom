@@ -20,27 +20,9 @@ export default function Buddies(props) {
     ><img src="./icons/filter-icoon.svg" alt="Filter" /></button>
     </header>
     <BuddyList data={props.data}/>
-    {/* <main className={styles.filterContainer}>
-      <section>
-        <p className={styles.leadingText}>ik wil contact met...</p>
-        <form action="" method="post">
-          <input type="checkbox" name="sameTypeCancer" id="" />
-          <label htmlFor="sameTypeCancer">Gebruikers met hetzelfde type kanker</label>
-          <input type="checkbox" name="usersOfGender" id="" />
-          <label htmlFor="usersOfGender">Gebruikers van een bepaald gender</label>
-          <input type="checkbox" name="typeOfGender" id="" disabled/>
-          <input type="checkbox" name="typeOfGender" id="" disabled/>
-          <input type="checkbox" name="typeOfGender" id="" disabled/>
-          
-        </form>
-      </section>  
-    </main>  */}
     </>
   )
 }
-
-// Data filteren wanneer deze binnenkomt vanuit de serverside
-//ipv serversideprops is het een normale fetch functie die dat ophaalt enn dan in de props gooit
 
 export async function getServerSideProps({params}) { 
   const res = await fetch(`http://localhost:3001/getAllUsers`)
