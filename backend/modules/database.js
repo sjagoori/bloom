@@ -26,6 +26,53 @@ exports.findOne = async (db, collect, query) => {
   }
 };
 
+
+
+/**
+ * Function returns all entries in given database:collection pair
+ * @param {String} db database to look in
+ * @param {String} collect collection of the database
+ * @param {Object} query query (optional)
+ * @param {Object} options options (optional)
+ * @source https://docs.mongodb.com/drivers/node/usage-examples/find/
+ */
+exports.findMany = async (db, collect, query, options) => {
+  try {
+    await client.connect()
+
+    const database = client.db(db)
+    const collection = database.collection(collect)
+
+    const result = await collection.find(query ? query : null, options && query ? options : null).toArray()
+
+    return result
+
+  } catch (error) {
+    return error
+  }
+}
+
+
+/**
+ * Function find document in collection based on a keyword and optional options
+ * @param {String} db target database
+ * @param {String} collect target collection
+ * @param {String} keyword keyword to search with
+ * @param {Object} options search options (optional)
+ * @source https://docs.mongodb.com/drivers/node/usage-examples/findOne/
+ * @source https://shabier.medium.com/web-development-crud-web-application-76f3b7ce127b
+ */
+exports.find = async (db, collect) => {
+  try {
+    const database = client.db(db);
+    const collection = database.collection(collect);
+
+    return await collection.find();
+  } catch (error) {
+    console.log("Couldn't find document");
+  }
+};
+
 /**
  * Function inserts one document in collection
  * @param {String} db target database
