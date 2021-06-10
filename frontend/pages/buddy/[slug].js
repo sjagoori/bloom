@@ -14,8 +14,6 @@ const props = {
   }
 }
 
-=
-
 /**
  * @title Get age in year format
  * @description Gets date object from user and transform it in a numerical value
