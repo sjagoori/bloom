@@ -48,4 +48,12 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+router.get('/getAllUsers', async (req, res) => {
+  return await db.findMany('bloom', 'userdata')
+    .then(data => res.json({ status: 200, data: data }))
+    .catch(error => console.log('geen data gevonden:\n', error))
+})
+
+
 module.exports = router;
