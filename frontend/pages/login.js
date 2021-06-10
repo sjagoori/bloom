@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCookies } from "react-cookie";
 import styles from "../styles/Login.module.css";
 
-export default function Login({ loginState }) {
+export default function Login() {
   const router = useRouter();
   const [cookie, setCookie] = useCookies(["user"]);
   const [error, setError] = useState(null);
@@ -25,7 +25,7 @@ export default function Login({ loginState }) {
       password: e.target[1].value,
     };
 
-    await fetch("http://localhost:3001/login", {
+    await fetch("https://bloom.bloomingbooty.repl.co/login", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -63,7 +63,3 @@ export default function Login({ loginState }) {
     </>
   );
 }
-
-// Login.getInitialProps = async (ctx) => ({
-//   loginState: ctx.req ? ctx.req.headers.cookie : null,
-// });
