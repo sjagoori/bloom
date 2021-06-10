@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from "../styles/Registration.module.css";
 import { useCookies } from "react-cookie";
-import { db_url } from '../../config.js'
 
 export default function Home({ loginState }, ctx) {
   const [error, setError] = useState(null);
