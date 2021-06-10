@@ -43,7 +43,7 @@ export default function Buddies(props) {
 //ipv serversideprops is het een normale fetch functie die dat ophaalt enn dan in de props gooit
 
 export async function getServerSideProps({params}) { 
-  const res = await fetch(`http://localhost:3001/users`)
+  const res = await fetch(`http://localhost:3001/getAllUsers`)
   const data = await res.json()
 
   if (!data) {
