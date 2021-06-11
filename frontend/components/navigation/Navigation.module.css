@@ -17,6 +17,12 @@
   align-items: center;
 }
 
+@media (min-width: 400px) {
+  .navigation > ul {
+    padding: 0 5em;
+  }
+}
+
 .navigation li {
   list-style: none;
 }
