@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { parseCookie } from "../helpers/parseCookie";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { parseCookie } from "../helpers/parseCookie";
 import styles from "../styles/Login.module.css";
 
 export default function Login({ loginState }) {
@@ -23,7 +23,7 @@ export default function Login({ loginState }) {
       password: e.target[1].value,
     };
 
-    await fetch("http://localhost:3001/login", {
+    await fetch("https://bloom.bloomingbooty.repl.co/login", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

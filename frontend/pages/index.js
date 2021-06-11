@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { parseCookie } from "../helpers/parseCookie";
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from "react";
+import { parseCookie } from "../helpers/parseCookie";
 import styles from "../styles/Registration.module.css";
 
 export default function Home({ loginState }, ctx) {
@@ -22,7 +22,7 @@ export default function Home({ loginState }, ctx) {
       if (Object.keys(values).length == 0) {
         setError("Je hebt nog niets ingevuld");
       } else if (progress == 7) {
-        fetch("http://localhost:3001/register", {
+        fetch("https://bloom.bloomingbooty.repl.co/register", {
           method: "POST",
           body: JSON.stringify(regData),
           headers: {

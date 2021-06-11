@@ -1,6 +1,6 @@
 import BuddyList from '@/components/buddyList/BuddyList';
+import styles from '@/styles/Buddies.module.css';
 import { useState } from 'react';
-import styles from '../styles/Buddies.module.css';
 
 const filter = {
   All: () => true,
@@ -8,7 +8,7 @@ const filter = {
 }
 
 export default function Buddies(props) {
-  console.log(props.singleUser)
+  console.log(props)
   // Show or hide filters
   const [modalVisible, setModalVisible] = useState(false)
   return (
@@ -19,13 +19,13 @@ export default function Buddies(props) {
       onClick={() => setModalVisible()}  
     ><img src="./icons/filter-icoon.svg" alt="Filter" /></button>
     </header>
-    <BuddyList data={props.data}/>
+    <BuddyList data={props.data.data}/>
     </>
   )
 }
 
 export async function getServerSideProps({params}) { 
-  const res = await fetch(`http://localhost:3001/getAllUsers`)
+  const res = await fetch(`https://bloom.bloomingbooty.repl.co/getAllUsers`)
   const data = await res.json()
 
   if (!data) {
