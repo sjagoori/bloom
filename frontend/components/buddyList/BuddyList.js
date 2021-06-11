@@ -3,7 +3,7 @@ import styles from './BuddyList.module.css';
 
 export default function BuddyList({data}) {
   const users = data.map((key, index) => {
-    return <BuddyCard key={index} _id={key._id} name={key.name} kankerType={key.kankerType} birthDate={getAge(key.birthDate)}/>
+    return <BuddyCard key={index} user_id={key.user_id} name={key.name} kankerType={key.kankerType} birthDate={getAge(key.birthDate)}/>
   })
   
   return (
