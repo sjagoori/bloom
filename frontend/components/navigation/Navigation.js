@@ -39,7 +39,9 @@ export default function Navigation() {
   const router = useRouter()
 
   const [cookie, setCookie] = useCookies(["user"])
-  const profileId = cookie.user.data.user_id
+  // console.log()
+  // console.log(window)
+  // const profileId = cookie.user.data.user_id
 
   return (
     <>
@@ -48,7 +50,7 @@ export default function Navigation() {
           <li  id='blog' className={styles.navItem} ><Link href="/blog"><div><img src='/icons/thema-navigatie.svg' alt=""/><span>Thema's</span></div></Link></li>
           <li  id='blog' className={styles.navItem} ><Link href="/buddies"><div><img src='/icons/buddy-navigatie.svg' alt=""/><span>Buddy</span></div></Link></li>
           <li  id='blog' className={styles.navItem} ><Link href="/chat"><div><img src='/icons/berichten-navigatie.svg' alt=""/><span>Berichten</span></div></Link></li>
-          <li  id='blog' className={styles.navItem} ><Link href={`/buddy/${profileId}`}><div><img  src='/icons/profiel-navigatie.svg' alt=""/><span>Profiel</span></div></Link></li>
+          {/* <li  id='blog' className={styles.navItem} ><Link href={`/buddy/${cookie.user.data.user_id}`}><div><img  src='/icons/profiel-navigatie.svg' alt=""/><span>Profiel</span></div></Link></li> */}
         </ul>
       </nav>
     </>
