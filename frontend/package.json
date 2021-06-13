@@ -8,8 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "boring-avatars": "^1.5.5",
+    "cookie": "^0.4.1",
+    "formik": "^2.2.6",
     "next": "10.2.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-cookie": "^4.0.3",
+    "react-dom": "17.0.2",
+    "react-onboarding-pro-temp": "^0.5.2",
+    "react-swipeable-views": "^0.13.9"
   }
 }
