@@ -1,23 +1,27 @@
 import { useState, useEffect } from "react";
-import { parseCookie } from "../helpers/parseCookie";
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from "../styles/Registration.module.css";
 import { useCookies } from "react-cookie";
+import Header from '../components/header/Header'
+import Avatar from 'boring-avatars';
+import LoadingScreen from "@/components/loadingScreen/loadingScreen";
 
 export default function Home({ loginState }, ctx) {
   const [error, setError] = useState(null);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(null);
   const [regData, setRegData] = useState();
   const router = useRouter();
   const [cookie, setCookie] = useCookies(["user"]);
+  const [onboardingData, setOnboardingData] = useState();
 
-
-  useEffect(() => {
-    if (loginState != undefined && JSON.parse(parseCookie(loginState).user))
-      router.push({ pathname: "dashboard" });
-  });
+  useEffect(async () => {
+    let onboardingData = await fetch("/api/onboarding").then(res => res.json()).then(data => data)
+    setOnboardingData(onboardingData)
+    setProgress(0)
+    console.log(onboardingData)
+  }, [])
 
   const formik = useFormik({
     initialValues: {},
@@ -54,16 +58,19 @@ export default function Home({ loginState }, ctx) {
     },
   });
 
-  const formElement = (props) => {
+  const formElement = (header, props) => {
     return (
       <div className={styles.container}>
+        {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img className={`${styles.rotate} ${styles.backButton}`} src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
+
+        <Header name={header} isBlogs={false} />
+
         <form onSubmit={formik.handleSubmit}>
-          {progress > 0 ? <a onClick={() => setProgress(progress - 1)}><img className={`${styles.rotate} ${styles.backButton}`} src="/icons/chevron-icoon.svg" alt="Back"></img></a> : null}
           <div className={styles.formContainer}>
             {props}
             <span>{error ? error : ""}</span>
           </div>
-          <button className={styles.button} type="submit">Submit</button>
+          <button className={styles.button} type="submit">Volgende</button>
         </form>
       </div>
     )
@@ -71,76 +78,80 @@ export default function Home({ loginState }, ctx) {
 
   switch (progress) {
     case 0:
-      return formElement(
+      return formElement("Bloom",
         <>
+          <h2>Welkom</h2>
           {onboardingData.accountCredsData.map((item, index) => (
             <>
               <Text
+                key={index}
                 type={item.type}
                 name={item.name}
                 id={item.id}
                 onChange={formik.handleChange}
                 placeholder={item.placeholder}
               />
-              <label key={index} htmlFor={item.id}>
-                {item.label}
-              </label>
             </>
           ))}
-          <Link href="/login">Ik heb al een account</Link>
-          <Link href="/login">Ik ben een hulpverlener</Link>
+          <Link href="/login"><a>Ik heb al een account</a></Link>
+          <Link href="/login"><a>Ik ben een hulpverlener</a></Link>
         </>
       );
     case 1:
-      return formElement(onboardingData.personalInfoData.map((item, index) => (
-        <>
-          <Text
-            type="text"
-            name={item.name}
-            id={item.id}
-            onChange={formik.handleChange}
-            placeholder={item.placeholder}
-          />
-          <label key={index} htmlFor={item.id}>{item.label}</label>
-        </>
-      )))
-    case 2:
-      return formElement(
-        onboardingData.birthDateData.map((item, index) => (
-          <>
-            <DatePicker
-              name={item.name}
-              id={item.id}
-              onChange={formik.handleChange}
-            />
-            <label key={index} htmlFor={item.id}>
-              {item.label}
-            </label>
-          </>
-        ))
-      );
-    case 3:
-      return formElement(
-        onboardingData.residenceData.map((item, index) => (
+      return formElement("Naam",
+        onboardingData.personalInfoData.map((item, index) => (
           <>
             <Text
+              key={index}
               type="text"
               name={item.name}
               id={item.id}
               onChange={formik.handleChange}
               placeholder={item.placeholder}
             />
-            <label key={index} htmlFor={item.id}>
+            {/* <label key={index} htmlFor={item.id}>{item.label}</label> */}
+          </>
+        )))
+    case 2:
+      return formElement("Geboortedatum",
+        onboardingData.birthDateData.map((item, index) => (
+          <>
+            <DatePicker
+              key={index}
+              name={item.name}
+              id={item.id}
+              onChange={formik.handleChange}
+            />
+            {/* <label key={index} htmlFor={item.id}>
               {item.label}
-            </label>
+            </label> */}
+          </>
+        ))
+      );
+    case 3:
+      return formElement("Woonplaats",
+        onboardingData.residenceData.map((item, index) => (
+          <>
+            <Text
+              key={index}
+              type="text"
+              name={item.name}
+              id={item.id}
+              onChange={formik.handleChange}
+              placeholder={item.placeholder}
+            />
+            {/* <label key={index} htmlFor={item.id}>
+              {item.label}
+            </label> */}
           </>
         ))
       );
     case 4:
-      return formElement(
+      return formElement("Gender",
         onboardingData.genderData.map((item, index) => (
           <>
             <Radio
+              key={index}
               name={item.name}
               id={item.id}
               onChange={formik.handleChange}
@@ -153,10 +164,11 @@ export default function Home({ loginState }, ctx) {
         ))
       );
     case 5:
-      return formElement(
+      return formElement("Type kanker",
         onboardingData.kankerTypesData.map((item, index) => (
           <>
             <Checkbox
+              key={index}
               name={item.name}
               id={item.id}
               onChange={formik.handleChange}
@@ -169,36 +181,42 @@ export default function Home({ loginState }, ctx) {
         ))
       );
     case 6:
-      return formElement(
+      return formElement("Profiel foto",
         onboardingData.pictogramData.map((item, index) => (
           <>
             <Radio
+              key={index}
               name={item.name}
               id={item.id}
               onChange={formik.handleChange}
               value={item.value}
             />
             <label key={index} htmlFor={item.id}>
-              {item.label}
+              <Avatar
+                key={index}
+                size={60}
+                name={item.value}
+                variant="beam"
+                colors={["#FEE89E", "#F07A06", "#F07903", "#3CB2FF", "#CE6F88"]}
+              ></Avatar>
             </label>
           </>
         ))
       );
     case 7:
-      return formElement(
+      return formElement("Bio",
         onboardingData.aboutData.map((item, index) => (
           <>
             <TextArea
+              key={index}
               name={item.name}
               id={item.id}
               onChange={formik.handleChange}
               value={item.value}
               rows="10"
               cols="50"
+              placeholder={item.label}
             />
-            <label key={index} htmlFor={item.id}>
-              {item.label}
-            </label>
           </>
         ))
       );
@@ -209,6 +227,10 @@ export default function Home({ loginState }, ctx) {
           <Link href="/login">Start</Link>
         </>
       );
+    default:
+      return (
+        <LoadingScreen />
+      )
   }
 }
 
@@ -249,116 +271,6 @@ const Radio = ({ type = "radio", name, onChange, id, value }) => (
   <input type={type} name={name} onChange={onChange} id={id} value={value} />
 );
 
-const onboardingData = {
-  accountCredsData: [
-    {
-      type: "email",
-      name: "email",
-      label: "Wat is je email adres?",
-      placeholder: "voorbeeld@domein.nl",
-      id: "email",
-    },
-    {
-      type: "password",
-      name: "password",
-      label: "Wat is je password",
-      id: "password",
-    },
-  ],
-  personalInfoData: [
-    {
-      name: "name",
-      label: "Hoe heet je?",
-      placeholder: "voornaamachternaam",
-      id: "name",
-    },
-  ],
-  birthDateData: [
-    {
-      name: "birthDate",
-      label: "Geboortedatum",
-      id: "birthDate",
-    },
-  ],
-  kankerTypesData: [
-    {
-      name: "kankerType",
-      label: "KankerType1",
-      value: "kanker1",
-      id: "kanker1",
-    },
-    {
-      name: "kankerType",
-      key: "checkBox2",
-      label: "KankerType2",
-      value: "kanker2",
-      id: "kanker2",
-    },
-  ],
-  residenceData: [
-    {
-      name: "residence",
-      label: "Waar woon je?",
-      id: "residence",
-      placeholder: "Voer hier je woonplaats in.",
-    },
-  ],
-  genderData: [
-    {
-      name: "gender",
-      label: "Man",
-      value: "man",
-      id: "gender-man",
-    },
-    {
-      name: "gender",
-      label: "Vrouw",
-      value: "Vrouw",
-      id: "gender-vrouw",
-    },
-    {
-      name: "gender",
-      label: "Neutraal",
-      value: "Neutraal",
-      id: "gender-neurtraal",
-    },
-  ],
-  pictogramData: [
-    {
-      name: "pictogram",
-      value: "pictogram-1",
-      id: "pictogram-1",
-    },
-    {
-      name: "pictogram",
-      value: "pictogram-2",
-      id: "pictogram-2",
-    },
-    {
-      name: "pictogram",
-      value: "pictogram-3",
-      id: "pictogram-3",
-    },
-    {
-      name: "pictogram",
-      value: "pictogram-4",
-      id: "pictogram-4",
-    },
-    {
-      name: "pictogram",
-      value: "pictogram-5",
-      id: "pictogram-5",
-    },
-  ],
-  aboutData: [
-    {
-      name: "about",
-      label: "Vertel meer over jezelf",
-      placeholder: "Vertel meer over jezelf",
-      id: "about",
-    },
-  ],
-};
 
 const validate = (values) => {
   const errors = {};

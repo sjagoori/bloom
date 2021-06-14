@@ -15,11 +15,16 @@
   margin: 1em 0;
 }
 
-.formContainer > label {
+.formContainer>label {
   display: block;
   font-family: 'Silka';
   font-weight: 700;
   font-size: 1.5em;
+}
+
+
+.formContainer * {
+  max-width: 100%;
 }
 
 .formContainer input {
@@ -62,10 +67,11 @@
   margin: 0.5em
 }
 
-.formContainer  input[id^='gender-']:checked + label[for^='gender-'] {
+.formContainer input[id^='gender-']:checked+label[for^='gender-'] {
   border: 5px solid hsl(30, 97%, 48%);
 }
-/* 
+
+/*
 .formContainer label[for^='gender-']:focus-within {
   border: 5px solid hsl(30, 97%, 48%);
 } */
@@ -75,7 +81,7 @@
   flex-direction: column;
 }
 
-.formContainer label[for="about"] > textarea[id="about"]{
+.formContainer label[for="about"]>textarea[id="about"] {
   border-radius: 1.5em;
   border: 1px solid hsl(109, 0%, 78%);
   resize: none;
