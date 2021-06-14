@@ -1,0 +1,12 @@
+/* main section */
+.buddyContainer {
+  width: 85vw;
+  margin: 0 auto;
+}
+
+.cardLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(46%, 1fr));
+  gap: 1em;
+  width: 100%;
+}
