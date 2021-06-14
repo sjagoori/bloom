@@ -27,7 +27,6 @@
 
 .topBar img {
   padding: 10px;
-  margin-left: 15px;
   transform: scaleX(-1);
 }
 
@@ -50,7 +49,7 @@
   margin-bottom: 0.5em;
 }
 
-.introduction { 
+.introduction {
   font-family: 'Nunito-bold';
 }
 
@@ -60,23 +59,24 @@
   color: #716c60;
 }
 
-.subtitle{
+.subtitle {
   font-family: 'Nunito-bold';
   color: #f17a04;
   margin: 30px 0 10px 0;
 }
-.subParagraph{
+
+.subParagraph {
   margin-bottom: 20px;
 }
 
-.listButtons{
+.listButtons {
   cursor: pointer;
   background: #F9F0C6;
   color: #f07a06;
   border-radius: 10px;
   border: none;
   font-weight: bold;
-  overflow: hidden;  
+  overflow: hidden;
   display: grid;
   grid-template-columns: 2fr .3fr;
   margin-bottom: 10px;
@@ -92,7 +92,7 @@
   grid-column: 2;
 
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   background: #F7E7A0;
   border-radius: 10px 0 0 0;
@@ -139,10 +139,12 @@
   overflow: hidden;
   transition: .1s;
 }
+
 /* hsl(30, 97%, 48%) hsl(30, 97%, 48%)*/
 .test {
   color: #f17a04;
 }
+
 .tabBar ul li {
   font-family: 'nunito-bold';
   padding: 6px 30px;
