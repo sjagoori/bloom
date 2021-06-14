@@ -4,24 +4,27 @@ const messageCache = require('./messageCache'),
 
 exports.eventHandler = async (client, server) => {
   client.on('message', message => {
-    console.log(message);
+    console.log("message", message);
 
-    db.updateOne('bloom', 'userdata',
+    db.updateOne('bloom', 'userdata', message.consent.from.identifier,
       {
         user_id: message.consent.from.identifier,
-        chats: [
-          {
-            chat_id: message.chat_id,
-            from: {
-              identifier: message.from.identifier,
-              consent: true
-            },
-            to: {
-              identifier: message.to.identifier,
-              consent: false
+        chatData:
+        {
+          chats: [
+            {
+              chat_id: message.chat_id,
+              from: {
+                identifier: message.consent.from.identifier,
+                consent: true
+              },
+              to: {
+                identifier: message.consent.to.identifier,
+                consent: false
+              }
             }
-          }
-        ]
+          ]
+        }
       }
     )
 
@@ -30,19 +33,20 @@ exports.eventHandler = async (client, server) => {
   })
 
   client.on('getPartners', partners => {
-    console.log("partners", partners)
+    // console.log("partners", partners)
 
     // * this will be the room name
     const pairData = Object.values(partners).sort((a, b) => a.user_id.localeCompare(b.user_id))
     const pair = pairData[0].user_id + pairData[1].user_id
-    console.log("pair", pair)
+    // console.log("pair", pair)
 
     // make a room
     client.join(pair)
 
     // TODO get partners from somewhere
     // * dont forget to broadcast these to the room instead
-    // client.broadcast.to(pair).emit('setPartners', {
+    // client.broadcast.to(pair).emit('setPartners', {'
+    // console.log(pairData[1])
     client.emit('setPartners', {
       from: {
         identifier: pairData[0].user_id,
