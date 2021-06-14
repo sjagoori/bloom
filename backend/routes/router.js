@@ -26,8 +26,8 @@ router.post("/login", async (req, res) => {
 router.post("/register", async (req, res) => {
   let userData = {
     email: req.body.email,
-    user_id: bcrypt.hashSync(req.body.email, salt),
-    password: bcrypt.hashSync(req.body.password, salt),
+    user_id: bcrypt.hashSync((req.body.email + (+new Date)), salt),
+    password: bcrypt.hashSync((req.body.password + (+new Date)), salt),
     name: req.body.name,
     birthDate: req.body.birthDate,
     residence: req.body.residence,
