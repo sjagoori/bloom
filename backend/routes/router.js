@@ -63,4 +63,31 @@ router.get('/getUser/:user', async (req, res) => {
 })
 
 
+router.get('/getUserChat/:user', async (req, res) => {
+  console.log(req.params.user)
+  let data = await db.findMany('bloom', 'userdata')
+  // res.json(data)
+
+  console.log(data)
+  let startedChats = data.map(key => key.chatData != undefined
+    ? key.chatData.chats.map(elem => elem.to.identifier == req.params.user
+      ? key
+      : false)
+    : false).filter(elem => typeof elem != "boolean")
+
+  let requestedChats = data.map(key => key.chatData != undefined
+    ? key.chatData.chats.map(elem => elem.from.identifier == req.params.user
+      ? key
+      : false)
+    : false).filter(elem => typeof elem != "boolean")
+
+  console.log(startedChats)
+
+  res.json({ list: startedChats, requests: requestedChats })
+
+  // return await db.findMany('bloom', "userdata", {user_id: decodeURIComponent(req.params.user)})
+  // .then(data => res.json({data: data}))
+  // .catch(error => console.log("error, ", error))
+})
+
 module.exports = router;
