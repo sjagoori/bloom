@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Header from "../components/header/Header";
-import styles from '../styles/Blog.module.css';
+import styles from '../styles/blog.module.css';
 import parseCookie from '../utils/parseCookie'
 
 const blogs = [
