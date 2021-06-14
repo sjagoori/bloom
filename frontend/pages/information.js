@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import styles from '../styles/Information.module.css';
+import styles from '../styles/information.module.css';
 
 export default function Information() {
   const router = useRouter()
