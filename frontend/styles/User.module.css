@@ -1,0 +1,123 @@
+.profileContainer {
+  margin: 0 1.5em;
+  width: 85vw;
+  margin: 0 auto;
+  padding-top: 1em;
+}
+
+.profileContainer h2 {
+  font-size: 1.2em;
+
+}
+
+.userCard {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 1fr;
+}
+
+.imageContainer {
+  background-color: #FAD29C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  height: 100px;
+  width: 100px;
+  margin-right: 0.9em;
+}
+
+.userInformation {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  margin-left: 0.3em;
+}
+
+.userInformation>h2 {
+  font-family: 'Nunito-bold';
+  color: #151515;
+  margin: 0 0 0.5em;
+}
+
+.userInformation>p {
+  font-family: 'Nunito-light';
+  margin: 0 0 0.5em 0;
+}
+
+.userInformation>p:first-of-type {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.userInformation img {
+  margin-right: 5px;
+}
+
+.chatButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  align-self: end;
+  height: 30px;
+  width: 90px;
+
+  background-color: #FCE4C3;
+  color: #F17A06;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 10px;
+
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.chatButton span:first-of-type {
+  margin-left: 0.7em;
+}
+
+.chatButton span:last-of-type {
+  height: 100%;
+  width: 25px;
+  margin-left: auto;
+  background-color: #FAD29C;
+  border-radius: 10px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oncoSec {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #15151520;
+}
+
+.oncoSec h2 {
+  font-family: 'Nunito-bold';
+  color: #151515;
+  margin-bottom: 0;
+}
+
+.oncoInfo {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  column-gap: 0.8em;
+}
+
+.oncoInfo span {
+  font-family: 'Nunito-bold';
+}
+
+.oncoInfo p {
+  font-family: 'Nunito-light';
+  margin: 0.4em 0;
+  border-bottom: 1px solid #726D611A;
+}
+
+.oncoInfo p:last-child {
+  border-bottom: none;
+}
