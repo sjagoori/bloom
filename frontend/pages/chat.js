@@ -6,7 +6,7 @@ import Avatar from 'boring-avatars';
 import Link from 'next/link'
 import Badge from '@material-ui/core/Badge'
 import sortID from '../utils/sortID'
-import parseCookie from '@/utils/parseCookie';
+import parseCookie from '../utils/parseCookie';
 
 export default function Chat() {
   const router = useRouter();
