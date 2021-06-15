@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import LoadingScreen from "@/components/loadingScreen/loadingScreen";
+import Avatar from 'boring-avatars';
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from "../styles/Registration.module.css";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import Header from '../components/header/Header'
-import Avatar from 'boring-avatars';
-import LoadingScreen from "@/components/loadingScreen/loadingScreen";
+import Header from '../components/header/Header';
+import styles from "../styles/Registration.module.css";
 
 export default function Home({ loginState }, ctx) {
   const [error, setError] = useState(null);
@@ -68,9 +68,9 @@ export default function Home({ loginState }, ctx) {
         <form onSubmit={formik.handleSubmit}>
           <div className={styles.formContainer}>
             {props}
-            <span>{error ? error : ""}</span>
+            <span className={styles.error}>{error ? error : ""}</span>
           </div>
-          <button className={styles.button} type="submit">Volgende</button>
+          <button className={styles.button} type="submit"><span>Volgende</span><span><img src="/icons/chevron-icoon.svg" /></span></button>
         </form>
       </div>
     )
@@ -94,13 +94,14 @@ export default function Home({ loginState }, ctx) {
             </>
           ))}
           <Link href="/login"><a>Ik heb al een account</a></Link>
-          <Link href="/login"><a>Ik ben een hulpverlener</a></Link>
+          {/* <Link href="/login"><a>Ik ben een hulpverlener</a></Link> */}
         </>
       );
     case 1:
-      return formElement("Naam",
+      return formElement("Wat is je naam?",
         onboardingData.personalInfoData.map((item, index) => (
           <>
+          <p className={styles.subText}>Dan weten gebruikers hoe ze je kunnen aanspreken. Dit mag ook een verzonnen naam zijn.</p>
             <Text
               key={index}
               type="text"
@@ -109,19 +110,22 @@ export default function Home({ loginState }, ctx) {
               onChange={formik.handleChange}
               placeholder={item.placeholder}
             />
+            <img className={styles.progressFlower} src= "/icons/signup-achtergrond-2.svg"/>
             {/* <label key={index} htmlFor={item.id}>{item.label}</label> */}
           </>
         )))
     case 2:
-      return formElement("Geboortedatum",
+      return formElement("Wat is je geboortedatum",
         onboardingData.birthDateData.map((item, index) => (
           <>
+          <p className={styles.subText}>Dan kunnen we je koppeleen aan leeftijdsgenoten.</p>
             <DatePicker
               key={index}
               name={item.name}
               id={item.id}
               onChange={formik.handleChange}
             />
+            <img className={styles.progressFlower} src="/icons/signup-achtergrond-3.svg"/>
             {/* <label key={index} htmlFor={item.id}>
               {item.label}
             </label> */}
@@ -129,9 +133,10 @@ export default function Home({ loginState }, ctx) {
         ))
       );
     case 3:
-      return formElement("Woonplaats",
+      return formElement("Wat is je woonplaats?",
         onboardingData.residenceData.map((item, index) => (
           <>
+          <p className={styles.subText}>Dan kunnen we je suggesties geven voor hulpaanbieders bij jou in de buurt. Dit is niet zichtbaar voor andere gebruikers.</p>
             <Text
               key={index}
               type="text"
@@ -140,6 +145,7 @@ export default function Home({ loginState }, ctx) {
               onChange={formik.handleChange}
               placeholder={item.placeholder}
             />
+            <img className={styles.progressFlower} src="/icons/signup-achtergrond-4.svg"/>
             {/* <label key={index} htmlFor={item.id}>
               {item.label}
             </label> */}
@@ -147,8 +153,9 @@ export default function Home({ loginState }, ctx) {
         ))
       );
     case 4:
-      return formElement("Gender",
-        onboardingData.genderData.map((item, index) => (
+      return formElement("Wat is je gender?",
+      <article className={styles.genderContainer}>
+        {onboardingData.genderData.map((item, index) => (
           <>
             <Radio
               key={index}
@@ -157,14 +164,18 @@ export default function Home({ loginState }, ctx) {
               onChange={formik.handleChange}
               value={item.value}
             />
-            <label key={index} htmlFor={item.id}>
-              {item.label}
-            </label>
+              <label key={index} htmlFor={item.id}>
+                {item.label}
+              </label>
+            {/* <div>
+              <span>{item.value}</span>
+            </div> */}
           </>
-        ))
+        ))}
+      </article>
       );
     case 5:
-      return formElement("Type kanker",
+      return formElement("Welke type kanker heb je gehad?",
         onboardingData.kankerTypesData.map((item, index) => (
           <>
             <Checkbox
@@ -181,8 +192,10 @@ export default function Home({ loginState }, ctx) {
         ))
       );
     case 6:
-      return formElement("Profiel foto",
-        onboardingData.pictogramData.map((item, index) => (
+      return formElement("Kies een profiel pictogram",
+      <article className={styles.pictogramContainer}>
+      {onboardingData.pictogramData.map((item, index) => (
+        <section className={styles.pictogram}>
           <>
             <Radio
               key={index}
@@ -201,12 +214,15 @@ export default function Home({ loginState }, ctx) {
               ></Avatar>
             </label>
           </>
-        ))
+          </section>
+        ))}
+        </article>
       );
     case 7:
-      return formElement("Bio",
+      return formElement("Vertel iets over jezelf",
         onboardingData.aboutData.map((item, index) => (
           <>
+          <p className={styles.subText}>Is er nog iets wat je zou willen delen? dan kan je dit kwijt in je biografie.</p>
             <TextArea
               key={index}
               name={item.name}

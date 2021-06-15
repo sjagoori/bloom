@@ -20,7 +20,7 @@ const onboardingData = {
     {
       name: "name",
       label: "Hoe heet je?",
-      placeholder: "Voornaam Achterdaam",
+      placeholder: "Naam",
       id: "name",
     },
   ],
@@ -34,16 +34,58 @@ const onboardingData = {
   kankerTypesData: [
     {
       name: "kankerType",
-      label: "KankerType1",
-      value: "kanker1",
-      id: "kanker1",
+      label: "Hoofd-halskanker",
+      value: "Hoofd-halskanker",
+      id: "typeKanker-hoofd",
     },
     {
       name: "kankerType",
       key: "checkBox2",
-      label: "KankerType2",
-      value: "kanker2",
-      id: "kanker2",
+      label: "Spijsvertering organen",
+      value: "Spijsverteringorganen",
+      id: "typeKanker-spijs",
+    },
+    {
+      name: "kankerType",
+      key: "checkBox3",
+      label: "Huid kanker",
+      value: "Huidkanker",
+      id: "typeKanker-huidKanker",
+    },
+    {
+      name: "kankerType",
+      key: "checkBox4",
+      label: "Lucht wegen",
+      value: "Luchtwegen",
+      id: "typeKanker-luchtgeven",
+    },
+    {
+      name: "kankerType",
+      key: "checkBox5",
+      label: "Borst kanker",
+      value: "Borstkanker",
+      id: "typeKanker-borstKanker",
+    },
+    {
+      name: "kankerType",
+      key: "checkBox6",
+      label: "Urine wegen",
+      value: "Urinewegen",
+      id: "typeKanker-urine",
+    },
+    {
+      name: "kankerType",
+      key: "checkBox7",
+      label: "Vrouwelijke geslachtsorganen",
+      value: "VrouwelijkeGeslachtsorganen",
+      id: "typeKanker-vrouwelijk",
+    },
+    {
+      name: "kankerType",
+      key: "checkBox8",
+      label: "Oog kanker",
+      value: "Oogkanker",
+      id: "typeKanker-oog",
     },
   ],
   residenceData: [
@@ -57,19 +99,19 @@ const onboardingData = {
   genderData: [
     {
       name: "gender",
-      label: "Man",
+      label: "M",
       value: "man",
       id: "gender-man",
     },
     {
       name: "gender",
-      label: "Vrouw",
+      label: "V",
       value: "Vrouw",
       id: "gender-vrouw",
     },
     {
       name: "gender",
-      label: "Neutraal",
+      label: "X",
       value: "Neutraal",
       id: "gender-neurtraal",
     },
@@ -99,6 +141,11 @@ const onboardingData = {
       name: "pictogram",
       value: "pictogram-5",
       id: "pictogram-5",
+    },
+    {
+      name: "pictogram",
+      value: "pictogram-6",
+      id: "pictogram-6",
     },
   ],
   aboutData: [
