@@ -74,7 +74,9 @@ const UserProfile = (props) => (
 )
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(`https://bloom.bloomingbooty.repl.co/getUser/${params.user}`)
+  const res = await fetch(
+    `https://bloom.bloomingbooty.repl.co/getUser/${encodeURIComponent(params.user)}`
+  );
 
   const data = {
     data: await res.json()
