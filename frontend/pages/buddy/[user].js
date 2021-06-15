@@ -47,34 +47,57 @@ const UserProfile = (props) => (
       </div>
       <div className={UserStyles.userInformation}>
         <h2>{props.data.name}</h2>
-        <p><span><img src="/icons/label-icoon.svg" />{props.data.kankerType}</span></p>
-        <p><span><img src="/icons/leeftijd-icoon.svg" />{getAge(props.data.birthDate)} jaar</span></p>
+        <p>
+          <span>
+            <img src="/icons/label-icoon.svg" />
+            {props.data.kankerType}
+          </span>
+        </p>
+        <p>
+          <span>
+            <img src="/icons/leeftijd-icoon.svg" />
+            {getAge(props.data.birthDate)} jaar
+          </span>
+        </p>
       </div>
-      <Link href={{ pathname: `/chatbox/${props.link}`, query: { receiver: props.data.user_id } }}>
+      <Link
+        href={{
+          pathname: `/chatbox/${encodeURIComponent(props.link)}`,
+          query: { receiver: props.data.user_id },
+        }}
+      >
         <button className={UserStyles.chatButton}>
           <span>Bericht</span>
-          <span><img src="/icons/chevron-icoon.svg" /></span>
+          <span>
+            <img src="/icons/chevron-icoon.svg" />
+          </span>
         </button>
       </Link>
     </section>
     <section>
       <h2>Biografie</h2>
-      <p>{(props.data.about === null) ? 'template bio' : props.data.about}</p>
+      <p>{props.data.about === null ? "template bio" : props.data.about}</p>
     </section>
     <section className={UserStyles.oncoSec}>
       <h2>Oncospecifiek</h2>
       <article className={UserStyles.oncoInfo}>
-        <span>Type Kanker</span><p>{props.data.kankerType}</p>
-        <span>Fase</span><p>in remissie sinds jaar</p>
-        <span>Ziekenhuis</span><p>VU Medisch Centrum</p>
-        <span>Diagnose Jaar</span><p>2014</p>
+        <span>Type Kanker</span>
+        <p>{props.data.kankerType}</p>
+        <span>Fase</span>
+        <p>in remissie sinds jaar</p>
+        <span>Ziekenhuis</span>
+        <p>VU Medisch Centrum</p>
+        <span>Diagnose Jaar</span>
+        <p>2014</p>
       </article>
     </section>
   </main>
-)
+);
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(`https://bloom.bloomingbooty.repl.co/getUser/${params.user}`)
+  const res = await fetch(
+    `https://bloom.bloomingbooty.repl.co/getUser/${encodeURIComponent(params.user)}`
+  );
 
   const data = {
     data: await res.json()

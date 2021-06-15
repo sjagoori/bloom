@@ -1,65 +1,63 @@
-const messageCache = require('./messageCache'),
+const messageCache = require("./messageCache"),
   db = require("../modules/database"),
-  redis = require('../modules/messageCache');
+  redis = require("../modules/messageCache");
 
 exports.eventHandler = async (client, server) => {
-  client.on('message', message => {
+  client.on("message", (message) => {
     console.log("message", message);
 
-    db.updateOne('bloom', 'userdata', message.consent.from.identifier,
+    setCache(message.chat_id, message);
+    client.broadcast.emit("message", message);
+  });
+
+  client.on("getPartners", async (partners) => {
+    let fromData = await db.findOne("bloom", "userdata", {
+      user_id: partners.from.user_id,
+    });
+
+    let toData = await db.findOne("bloom", "userdata", {
+      user_id: partners.to.user_id,
+    });
+    client.emit("setPartners", {
+      from: fromData,
+      to: toData,
+      pair: partners.pair,
+    });
+    client.join(partners.pair);
+
+    let oldData = await db.findOne("bloom", "userdata", {
+      user_id: partners.from.user_id,
+    });
+
+    console.log("oldData", oldData);
+    delete toData.chatData;
+    delete fromData.chatData;
+
+    let a = [
       {
-        user_id: message.consent.from.identifier,
-        chatData:
-        {
-          chats: [
-            {
-              chat_id: message.chat_id,
-              from: {
-                identifier: message.consent.from.identifier,
-                consent: true
-              },
-              to: {
-                identifier: message.consent.to.identifier,
-                consent: false
-              }
-            }
-          ]
-        }
-      }
-    )
-
-    setCache(message.chat_id, message)
-    // client.broadcast.to(message.chat_id).emit('loadChatHistory', 'loadChatHistory')
-  })
-
-  client.on('getPartners', partners => {
-    // console.log("partners", partners)
-
-    // * this will be the room name
-    const pairData = Object.values(partners).sort((a, b) => a.user_id.localeCompare(b.user_id))
-    const pair = pairData[0].user_id + pairData[1].user_id
-    // console.log("pair", pair)
-
-    // make a room
-    client.join(pair)
-
-    // TODO get partners from somewhere
-    // * dont forget to broadcast these to the room instead
-    // client.broadcast.to(pair).emit('setPartners', {'
-    // console.log(pairData[1])
-    client.emit('setPartners', {
-      from: {
-        identifier: pairData[0].user_id,
-        consent: true
+        chat_id: partners.pair,
+        from: {
+          data: fromData,
+          identifier: partners.from.user_id,
+          consent: true,
+        },
+        to: {
+          data: toData,
+          identifier: partners.to.user_id,
+          consent: false,
+        },
       },
-      to: {
-        identifier: pairData[1].user_id,
-        consent: false
-      },
-      chat_id: pair
-    })
-  })
-}
+    ];
+
+    let newData = {
+      chats: [...oldData.chatData.chats, ...a],
+    };
+
+    db.updateOne("bloom", "userdata", partners.from.user_id, newData);
+
+    client.emit("log", newData);
+  });
+};
 
 /**
  * Function handle cache
@@ -67,12 +65,12 @@ exports.eventHandler = async (client, server) => {
  * {Object} content - content
  */
 async function setCache(chat_id, content) {
-  let cache = JSON.parse(await redis.getCache(chat_id))
+  let cache = JSON.parse(await redis.getCache(chat_id));
   if (cache == undefined) {
-    cache = []
+    cache = [];
   }
 
-  cache.push(content)
+  cache.push(content);
 
-  redis.setCache(chat_id, JSON.stringify(cache))
+  redis.setCache(chat_id, JSON.stringify(cache));
 }
