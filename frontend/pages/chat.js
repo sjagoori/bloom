@@ -27,21 +27,11 @@ export default function Chat() {
       .then((data) => setList(data.chatList));
   }, []);
 
-  let onGoingChats = list && list.map((key, index) => {
-          return (
-            <Link
-              key={index}
-              href={{
-                pathname: `/chatbox/${key.chat_id}`,
-                query: { receiver: key.to.identifier },
-              }}
-            >
-              <a>
-                <p>{key.to.data.name}</p>
-              </a>
-            </Link>
-          );
-        })
+  let onGoingChats =
+    list &&
+    list.map((key, index) => {
+      return <UserCard key={index} data={key} link={key.chat_id} />;
+    });
 
   return (
     <>
@@ -56,7 +46,6 @@ export default function Chat() {
       </Header>
 
       {onGoingChats ? onGoingChats : <LoadingScreen />}
-      
     </>
   );
 }
@@ -70,7 +59,7 @@ const UserCard = (props) => (
         variant="beam"
         colors={["#FEE89E", "#F07A06", "#F07903", "#3CB2FF", "#CE6F88"]}
       ></Avatar>
-      <span>{props.data.name}</span>
+      <span>{props.data.to.data.name}</span>
     </a>
   </Link>
 );
