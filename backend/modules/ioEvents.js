@@ -21,23 +21,33 @@ exports.eventHandler = async (client, server) => {
 
     client.join(partners.pair);
 
-    db.updateOne("bloom", "userdata", partners.from.user_id, {
-      chats: [
-        {
-          chat_id: partners.pair,
-          from: {
-            data: fromData,
-            identifier: partners.from.user_id,
-            consent: true,
-          },
-          to: {
-            data: toData,
-            identifier: partners.to.user_id,
-            consent: false,
-          },
-        },
-      ],
+    let oldData = await db.findOne("bloom", "userdata", {
+      user_id: partners.from.user_id,
     });
+
+    let a = [
+      {
+        chat_id: partners.pair,
+        from: {
+          data: fromData,
+          identifier: partners.from.user_id,
+          consent: true,
+        },
+        to: {
+          data: toData,
+          identifier: partners.to.user_id,
+          consent: false,
+        },
+      },
+    ];
+
+    let newData = {
+      chats: [...oldData.chatData.chats, ...a],
+    };
+
+    db.updateOne("bloom", "userdata", partners.from.user_id, newData);
+
+    client.emit("log", newData);
 
     client.emit("setPartners", {
       from: fromData,
