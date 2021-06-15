@@ -27,10 +27,19 @@ export default function Chat() {
       .then((data) => setList(data.chatList));
   }, []);
 
+  console.log(list);
+
   let onGoingChats =
     list &&
     list.map((key, index) => {
-      return <UserCard key={index} data={key} link={key.chat_id} />;
+      return (
+        <UserCard
+          key={index}
+          data={key}
+          link={key.chat_id}
+          receiver={key.to.identifier}
+        />
+      );
     });
 
   return (
@@ -51,15 +60,21 @@ export default function Chat() {
 }
 
 const UserCard = (props) => (
-  <Link href={`/chatbox/${props.link}`}>
+  // console.log(props);
+  <Link
+    href={{
+      pathname: `/chatbox/${props.link}`,
+      query: { receiver: props.receiver },
+    }}
+  >
     <a>
       <Avatar
         size={60}
-        name={props.data.name}
+        name={props.data.to.data.name}
         variant="beam"
         colors={["#FEE89E", "#F07A06", "#F07903", "#3CB2FF", "#CE6F88"]}
       ></Avatar>
       <span>{props.data.to.data.name}</span>
     </a>
   </Link>
-);
+)
