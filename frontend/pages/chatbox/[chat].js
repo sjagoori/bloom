@@ -1,92 +1,76 @@
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { io } from "socket.io-client";
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import TopBar from "../../components/topbar/TopBar";
-import parseCookie from '../../utils/parseCookie'
-
+import parseCookie from "../../utils/parseCookie";
+import sortID from "../../utils/sortID";
 export default function ChatBox() {
   const router = useRouter();
-  const { user } = router.query
-  console.log("receiver", router.query.receiver)
-  const receiver = router.query.receiver;
-  const socket = io('https://bloom.bloomingbooty.repl.co');
-  const [messages, setMessages] = useState([])
-  const [consent, setConsent] = useState({ from: { consent: false }, to: { consent: false } })
-
+  const { user } = router.query;
+  const receiver = router.query.receiver ?? router.query.receiver;
+  const socket = io("https://bloom.bloomingbooty.repl.co");
+  const [messages, setMessages] = useState([]);
+  const [partners, setPartners] = useState();
 
   useEffect(() => {
-    let user_id_from_cookie = JSON.parse(parseCookie(window.document.cookie).user)
+    let user_id_from_cookie = JSON.parse(
+      parseCookie(window.document.cookie).user
+    );
 
-    socket.emit('getPartners', {
+    socket.emit("getPartners", {
       from: {
-        user_id: user_id_from_cookie
+        user_id: user_id_from_cookie,
+        consent: true,
       },
       to: {
-        user_id: receiver
-      }
-    })
+        user_id: receiver,
+        consent: false,
+      },
+      pair: sortID(user_id_from_cookie, receiver),
+    });
 
-    socket.on('setPartners', partner => {
-      console.log("partner", partner)
+    socket.on("setPartners", (partner) => {
+      console.log("setPartners", partner);
+      setPartners(partner);
+    });
 
-      setConsent({
-        from: {
-          consent: partner.from.consent,
-          identifier: decodeURIComponent(partner.from.identifier)
-        },
-        to: {
-          consent: partner.to.consent,
-          identifier: decodeURIComponent(partner.to.identifier)
-        },
-        chat_id: decodeURIComponent(partner.chat_id)
-      })
-    })
-    socket.on('loadChatHistory', message => { setMessages(messages => [...messages, ...[message]]) })
-  }, [])
-
-
+    socket.on("message", (message) => {
+      console.log(message);
+      setMessages((messages) => [...messages, ...[message]]);
+    });
+  }, []);
 
   function handleChat(e) {
     e.preventDefault();
-
-    socket.emit('message', {
-      from: consent.from.identifier,
-      to: consent.to.identifier,
-      consent: {
-        from: {
-          identifier: consent.from.identifier,
-          consent: true
-        },
-        to: {
-          identifier: consent.to.identifier,
-          consent: false
-        },
-      },
+    socket.emit("message", {
+      partners: partners,
       message: e.target[1].value,
-      timestamp: +new Date,
-      chat_id: decodeURIComponent(consent.chat_id)
-    })
+      timestamp: +new Date(),
+      chat_id: partners.pair,
+      sender: {
+        user_id: partners.from.user_id,
+        name: partners.from.name,
+      },
+    });
   }
+
+  // console.log("messages:", messages);
 
   return (
     <section>
       <TopBar />
       <form onSubmit={handleChat}>
         <div>
-          <fieldset>Chat</fieldset>
+          <fieldset>Chat {partners && "met " + partners.to.name}</fieldset>
           <ol>
             {messages.map((key, index) => {
-              return <li key={index}>
-                {key.message}
-              </li>
+              return <li key={index}>{key.sender.name}: {key.message}</li>;
             })}
           </ol>
         </div>
         <input type="text" name="message" id="message" />
         <button type="submit">Send</button>
-
       </form>
     </section>
-  )
+  );
 }
-
