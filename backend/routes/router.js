@@ -35,6 +35,9 @@ router.post("/register", async (req, res) => {
     kankerType: req.body.kankerType,
     pictogram: req.body.pictogram,
     about: req.body.about,
+    chatData: {
+      chats: [],
+    },
   };
 
   let exists = await db.findOne("bloom", "userdata", { email: userData.email });
@@ -79,41 +82,9 @@ router.get("/getUserChat/:user", async (req, res) => {
         ? key.chatData
         : false
     )
-    .filter((elem) => elem)[0].chats;
+    .filter((elem) => elem);
 
   res.json({ chatList });
-
-  // console.log(chats)
-
-  // let chatList = chats.map((key) =>
-  //     key.chatData.chatData.chats.find(
-  //       (elem) => elem.to.identifier == to && elem.from.identifier == from)
-  //       ? key
-  //       : null
-  //   )
-  //   .filter((elem) => elem);
-
-  //  res.json(chatList)
-
-  // let startedChats = data.map(key => key.chatData != undefined
-  //   ? key.chatData.chats.map(elem => elem.to.identifier == req.params.user
-  //     ? key
-  //     : false)
-  //   : false).filter(elem => typeof elem != "boolean")
-
-  // let requestedChats = data.map(key => key.chatData != undefined
-  //   ? key.chatData.chats.map(elem => elem.from.identifier == req.params.user
-  //     ? key
-  //     : false)
-  //   : false).filter(elem => typeof elem != "boolean")
-
-  // console.log(startedChats)
-
-  // res.json({ list: startedChats, requests: requestedChats })
-
-  // return await db.findMany('bloom', "userdata", {user_id: decodeURIComponent(req.params.user)})
-  // .then(data => res.json({data: data}))
-  // .catch(error => console.log("error, ", error))
 });
 
 module.exports = router;

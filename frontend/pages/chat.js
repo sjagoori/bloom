@@ -21,13 +21,13 @@ export default function Chat() {
     );
 
     await fetch(
-      `https://bloom.bloomingbooty.repl.co/getUserChat/${user_id_from_cookie}`
+      `https://bloom.bloomingbooty.repl.co/getUserChat/${encodeURIComponent(
+        user_id_from_cookie
+      )}`
     )
       .then((res) => res.json())
-      .then((data) => setList(data.chatList));
+      .then((data) => setList(data.chatList[0].chats));
   }, []);
-
-  console.log(list);
 
   let onGoingChats =
     list &&
@@ -60,10 +60,9 @@ export default function Chat() {
 }
 
 const UserCard = (props) => (
-  // console.log(props);
   <Link
     href={{
-      pathname: `/chatbox/${props.link}`,
+      pathname: `/chatbox/${encodeURIComponent(props.link)}`,
       query: { receiver: props.receiver },
     }}
   >
@@ -77,4 +76,4 @@ const UserCard = (props) => (
       <span>{props.data.to.data.name}</span>
     </a>
   </Link>
-)
+);
