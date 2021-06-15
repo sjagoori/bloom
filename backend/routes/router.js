@@ -13,11 +13,11 @@ router.post("/login", async (req, res) => {
     .then((response) =>
       bcrypt.compareSync(password, response.password, salt)
         ? res.json({
-          status: 200,
-          data: {
-            user_id: response.user_id,
-          },
-        })
+            status: 200,
+            data: {
+              user_id: response.user_id,
+            },
+          })
         : res.json({ status: 400 })
     )
     .catch((err) => console.log("err", err));
@@ -26,8 +26,8 @@ router.post("/login", async (req, res) => {
 router.post("/register", async (req, res) => {
   let userData = {
     email: req.body.email,
-    user_id: bcrypt.hashSync((req.body.email + (+new Date)), salt),
-    password: bcrypt.hashSync((req.body.password + (+new Date)), salt),
+    user_id: bcrypt.hashSync(req.body.email, salt),
+    password: bcrypt.hashSync(req.body.password, salt),
     name: req.body.name,
     birthDate: req.body.birthDate,
     residence: req.body.residence,
@@ -48,46 +48,72 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.get("/getAllUsers", async (req, res) => {
+  return await db
+    .findMany("bloom", "userdata")
+    .then((data) => res.json({ status: 200, data: data }))
+    .catch((error) => console.log("geen data gevonden:\n", error));
+});
 
-router.get('/getAllUsers', async (req, res) => {
-  return await db.findMany('bloom', 'userdata')
-    .then(data => res.json({ status: 200, data: data }))
-    .catch(error => console.log('geen data gevonden:\n', error))
-})
+router.get("/getUser/:user", async (req, res) => {
+  console.log("getUser:", req.params.user);
+  return await db
+    .findOne("bloom", "userdata", {
+      user_id: decodeURIComponent(req.params.user),
+    })
+    .then((data) => res.json({ data: data }))
+    .catch((error) => console.log("geen data gevonden:"));
+});
 
-router.get('/getUser/:user', async (req, res) => {
-  console.log('getUser:', req.params.user)
-  return await db.findOne('bloom', 'userdata', { user_id: decodeURIComponent(req.params.user) })
-    .then(data => res.json({ data: data }))
-    .catch(error => console.log('geen data gevonden:'))
-})
+router.get("/getUserChat/:user", async (req, res) => {
+  console.log(req.params.user);
+  let dataset = await db.findMany("bloom", "userdata").then((data) => data);
 
+  let chats = dataset
+    .map((key) => (key.chatData ? key : false))
+    .filter((elem) => elem);
 
-router.get('/getUserChat/:user', async (req, res) => {
-  console.log(req.params.user)
-  let data = await db.findMany('bloom', 'userdata')
-  // res.json(data)
+  let chatList = chats
+    .map((key) =>
+      key.chatData.chats.find((elem) => elem.from.identifier == req.params.user)
+        ? key.chatData
+        : false
+    )
+    .filter((elem) => elem)[0].chats;
 
-  console.log(data)
-  let startedChats = data.map(key => key.chatData != undefined
-    ? key.chatData.chats.map(elem => elem.to.identifier == req.params.user
-      ? key
-      : false)
-    : false).filter(elem => typeof elem != "boolean")
+  res.json({ chatList });
 
-  let requestedChats = data.map(key => key.chatData != undefined
-    ? key.chatData.chats.map(elem => elem.from.identifier == req.params.user
-      ? key
-      : false)
-    : false).filter(elem => typeof elem != "boolean")
+  // console.log(chats)
 
-  console.log(startedChats)
+  // let chatList = chats.map((key) =>
+  //     key.chatData.chatData.chats.find(
+  //       (elem) => elem.to.identifier == to && elem.from.identifier == from)
+  //       ? key
+  //       : null
+  //   )
+  //   .filter((elem) => elem);
 
-  res.json({ list: startedChats, requests: requestedChats })
+  //  res.json(chatList)
+
+  // let startedChats = data.map(key => key.chatData != undefined
+  //   ? key.chatData.chats.map(elem => elem.to.identifier == req.params.user
+  //     ? key
+  //     : false)
+  //   : false).filter(elem => typeof elem != "boolean")
+
+  // let requestedChats = data.map(key => key.chatData != undefined
+  //   ? key.chatData.chats.map(elem => elem.from.identifier == req.params.user
+  //     ? key
+  //     : false)
+  //   : false).filter(elem => typeof elem != "boolean")
+
+  // console.log(startedChats)
+
+  // res.json({ list: startedChats, requests: requestedChats })
 
   // return await db.findMany('bloom', "userdata", {user_id: decodeURIComponent(req.params.user)})
   // .then(data => res.json({data: data}))
   // .catch(error => console.log("error, ", error))
-})
+});
 
 module.exports = router;
