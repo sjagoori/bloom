@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import TopBar from "../../components/topbar/TopBar";
 import parseCookie from "../../utils/parseCookie";
 import sortID from "../../utils/sortID";
+import Header from "../../components/header/Header";
+import LoadingScreen from "@/components/loadingScreen/loadingScreen";
+
 export default function ChatBox() {
   const router = useRouter();
   const { user } = router.query;
@@ -38,13 +41,15 @@ export default function ChatBox() {
       console.log(message);
       setMessages((messages) => [...messages, ...[message]]);
     });
+
+    socket.on("log", (log) => console.log("log", log));
   }, []);
 
   function handleChat(e) {
     e.preventDefault();
     socket.emit("message", {
       partners: partners,
-      message: e.target[1].value,
+      message: e.target[0].value,
       timestamp: +new Date(),
       chat_id: partners.pair,
       sender: {
@@ -54,23 +59,32 @@ export default function ChatBox() {
     });
   }
 
-  // console.log("messages:", messages);
-
   return (
     <section>
       <TopBar />
-      <form onSubmit={handleChat}>
-        <div>
-          <fieldset>Chat {partners && "met " + partners.to.name}</fieldset>
+      {partners ? (
+        <>
+          <Header
+            name={"Chat" + (partners && " met " + partners.to.name)}
+            isBlogs={false}
+          />
           <ol>
             {messages.map((key, index) => {
-              return <li key={index}>{key.sender.name}: {key.message}</li>;
+              return (
+                <li key={index}>
+                  {key.sender.name}: {key.message}
+                </li>
+              );
             })}
           </ol>
-        </div>
-        <input type="text" name="message" id="message" />
-        <button type="submit">Send</button>
-      </form>
+          <form onSubmit={handleChat}>
+            <input type="text" name="message" id="message" />
+            <button type="submit">Send</button>
+          </form>
+        </>
+      ) : (
+        <LoadingScreen />
+      )}
     </section>
   );
 }
