@@ -46,7 +46,7 @@ export default function Home({ loginState }, ctx) {
                 sameSite: true,
               }),
                 router.push({
-                  pathname: "dashboard",
+                  pathname: "blog",
                 }))
               : (setProgress(0), setError(data.msg));
           });
