@@ -18,12 +18,20 @@ exports.eventHandler = async (client, server) => {
     let toData = await db.findOne("bloom", "userdata", {
       user_id: partners.to.user_id,
     });
-
+    client.emit("setPartners", {
+      from: fromData,
+      to: toData,
+      pair: partners.pair,
+    });
     client.join(partners.pair);
 
     let oldData = await db.findOne("bloom", "userdata", {
       user_id: partners.from.user_id,
     });
+
+    console.log("oldData", oldData);
+    delete toData.chatData;
+    delete fromData.chatData;
 
     let a = [
       {
@@ -48,12 +56,6 @@ exports.eventHandler = async (client, server) => {
     db.updateOne("bloom", "userdata", partners.from.user_id, newData);
 
     client.emit("log", newData);
-
-    client.emit("setPartners", {
-      from: fromData,
-      to: toData,
-      pair: partners.pair,
-    });
   });
 };
 
