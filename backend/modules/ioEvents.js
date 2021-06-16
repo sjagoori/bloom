@@ -11,58 +11,73 @@ exports.eventHandler = async (client, server) => {
   });
 
   client.on("getPartners", async (partners) => {
-    let fromData = await db.findOne("bloom", "userdata", {
-      user_id: partners.from.user_id,
-    });
+    let mCache = await getCache(partners.pair);
+    if (mCache != null)
+      client.emit("setMessages", await getCache(partners.pair));
 
-    let toData = await db.findOne("bloom", "userdata", {
-      user_id: partners.to.user_id,
-    });
-    client.emit("setPartners", {
-      from: fromData,
-      to: toData,
-      pair: partners.pair,
-    });
-    client.join(partners.pair);
+    if (partners.to.user_id != null) {
+      let fromData = await db.findOne("bloom", "userdata", {
+        user_id: partners.from.user_id,
+      });
 
-    let oldData = await db.findOne("bloom", "userdata", {
-      user_id: partners.from.user_id,
-    });
+      let toData = await db.findOne("bloom", "userdata", {
+        user_id: partners.to.user_id,
+      });
 
-    console.log("oldData", oldData);
-    delete toData.chatData;
-    delete fromData.chatData;
+      client.emit("setPartners", {
+        from: fromData,
+        to: toData,
+        pair: partners.pair,
+      });
 
-    let a = [
-      {
-        chat_id: partners.pair,
-        from: {
-          data: fromData,
-          identifier: partners.from.user_id,
-          consent: true,
-        },
-        to: {
-          data: toData,
-          identifier: partners.to.user_id,
-          consent: false,
-        },
-      },
-    ];
+      client.join(partners.pair);
 
-    let newData = {
-      chats: [...oldData.chatData.chats, ...a],
-    };
+      let oldData = await db.findOne("bloom", "userdata", {
+        user_id: partners.from.user_id,
+      });
 
-    db.updateOne("bloom", "userdata", partners.from.user_id, newData);
+      let b = oldData.chatData.chats
+        .map((key) => key.to.identifier == partners.to.user_id)
+        .filter((x) => x).length;
 
-    client.emit("log", newData);
+      console.log(b);
+      if (b == 0) {
+        let a = [
+          {
+            chat_id: partners.pair,
+            from: {
+              data: fromData,
+              identifier: partners.from.user_id,
+              consent: true,
+            },
+            to: {
+              data: toData,
+              identifier: partners.to.user_id,
+              consent: false,
+            },
+          },
+        ];
+
+        let newData = { chats: [...oldData.chatData.chats, ...a] };
+
+        db.updateOne("bloom", "userdata", partners.from.user_id, newData);
+      }
+    }
   });
 };
 
 /**
+ * Funtion fetches message cache
+ * @param {String} chat_id - chat_id
+ */
+async function getCache(chat_id) {
+  return JSON.parse(await redis.getCache(chat_id));
+}
+
+/**
  * Function handle cache
- * {String} chat_id - chat_id
- * {Object} content - content
+ * @param {String} chat_id - chat_id
+ * @param {Object} content - content
  */
 async function setCache(chat_id, content) {
   let cache = JSON.parse(await redis.getCache(chat_id));

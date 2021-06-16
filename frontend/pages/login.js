@@ -34,29 +34,52 @@ export default function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        data.status === 200
-          ? (setCookie("user", JSON.stringify(data.data.user_id), {
+        if (data.status === 200) {
+          setCookie("user", JSON.stringify(data.data.user_id), {
             path: "/",
-            maxAge: 3600, // Expires after 1hr
+            maxAge: 36000, // Expires after 1hr
             sameSite: true,
-          }),
-            router.push({
-              pathname: "blog",
-            }))
-          : setError("Email or password incorrect");
+          });
+
+          return router.push({
+            pathname: "blog",
+          });
+        } else if (data.status === 400) {
+          setError("Email or password incorrect");
+        }
+        console.log(data);
       });
   }
 
   return (
     <>
       <div className={`${styles.container}`}>
-        <Link href="/"><img src="/icons/chevron-icoon.svg" alt="Back" className={`${styles.svgIcon} ${styles.rotate}`} /></Link>
+        <Link href="/">
+          <img
+            src="/icons/chevron-icoon.svg"
+            alt="Back"
+            className={`${styles.svgIcon} ${styles.rotate}`}
+          />
+        </Link>
         <div className={`${styles.formContainer}`}>
           <h1>Welkom Terug</h1>
+          <p>{error}</p>
           <form onSubmit={handleForm}>
-            <input type="text" id="email" name="email" placeholder="Emailadres" />
-            <input type="password" id="password" name="password" placeholder="Wachtwoord" />
-            <button type="submit" className={`${styles.button}`}>Submit</button>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Emailadres"
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Wachtwoord"
+            />
+            <button type="submit" className={`${styles.button}`}>
+              Submit
+            </button>
           </form>
         </div>
       </div>

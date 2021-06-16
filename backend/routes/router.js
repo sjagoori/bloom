@@ -20,7 +20,10 @@ router.post("/login", async (req, res) => {
           })
         : res.json({ status: 400 })
     )
-    .catch((err) => console.log("err", err));
+    .catch((err) => {
+      console.log('Encountered error: ', err)
+      res.json({ status: 400 });
+    });
 });
 
 router.post("/register", async (req, res) => {
