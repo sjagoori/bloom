@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { io } from "socket.io-client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import TopBar from "../../components/topbar/TopBar";
 import parseCookie from "../../utils/parseCookie";
 import sortID from "../../utils/sortID";
@@ -14,35 +14,43 @@ export default function ChatBox() {
   const socket = io("https://bloom.bloomingbooty.repl.co");
   const [messages, setMessages] = useState([]);
   const [partners, setPartners] = useState();
+  let mounted = useRef(false);
 
   useEffect(() => {
-    let user_id_from_cookie = JSON.parse(
-      parseCookie(window.document.cookie).user
-    );
+    if (!mounted.current) {
+      let user_id_from_cookie = JSON.parse(
+        parseCookie(window.document.cookie).user
+      );
 
-    socket.emit("getPartners", {
-      from: {
-        user_id: user_id_from_cookie,
-        consent: true,
-      },
-      to: {
-        user_id: receiver,
-        consent: false,
-      },
-      pair: sortID(user_id_from_cookie, receiver),
-    });
+      socket.emit("getPartners", {
+        from: {
+          user_id: user_id_from_cookie,
+          consent: true,
+        },
+        to: {
+          user_id: receiver,
+          consent: false,
+        },
+        pair: sortID(user_id_from_cookie, receiver),
+      });
 
-    socket.on("setPartners", (partner) => {
-      console.log("setPartners", partner);
-      setPartners(partner);
-    });
+      socket.on("setPartners", (partner) => {
+        console.log("setPartners", partner);
+        setPartners(partner);
+      });
 
-    socket.on("message", (message) => {
-      console.log(message);
-      setMessages((messages) => [...messages, ...[message]]);
-    });
+      socket.on("message", (message) => {
+        console.log(message);
+        setMessages((messages) => [...messages, ...[message]]);
+      });
 
-    socket.on("log", (log) => console.log("log", log));
+      socket.on("log", (log) => console.log("log", log));
+      mounted.current = true;
+    }
+
+    return () => {
+      socket.close();
+    };
   }, []);
 
   function handleChat(e) {
