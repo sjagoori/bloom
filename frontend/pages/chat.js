@@ -5,7 +5,7 @@ import Header from "../components/header/Header";
 import Avatar from "boring-avatars";
 import Link from "next/link";
 import Badge from "@material-ui/core/Badge";
-import sortID from "../utils/sortID";
+import topbarStyles from "../styles/Navigation.module.css";
 import parseCookie from "../utils/parseCookie";
 
 export default function Chat() {
@@ -13,7 +13,7 @@ export default function Chat() {
   const { user } = router.query;
   const [list, setList] = useState();
   const [requests, setRequests] = useState();
-  const [view, setView] = useState();
+  const [view, setView] = useState("list");
 
   useEffect(async () => {
     let user_id_from_cookie = JSON.parse(
@@ -26,36 +26,74 @@ export default function Chat() {
       )}`
     )
       .then((res) => res.json())
-      .then((data) => setList(data.chatList[0].chats));
+      .then((data) => {
+        setList(
+          data.chatList[0] 
+          ? data.chatList[0].chats.map((key, index) => {
+            return (
+              <UserCard
+                key={index}
+                data={key}
+                link={key.chat_id}
+                receiver={key.to.identifier}
+              />
+            );
+          })
+          : <>empty</>
+        );
+        setRequests(
+          data.requestList 
+          ? data.requestList.map((key, index) => {
+            return (
+              <UserCard
+                key={index}
+                data={key}
+                link={key.chat_id}
+                receiver={key.to.identifier}
+              />
+            );
+          })
+          : <>empty</>
+        );
+      });
   }, []);
 
-  let onGoingChats =
-    list &&
-    list.map((key, index) => {
-      return (
-        <UserCard
-          key={index}
-          data={key}
-          link={key.chat_id}
-          receiver={key.to.identifier}
-        />
-      );
-    });
+  console.log(view);
 
-  return (
+  let chatlist = requests && (
     <>
       <Header name="Chats" isBlogs={false}>
-        <Badge badgeContent={0} color="error">
-          <button
-            onClick={() => (view == list ? setView(requests) : setView(list))}
-          >
-            Requests
-          </button>
-        </Badge>
+        {requests.length > 0 ? (
+          <Badge badgeContent={0} color="error">
+            <button
+              onClick={() => setView(view == "list" ? "requests" : "list")}
+            >
+              Requests
+            </button>
+          </Badge>
+        ) : null}
       </Header>
-
-      {onGoingChats ? onGoingChats : <LoadingScreen />}
+      {list}
     </>
+  );
+
+  let requestList = (
+    <>
+      <nav>
+        <button
+          type="button"
+          onClick={() => setView(view == "list" ? "requests" : "list")}
+        >
+          <img src="/icons/chevron-icoon.svg" alt=">" />
+        </button>
+        <h1>Requests</h1>
+      </nav>
+      {requests}
+    </>
+  );
+
+  return (
+    <>{!list ? <LoadingScreen /> : view == "list" ? chatlist : requestList}</>
   );
 }
 
