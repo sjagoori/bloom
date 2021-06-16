@@ -11,9 +11,13 @@ export default function Profile() {
   const [data, setData] = useState()
 
   useEffect(async () => {
-    let content = await fetch(`https://bloom.bloomingbooty.repl.co/getUser/${JSON.parse(parseCookie(window.document.cookie).user)}`)
-      .then(res => res.json())
-      .then(data => data.data);
+    let content = await fetch(
+      `https://bloom.bloomingbooty.repl.co/getUser/${encodeURIComponent(
+        JSON.parse(parseCookie(window.document.cookie).user)
+      )}`
+    )
+      .then((res) => res.json())
+      .then((data) => data.data);
     console.log(content);
     setData(content)
   }, [])
