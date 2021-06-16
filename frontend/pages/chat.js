@@ -28,7 +28,8 @@ export default function Chat() {
       .then((res) => res.json())
       .then((data) => {
         setList(
-          data.chatList[0].chats.map((key, index) => {
+          data.chatList[0] 
+          ? data.chatList[0].chats.map((key, index) => {
             return (
               <UserCard
                 key={index}
@@ -38,9 +39,11 @@ export default function Chat() {
               />
             );
           })
+          : <>empty</>
         );
         setRequests(
-          data.requestList.map((key, index) => {
+          data.requestList 
+          ? data.requestList.map((key, index) => {
             return (
               <UserCard
                 key={index}
@@ -50,20 +53,25 @@ export default function Chat() {
               />
             );
           })
+          : <>empty</>
         );
       });
   }, []);
 
   console.log(view);
 
-  let chatlist = (
+  let chatlist = requests && (
     <>
       <Header name="Chats" isBlogs={false}>
-        <Badge badgeContent={0} color="error">
-          <button onClick={() => setView(view == "list" ? "requests" : "list")}>
-            Requests
-          </button>
-        </Badge>
+        {requests.length > 0 ? (
+          <Badge badgeContent={0} color="error">
+            <button
+              onClick={() => setView(view == "list" ? "requests" : "list")}
+            >
+              Requests
+            </button>
+          </Badge>
+        ) : null}
       </Header>
       {list}
     </>
