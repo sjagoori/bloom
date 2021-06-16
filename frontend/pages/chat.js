@@ -78,7 +78,7 @@ export default function Chat() {
         >
           <img src="/icons/chevron-icoon.svg" alt=">" />
         </button>
-        <h1>informatie</h1>
+        <h1>Requests</h1>
       </nav>
       {requests}
     </>
