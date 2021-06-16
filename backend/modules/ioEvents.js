@@ -29,31 +29,33 @@ exports.eventHandler = async (client, server) => {
       user_id: partners.from.user_id,
     });
 
-    console.log("oldData", oldData);
-    delete toData.chatData;
-    delete fromData.chatData;
+    let b = oldData.chatData.chats
+      .map((key) => key.to.identifier == partners.to.user_id)
+      .filter((x) => x).length;
 
-    let a = [
-      {
-        chat_id: partners.pair,
-        from: {
-          data: fromData,
-          identifier: partners.from.user_id,
-          consent: true,
+    if (b <= 0) {
+      let a = [
+        {
+          chat_id: partners.pair,
+          from: {
+            data: fromData,
+            identifier: partners.from.user_id,
+            consent: true,
+          },
+          to: {
+            data: toData,
+            identifier: partners.to.user_id,
+            consent: false,
+          },
         },
-        to: {
-          data: toData,
-          identifier: partners.to.user_id,
-          consent: false,
-        },
-      },
-    ];
+      ];
 
-    let newData = {
-      chats: [...oldData.chatData.chats, ...a],
-    };
+      let newData = {
+        chats: [...oldData.chatData.chats, ...a],
+      };
 
-    db.updateOne("bloom", "userdata", partners.from.user_id, newData);
+      db.updateOne("bloom", "userdata", partners.from.user_id, newData);
+    }
 
     client.emit("log", newData);
   });
