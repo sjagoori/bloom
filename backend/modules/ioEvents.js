@@ -11,7 +11,9 @@ exports.eventHandler = async (client, server) => {
   });
 
   client.on("getPartners", async (partners) => {
-    client.emit("setMessages", await getCache(partners.pair));
+    let mCache = await getCache(partners.pair);
+    if (mCache != null)
+      client.emit("setMessages", await getCache(partners.pair));
 
     if (partners.to.user_id != null) {
       let fromData = await db.findOne("bloom", "userdata", {
