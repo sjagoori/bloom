@@ -21,7 +21,7 @@ router.post("/login", async (req, res) => {
         : res.json({ status: 400 })
     )
     .catch((err) => {
-      console.log('Encountered error: ', err)
+      console.log("Encountered error: ", err);
       res.json({ status: 400 });
     });
 });
@@ -87,7 +87,17 @@ router.get("/getUserChat/:user", async (req, res) => {
     )
     .filter((elem) => elem);
 
-  res.json({ chatList });
+  let requestList = chats
+    .map((key) =>
+      key.chatData.chats.find((elem) => elem.to.identifier == req.params.user)
+        ? key.chatData.chats.find(
+            (elem) => elem.to.identifier == req.params.user
+          )
+        : false
+    )
+    .filter((elem) => elem);
+
+  res.json({ chatList, requestList });
 });
 
 module.exports = router;
