@@ -40,12 +40,17 @@ export default function ChatBox() {
       });
 
       socket.on("message", (message) => {
-        console.log(message);
         setMessages((messages) => [...messages, ...[message]]);
       });
 
       socket.on("log", (log) => console.log("log", log));
+      socket.on("setMessages", (a) => {
+        if (messages.length == 0)
+          setMessages((messages) => [...messages, ...a]);
+      });
       mounted.current = true;
+    } else {
+      socket.close();
     }
 
     return () => {
@@ -56,7 +61,6 @@ export default function ChatBox() {
   function handleChat(e) {
     e.preventDefault();
     socket.emit("message", {
-      partners: partners,
       message: e.target[0].value,
       timestamp: +new Date(),
       chat_id: partners.pair,
@@ -67,9 +71,12 @@ export default function ChatBox() {
     });
   }
 
+  console.log(messages);
+
   return (
     <section>
       <TopBar />
+
       {partners ? (
         <>
           <Header
