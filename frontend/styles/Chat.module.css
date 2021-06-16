@@ -1,0 +1,15 @@
+.chatContainer > h1 {
+  flex-grow: 2;
+}
+
+.chatContainer span > button {
+  font-family: 'Nunito-bold';
+  border: none;
+  color: #f07904;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.chatContainer h1:first-of-type {
+  flex-grow: 2;
+}
