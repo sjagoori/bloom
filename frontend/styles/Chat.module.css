@@ -1,8 +1,12 @@
-.chatContainer > h1 {
+.container {
+  margin: 0 1em;
+}
+
+.container > h1 {
   flex-grow: 2;
 }
 
-.chatContainer span > button {
+.container span > button {
   font-family: 'Nunito-bold';
   border: none;
   color: #f07904;
@@ -10,6 +14,34 @@
   cursor: pointer;
 }
 
-.chatContainer h1:first-of-type {
+.container h1:first-of-type {
   flex-grow: 2;
+}
+
+.userCard {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #EBEAE8;
+  display: flex;
+  align-content: center;
+}
+
+.userCard a {
+  display: flex;
+  font-family: 'Nunito-bold';
+  color: rgb(21,21,21);
+  align-content: center;
+  justify-content: center;
+}
+
+.userCard a svg {
+  margin-right: 1em;
+  filter: drop-shadow(0 0 0.25em #11100d55);
+  background-color: #FAD39C;
+  padding: 0.25em;
+  border-radius: 10px;
+}
+
+.userCard a span {
+  /* margin: auto 0; */
+  height: 20px;
 }
