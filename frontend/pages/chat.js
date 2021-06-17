@@ -1,11 +1,11 @@
-import { useRouter } from "next/router";
-import { useEffect, useState, useRef } from "react";
 import LoadingScreen from "@/components/loadingScreen/loadingScreen";
-import Header from "../components/header/Header";
+import Badge from "@material-ui/core/Badge";
 import Avatar from "boring-avatars";
 import Link from "next/link";
-import Badge from "@material-ui/core/Badge";
-import topbarStyles from "../styles/Navigation.module.css";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Header from "../components/header/Header";
+import chatStyles from "../styles/Chat.module.css";
 import parseCookie from "../utils/parseCookie";
 
 export default function Chat() {
@@ -93,11 +93,14 @@ export default function Chat() {
   );
 
   return (
+    <main className={chatStyles.container}>
     <>{!list ? <LoadingScreen /> : view == "list" ? chatlist : requestList}</>
+    </main>
   );
 }
 
 const UserCard = (props) => (
+  <article  className={chatStyles.userCard}>
   <Link
     href={{
       pathname: `/chatbox/${encodeURIComponent(props.link)}`,
@@ -114,4 +117,5 @@ const UserCard = (props) => (
       <span>{props.data.to.data.name}</span>
     </a>
   </Link>
+  </article>
 );

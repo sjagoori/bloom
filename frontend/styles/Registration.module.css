@@ -1,5 +1,17 @@
 .container {
-  padding: 3em 2em;
+  /* padding: 3em 2em; */
+  padding: 1em;
+  height: 100vh;
+  width: 100vw;
+  /* background-image: url('/icons/signup-achtergrond.svg'); */
+}
+
+.progressFlower {
+  position: absolute;
+  left: 50%; 
+  top: 75%; 
+  transform: translateY(-50%); 
+  transform: translate(-50%, -50%);
 }
 
 .rotate {
@@ -22,9 +34,24 @@
   font-size: 1.5em;
 }
 
-
 .formContainer * {
   max-width: 100%;
+}
+
+.formContainer h2 {
+  font-family: 'Silka-bold';
+}
+
+.error {
+  font-family: 'Nunito-bold';
+  display: block;
+  color: #f07904;
+  display: flex;
+  align-content: center;
+}
+
+.subText {
+  font-family: 'Nunito-light';
 }
 
 .formContainer input {
@@ -37,13 +64,13 @@
   color: hsl(0, 0%, 44%);
 }
 
-.button {
+/* .button {
   cursor: pointer;
   border: none;
   border-radius: 0.75em;
   height: 2em;
-  background-color: hsl(47, 96%, 88%);
-  color: hsl(28, 100%, 47%);
+  background-color: #fef1c3;
+  color: #f07000;
   font-weight: 700;
   overflow: hidden;
 }
@@ -57,24 +84,146 @@
   margin-left: 2em;
   fill: hsl(28, 100%, 47%);
   background-color: hsl(47, 95%, 80%);
+} */
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  align-self: end;
+  height: 30px;
+  width: 110px;
+
+  background-color: #fef1c3;
+  color: #f07000;
+  font-weight: bold;
+  font-family: 'Nunito-bold';
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.button span:first-of-type {
+  margin-left: 0.7em;
 }
 
+.button span:last-of-type {
+  height: 100%;
+  width: 25px;
+  margin-left: auto;
+  background-color: #FDE89E;
+  border-radius: 10px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.genderContainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
+}
+/* 
+.genderContainer div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.genderContainer div span {
+  padding-top: 0.5em;
+  font-family: 'Nunito-bold';
+  color: #726D61;
+  text-align: center;
+} */
+
 .formContainer label[for^='gender-'] {
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
   background-color: hsl(47, 95%, 80%);
-  border-radius: 0.75em;
-  margin: 0.5em
+  border-radius: 15px;
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  font-family: 'Nunito-bold';
+  font-size: 50px;
+  color: #726D61;
 }
 
 .formContainer input[id^='gender-']:checked+label[for^='gender-'] {
-  border: 5px solid hsl(30, 97%, 48%);
+  border: 3px solid #f17a04;
+  background-color: #FBD7A0;
+  border-style: inline;
 }
 
-/*
-.formContainer label[for^='gender-']:focus-within {
-  border: 5px solid hsl(30, 97%, 48%);
-} */
+.formContainer input[id^='gender-'] {
+  display: none;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+}
+
+.formContainer input[id^='typeKanker-'] {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+}
+
+.formContainer label[for^='typeKanker-'] {
+  font-family: 'Nunito-bold';
+  font-size: 0.8em;
+  color: #726d61;
+  width: fit-content;
+  background-color: #fee89e;
+  padding: 12px;
+  border-radius: 25px;
+}
+
+.formContainer input[id^='typeKanker-']:checked+label[for^='typeKanker-'] {
+  border: 3px solid #f17a04;
+  background-color: #FBD7A0;
+  border-style: inline;
+}
+
+.pictogramContainer {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(3, auto);
+  /* justify-content: space-between; */
+  margin: auto 0;
+}
+
+.formContainer input[id^='pictogram-'] {
+  display: none;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+}
+
+.formContainer label[for^='pictogram-'] {
+  background-color: #FEEFBB;
+  padding: 12px;
+  border-radius: 25px;
+}
+
+.formContainer input[id^='pictogram-']:checked+label[for^='pictogram-'] {
+  border: 3px solid #f17a04;
+  background-color: #FBD7A0;
+  border-style: inline;
+}
+
+.pictogram {
+  width: 100px;
+  height: 100px;
+  /* background-color: #ffcc00; */
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 0.5em;
+}
 
 .formContainer label[for="about"] {
   display: flex;
@@ -87,4 +236,13 @@
   resize: none;
   padding: 1em 1.5em;
   color: hsl(38, 6%, 55%);
+}
+
+.formContainer textarea[id="about"] {
+  font-family: 'Nunito-light';
+  border-radius: 20px;
+  resize: none;
+  padding: 1em 1.5em;
+  border: 1px solid #70707050;
+  /* background-color: #ffcc00; */
 }
