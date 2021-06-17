@@ -1,0 +1,8 @@
+.topBar {
+  margin: 10px 1.5em 0;
+}
+
+.topBar img {
+  padding: 10px;
+  transform: scaleX(-1);
+}

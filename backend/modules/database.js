@@ -97,25 +97,29 @@ exports.insertOne = async (db, collect, data) => {
  * Function update a document with given document
  * @param {String} db target database
  * @param {String} collect target collection
+ * @param {String} user_id the user's user_id
  * @param {Object} data object to update document with
  * @source https://docs.mongodb.com/drivers/node/usage-examples/updateOne/
  * @source https://shabier.medium.com/web-development-crud-web-application-76f3b7ce127b
  */
-exports.updateOne = async (db, collect, data) => {
+exports.updateOne = async (db, collect, user_id, data) => {
   try {
     const database = client.db(db);
     const collection = database.collection(collect);
 
-    const filter = { email: data.email };
+    const filter = { user_id: user_id };
     const options = { upsert: true };
 
     const updateDoc = {
       $set: {
-        data,
-      },
+        chatData: data
+      }
     };
 
-    await collection.updateOne(filter, updateDoc, options);
+    const result = await collection.updateOne(filter, updateDoc, options);
+    console.log(
+      `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+    );
   } catch (error) {
     console.log("Couldn't update document");
   }

@@ -22,7 +22,6 @@
 
 .topBar h1 {
   font-family: 'Silka-bold';
-  font-size: 14px;
   text-transform: uppercase;
   color: rgb(114, 109, 97);
   margin: 0;
@@ -36,6 +35,7 @@
   padding: 0 1em;
   justify-self: start;
 }
+
 .topBar img {
   transform: rotate(180deg);
 }
@@ -45,24 +45,24 @@
   padding: 1em 0;
   cursor: pointer;
 }
-.information >summary {
+
+.information>summary {
   font-family: 'Nunito-bold';
-  font-size: 14px;
   color: rgb(240, 121, 4);
   list-style: none;
-
 }
+
 .information summary::marker {
   display: none;
 }
-.information > summary {
+
+.information>summary {
   list-style: none;
 }
-.information > summary::-webkit-details-marker {
+
+.information>summary::-webkit-details-marker {
   display: none;
 }
-
-
 
 .information summary::after {
   display: inline-block;
@@ -71,11 +71,11 @@
   margin-left: 1em;
   transition: transform 250ms ease-in-out;
 }
+
 .information[open] summary:after {
   transform: rotate(-90deg);
 }
 
 .information p {
   font-family: 'Nunito-light';
-  font-size: 12px;
 }

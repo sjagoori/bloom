@@ -1,0 +1,62 @@
+.card {
+  max-width: 156px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 4px 0px rgba(113, 113, 113, 0.1);
+}
+
+.card .profileImage {
+  height: 100px;
+  background-color: #FEB4B0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card .profileInformation {
+  margin: 0;
+  padding: 0;
+  padding: 15px;
+  position: relative;
+}
+
+.profileInformation>.username {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito-bold';
+  font-size: 12px;
+  margin-bottom: 6px;
+
+  /* Hide amount not being able to fit */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 124px;
+}
+
+.profileDetail {
+  font-family: 'Nunito-light';
+  font-size: 12px;
+  margin: 0 0 6px 0;
+}
+
+.icon {
+  padding-right: 6px;
+}
+
+.pointer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 29px;
+  height: 30%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px 0 0 0;
+  background: #FEE89E;
+
+  font-size: 1.6rem
+}
