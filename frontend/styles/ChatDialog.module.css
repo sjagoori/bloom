@@ -1,0 +1,37 @@
+.chatContainer {
+  /* background-color: #ffcc00; */
+}
+
+.chatBox {
+  padding: 0;
+}
+
+.message {
+  list-style: none;
+  font-family: 'Nunito-light';
+  color: rgb(21,21,21);
+  padding: 10px;
+  background-color: #FEF6D8;
+
+    position: relative;
+    border-radius: .4em;
+    margin: 0.5em 2em;
+}
+
+.message:nth-child(even) {
+  background-color: #FDEDD7;
+}
+.message:nth-child(even):after {
+  content: '';
+	position: absolute;
+	right: 0;
+	top: 80%;
+	width: 0;
+	height: 0;
+	border: 0.656em solid transparent;
+	border-left-color: #FDEDD7;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -0.328em;
+	margin-right: -0.656em;
+}
