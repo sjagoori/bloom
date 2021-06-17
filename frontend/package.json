@@ -8,8 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "10.2.0",
+    "@material-ui/core": "^4.11.4",
+    "boring-avatars": "^1.5.7",
+    "formik": "^2.2.9",
+    "framer-motion": "^4.1.17",
+    "next": "10.2.3",
+    "next-pwa": "^5.2.21",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-cookie": "^4.0.3",
+    "react-dom": "17.0.2",
+    "react-swipeable-views": "^0.14.0",
+    "socket.io-client": "^4.1.2"
   }
 }

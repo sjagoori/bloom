@@ -1,0 +1,81 @@
+.accordion {
+  padding: 1em 0.5em;
+}
+
+.accordion article {
+  margin: 0 2em;
+}
+
+.topBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  margin: 0 0 15px 0;
+
+}
+
+.topBar img {
+  padding: 10px;
+  margin-left: 15px;
+  transform: scaleX(-1);
+}
+
+.topBar h1 {
+  font-family: 'Silka-bold';
+  text-transform: uppercase;
+  color: rgb(114, 109, 97);
+  margin: 0;
+  justify-self: center;
+}
+
+.topBar button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0 1em;
+  justify-self: start;
+}
+
+.topBar img {
+  transform: rotate(180deg);
+}
+
+.information {
+  border-top: 1px solid rgba(114, 109, 97, 0.05);
+  padding: 1em 0;
+  cursor: pointer;
+}
+
+.information>summary {
+  font-family: 'Nunito-bold';
+  color: rgb(240, 121, 4);
+  list-style: none;
+}
+
+.information summary::marker {
+  display: none;
+}
+
+.information>summary {
+  list-style: none;
+}
+
+.information>summary::-webkit-details-marker {
+  display: none;
+}
+
+.information summary::after {
+  display: inline-block;
+  content: url('../public/icons/chevron-icoon.svg');
+  transform: rotate(90deg);
+  margin-left: 1em;
+  transition: transform 250ms ease-in-out;
+}
+
+.information[open] summary:after {
+  transform: rotate(-90deg);
+}
+
+.information p {
+  font-family: 'Nunito-light';
+}

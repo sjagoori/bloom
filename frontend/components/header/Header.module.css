@@ -1,0 +1,27 @@
+.container {
+  padding-top: 20px;
+  display: flex;
+  border-bottom: 1px solid #726D6125;
+  width: 85vw;
+  margin: 0 auto;
+}
+
+.container>h1 {
+  font-family: 'silka-bold';
+  font-size: 26px;
+  color: #F07903;
+  margin: 10px 0;
+  margin-right: 12px;
+}
+
+.icon {
+  align-self: center;
+  cursor: pointer;
+  fill: #F07903;
+  width: 24px;
+  height: 24px;
+}
+
+.search {
+  margin-left: auto;
+}
