@@ -4,6 +4,8 @@
 
 .chatBox {
   padding: 0;
+  max-height: 58vh;
+  overflow-y: scroll;
 }
 
 .message {
@@ -43,6 +45,12 @@
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.8);
   margin: 0 auto;
+  position: absolute;
+  bottom: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .chatContainer input[type='text']:nth-child(1) {
