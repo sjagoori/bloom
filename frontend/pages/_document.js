@@ -25,6 +25,12 @@ class MyDocument extends Document {
             name="Description"
             content="Bloom is an application for patients with cancer that are in remission, where they can find guidance and support from similar people. The app is intended to help people get back to their daily lives.."
           />
+
+          <meta
+            property="og:image"
+            content="https://banners.beyondco.de/Bloom.png?theme=light&packageManager=&packageName=&pattern=bankNote&style=style_1&description=An+application+for+patients+with+cancer+that+are+in+remission.&md=1&showWatermark=0&fontSize=100px&images=heart"
+          />
+
           <meta property="og:url" content="https://bloom-blush.vercel.app/" />
           <meta property="og:type" content="website" />
         </Head>
