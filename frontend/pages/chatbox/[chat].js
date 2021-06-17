@@ -94,8 +94,10 @@ export default function ChatBox() {
             })}
           </ol>
           <form onSubmit={handleChat}>
-            <input type="text" name="message" id="message" />
-            <button type="submit">Send</button>
+            <input type="text" name="message" id="message" placeholder="Typ een chatbericht..." />
+            <button type="submit">
+              <img src="/icons/chevron-icoon.svg" alt="send" />
+            </button>
           </form>
         </>
       ) : (
