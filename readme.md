@@ -207,6 +207,6 @@ L., A. (2019, June 17). Understanding Cancer Prognosis. National Cancer Institut
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/gpl-3.0/)
+[GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
   
