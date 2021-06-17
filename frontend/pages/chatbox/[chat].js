@@ -1,11 +1,12 @@
+import LoadingScreen from "@/components/loadingScreen/loadingScreen";
 import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
-import { useEffect, useState, useRef } from "react";
+import Header from "../../components/header/Header";
 import TopBar from "../../components/topbar/TopBar";
+import dialogStyles from "../../styles/chatDialog.module.css";
 import parseCookie from "../../utils/parseCookie";
 import sortID from "../../utils/sortID";
-import Header from "../../components/header/Header";
-import LoadingScreen from "@/components/loadingScreen/loadingScreen";
 
 export default function ChatBox() {
   const router = useRouter();
@@ -74,7 +75,7 @@ export default function ChatBox() {
   console.log(messages);
 
   return (
-    <section>
+    <section className={dialogStyles.chatContainer}>
       <TopBar />
 
       {partners ? (
@@ -83,18 +84,20 @@ export default function ChatBox() {
             name={"Chat" + (partners && " met " + partners.to.name)}
             isBlogs={false}
           />
-          <ol>
+          <ol className={dialogStyles.chatBox}>
             {messages.map((key, index) => {
               return (
-                <li key={index}>
+                <li key={index} className={dialogStyles.message}>
                   {key.sender.name}: {key.message}
                 </li>
               );
             })}
           </ol>
           <form onSubmit={handleChat}>
-            <input type="text" name="message" id="message" />
-            <button type="submit">Send</button>
+            <input type="text" name="message" id="message" placeholder="Typ een chatbericht..." />
+            <button type="submit">
+              <img src="/icons/chevron-icoon.svg" alt="send" />
+            </button>
           </form>
         </>
       ) : (
