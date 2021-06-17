@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import Header from "../../components/header/Header";
 import TopBar from "../../components/topbar/TopBar";
-import dialogStyles from "../../styles/chatDialog.module.css";
+import dialogStyles from "../../styles/ChatDialog.module.css";
 import parseCookie from "../../utils/parseCookie";
 import sortID from "../../utils/sortID";
+
 
 export default function ChatBox() {
   const router = useRouter();
